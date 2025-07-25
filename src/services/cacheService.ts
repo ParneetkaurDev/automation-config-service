@@ -20,8 +20,8 @@ export const getConfigService = async () => {
       // })
       // .catch(console.error);
 
-      console.log("console::::::::::…", config, typeof config)
-      return config
+      console.log("console::::::::::…", config, typeof config);
+      return config;
     } else {
       return JSON.parse(sessionData || "{}");
     }
