@@ -91,42 +91,6 @@ domain:
             flows: "./RET12/V-1.2.5/FASHION/flows/index.yaml"
         supportedActions:
           $ref: "src/config/RET12/V-1.2.5/supportedActions/index.yaml"
-  - name: ONDC:RET13
-    versions:
-      - id: 1.2.5
-        reporting: false
-        supportedActions:
-          $ref: "src/config/RET13/V-1.2.5/supportedActions/index.yaml"
-        usecase:
-          - name: BPC
-            flows: "./RET13/V-1.2.5/BPC/flows/index.yaml"
-  - name: ONDC:RET14
-    versions:
-      - id: 1.2.5
-        reporting: false
-        usecase:
-          - name: ELECTRONICS
-            flows: "./RET14/v-1.2.5/ELECTRONICS/flows/index.yaml"
-        supportedActions:
-          $ref: "src/config/RET14/v-1.2.5/supportedActions/index.yaml"
-  - name: ONDC:RET15
-    versions:
-      - id: 1.2.5
-        reporting: false
-        usecase:
-          - name: APPLIANCES
-            flows: "./RET15/v-1.2.5/APPLIANCES/flows/index.yaml"
-        supportedActions:
-          $ref: "src/config/RET15/v-1.2.5/supportedActions/index.yaml"
-  - name: ONDC:RET16
-    versions:
-      - id: 1.2.5
-        reporting: false
-        usecase:
-          - name: HOME&KITCHEN
-            flows: "./RET16/v-1.2.5/HOME&KITCHEN/flows/index.yaml"
-        supportedActions:
-          $ref: "src/config/RET16/v-1.2.5/supportedActions/index.yaml"
   - name: ONDC:RET18
     versions:
       - id: 1.2.5
@@ -136,25 +100,6 @@ domain:
             flows: "./RET18/V-1.2.5/Health&Wellness/flows/index.yaml"
         supportedActions:
           $ref: "src/config/RET18/V-1.2.5/supportedActions/index.yaml"
-  - name: ONDC:FIS13
-    versions:
-      - id: 2.0.0
-        reporting: false
-        usecase:
-          - name: transit-insurance
-            flows: "./FIS13/V-2.0.0/transit-insurance/flows/index.yaml"
-        supportedActions:
-          $ref: "src/config/FIS13/V-2.0.0/supportedActions/index.yaml"
-
-  - name: ONDC:FIS11
-    versions:
-      - id: 2.0.0
-        reporting: false
-        usecase:
-          - name: metro-card-recharge
-            flows: "./FIS11/V-2.0.0/metroCardRecharge/flows/index.yaml"
-        supportedActions:
-          $ref: "src/config/FIS11/V-2.0.0/supportedActions/index.yaml"
 usecases:
   domain:
     - key: ONDC:TRV11
@@ -212,39 +157,3 @@ usecases:
         - key: 1.2.5
           usecase:
             - HEALTH&WELLNESS
-    - key: ONDC:RET13
-      version:
-        - key: 1.2.5
-          usecase:
-            - BPC
-    - key: ONDC:RET14
-      version:
-        - key: 1.2.5
-          usecase:
-            - ELECTRONICS
-    - key: ONDC:RET15
-      version:
-        - key: 1.2.5
-          usecase:
-            - APPLIANCES
-    - key: ONDC:RET16
-      version:
-        - key: 1.2.5
-          usecase:
-            - HOME&KITCHEN
-    - key: ONDC:TRV14
-      version:
-        - key: 2.0.0
-          usecase:
-            - unreserved-entry-pass
-    - key: ONDC:FIS13
-      version:
-        - key: 2.0.0
-          usecase:
-            - transit-insurance
-
-    - key: ONDC:FIS11
-      version:
-        - key: 2.0.0
-          usecase:
-            - metro-card-recharge
