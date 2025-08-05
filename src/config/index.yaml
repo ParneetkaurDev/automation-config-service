@@ -127,15 +127,6 @@ domain:
             flows: "./RET16/v-1.2.5/HOME&KITCHEN/flows/index.yaml"
         supportedActions:
           $ref: "src/config/RET16/v-1.2.5/supportedActions/index.yaml"
-  - name: ONDC:RET18
-    versions:
-      - id: 1.2.5
-        reporting: false
-        usecase:
-          - name: HEALTH&WELLNESS
-            flows: "./RET18/V-1.2.5/Health&Wellness/flows/index.yaml"
-        supportedActions:
-          $ref: "src/config/RET18/V-1.2.5/supportedActions/index.yaml"
 usecases:
   domain:
     - key: ONDC:TRV11
@@ -203,6 +194,16 @@ usecases:
         - key: 1.2.5
           usecase:
             - ELECTRONICS
+    - key: ONDC:RET15
+      version:
+        - key: 1.2.5
+          usecase:
+            - APPLIANCES
+    - key: ONDC:RET16
+      version:
+        - key: 1.2.5
+          usecase:
+            - HOME&KITCHEN
     - key: ONDC:TRV14
       version:
         - key: 2.0.0
