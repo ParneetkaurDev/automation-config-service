@@ -90,7 +90,43 @@ domain:
           - name: FASHION
             flows: "./RET12/V-1.2.5/FASHION/flows/index.yaml"
         supportedActions:
-          $ref: "src/config/RET12/V-1.2.5/supportedActions/index.yaml"
+          $ref: "src/config/RET13/V-1.2.5/supportedActions/index.yaml"
+  - name: ONDC:RET13
+    versions:
+      - id: 1.2.5
+        reporting: false
+        usecase:
+          - name: BPC
+            flows: "./RET13/V-1.2.5/BPC/flows/index.yaml"
+        supportedActions:
+          $ref: "src/config/RET13/V-1.2.5/supportedActions/index.yaml"
+  - name: ONDC:RET14
+    versions:
+      - id: 1.2.5
+        reporting: false
+        usecase:
+          - name: ELECTRONICS
+            flows: "./RET14/v-1.2.5/ELECTRONICS/flows/index.yaml"
+        supportedActions:
+          $ref: "src/config/RET14/v-1.2.5/supportedActions/index.yaml"
+  - name: ONDC:RET15
+    versions:
+      - id: 1.2.5
+        reporting: false
+        usecase:
+          - name: APPLIANCES
+            flows: "./RET15/v-1.2.5/APPLIANCES/flows/index.yaml"
+        supportedActions:
+          $ref: "src/config/RET15/v-1.2.5/supportedActions/index.yaml"
+  - name: ONDC:RET16
+    versions:
+      - id: 1.2.5
+        reporting: false
+        usecase:
+          - name: HOME&KITCHEN
+            flows: "./RET16/v-1.2.5/HOME&KITCHEN/flows/index.yaml"
+        supportedActions:
+          $ref: "src/config/RET16/v-1.2.5/supportedActions/index.yaml"
   - name: ONDC:RET18
     versions:
       - id: 1.2.5
@@ -167,6 +203,16 @@ usecases:
         - key: 1.2.5
           usecase:
             - ELECTRONICS
+    - key: ONDC:RET15
+      version:
+        - key: 1.2.5
+          usecase:
+            - APPLIANCES
+    - key: ONDC:RET16
+      version:
+        - key: 1.2.5
+          usecase:
+            - HOME&KITCHEN
     - key: ONDC:TRV14
       version:
         - key: 2.0.0
