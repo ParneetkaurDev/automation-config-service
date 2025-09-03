@@ -82,6 +82,16 @@ domain:
             flows: "./TRV13/V-2.0.0/hotel-booking/flows/index.yaml"
         supportedActions:
           $ref: "src/config/TRV13/V-2.0.0/supportedActions/index.yaml"          
+  - name: ONDC:FIS11
+    versions:
+      - id: 2.0.0
+        reporting: false
+        usecase:
+          - name: metro-card-recharge
+            flows: "./FIS11/V-2.0.0/metroCardRecharge/flows/index.yaml"
+        supportedActions:
+          $ref: "src/config/FIS11/V-2.0.0/supportedActions/index.yaml"
+  
   - name: ONDC:RET12
     versions:
       - id: 1.2.5
@@ -174,6 +184,11 @@ usecases:
         - key: 2.0.0
           usecase:
             - unreserved-entry-pass
+    - key: ONDC:FIS11
+      version:
+        - key: 2.0.0
+          usecase:
+            - metro-card-recharge
     - key: ONDC:LOG10
       version:
         - key: 1.2.5
