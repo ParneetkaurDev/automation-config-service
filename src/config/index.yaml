@@ -32,11 +32,11 @@ domain:
     versions:
       - id: 2.0.0
         reporting: false
+        supportedActions:
+          $ref: "src/config/TRV14/V-2.0.0/supportedActions/index.yaml"
         usecase:
           - name: unreserved-entry-pass
             flows: "./TRV14/V-2.0.0/unreserved-ticketing/flows/index.yaml"
-        supportedActions:
-          $ref: "src/config/TRV14/V-2.0.0/supportedActions/index.yaml"
   - name: ONDC:LOG10
     versions:
       - id: 1.2.5
@@ -73,43 +73,33 @@ domain:
             flows: "./RET10/v-1.2.5/GROCERY/flows/index.yaml"
         supportedActions:
           $ref: "src/config/RET10/v-1.2.5/supportedActions/index.yaml"
-  - name: ONDC:TRV14
+  - name: ONDC:TRV13
     versions:
       - id: 2.0.0
         reporting: false
         usecase:
-          - name: Entry-Pass
-            flows: "./TRV14/V-2.0.0/entry-pass/flows/index.yaml"
+          - name: Hotel-Booking
+            flows: "./TRV13/V-2.0.0/hotel-booking/flows/index.yaml"
         supportedActions:
-          $ref: "src/config/TRV14/V-2.0.0/supportedActions/index.yaml"
-  - name: ONDC:FIS11
-    versions:
-      - id: 2.0.0
-        reporting: false
-        usecase:
-          - name: metro-card-recharge
-            flows: "./FIS11/V-2.0.0/metroCardRecharge/flows/index.yaml"
-        supportedActions:
-          $ref: "src/config/FIS11/V-2.0.0/supportedActions/index.yaml"
-  
+          $ref: "src/config/TRV13/V-2.0.0/supportedActions/index.yaml"          
   - name: ONDC:RET12
     versions:
       - id: 1.2.5
         reporting: false
         usecase:
           - name: FASHION
-            flows: "./RET13/V-1.2.5/BPC/flows/index.yaml"
+            flows: "./RET12/V-1.2.5/FASHION/flows/index.yaml"
         supportedActions:
-          $ref: "src/config/RET13/V-1.2.5/supportedActions/index.yaml"
+          $ref: "src/config/RET12/V-1.2.5/supportedActions/index.yaml"
   - name: ONDC:RET13
     versions:
       - id: 1.2.5
         reporting: false
+        supportedActions:
+          $ref: "src/config/RET13/V-1.2.5/supportedActions/index.yaml"
         usecase:
           - name: BPC
             flows: "./RET13/V-1.2.5/BPC/flows/index.yaml"
-        supportedActions:
-          $ref: "src/config/RET13/V-1.2.5/supportedActions/index.yaml"
   - name: ONDC:RET14
     versions:
       - id: 1.2.5
@@ -128,6 +118,43 @@ domain:
             flows: "./RET15/v-1.2.5/APPLIANCES/flows/index.yaml"
         supportedActions:
           $ref: "src/config/RET15/v-1.2.5/supportedActions/index.yaml"
+  - name: ONDC:RET16
+    versions:
+      - id: 1.2.5
+        reporting: false
+        usecase:
+          - name: HOME&KITCHEN
+            flows: "./RET16/v-1.2.5/HOME&KITCHEN/flows/index.yaml"
+        supportedActions:
+          $ref: "src/config/RET16/v-1.2.5/supportedActions/index.yaml"
+  - name: ONDC:RET18
+    versions:
+      - id: 1.2.5
+        reporting: false
+        usecase:
+          - name: HEALTH&WELLNESS
+            flows: "./RET18/V-1.2.5/Health&Wellness/flows/index.yaml"
+        supportedActions:
+          $ref: "src/config/RET18/V-1.2.5/supportedActions/index.yaml"
+  - name: ONDC:FIS13
+    versions:
+      - id: 2.0.0
+        reporting: false
+        usecase:
+          - name: transit-insurance
+            flows: "./FIS13/V-2.0.0/transit-insurance/flows/index.yaml"
+        supportedActions:
+          $ref: "src/config/FIS13/V-2.0.0/supportedActions/index.yaml"
+
+  - name: ONDC:FIS11
+    versions:
+      - id: 2.0.0
+        reporting: false
+        usecase:
+          - name: metro-card-recharge
+            flows: "./FIS11/V-2.0.0/metroCardRecharge/flows/index.yaml"
+        supportedActions:
+          $ref: "src/config/FIS11/V-2.0.0/supportedActions/index.yaml"
 usecases:
   domain:
     - key: ONDC:TRV11
@@ -140,22 +167,21 @@ usecases:
           usecase:
             - Metro
             - Bus
+    - key: ONDC:TRV13
+      version:
+        - key: 2.0.0
+          usecase:
+            - Hotel-Booking       
     - key: ONDC:TRV10
       version:
         - key: 2.1.0
           usecase:
             - Ride-hailing
-    
     - key: ONDC:TRV14
       version:
         - key: 2.0.0
           usecase:
             - unreserved-entry-pass
-    - key: ONDC:FIS11
-      version:
-        - key: 2.0.0
-          usecase:
-            - metro-card-recharge
     - key: ONDC:LOG10
       version:
         - key: 1.2.5
@@ -181,6 +207,11 @@ usecases:
         - key: 1.2.5
           usecase:
             - FASHION
+    - key: ONDC:RET18
+      version:
+        - key: 1.2.5
+          usecase:
+            - HEALTH&WELLNESS
     - key: ONDC:RET13
       version:
         - key: 1.2.5
@@ -196,3 +227,24 @@ usecases:
         - key: 1.2.5
           usecase:
             - APPLIANCES
+    - key: ONDC:RET16
+      version:
+        - key: 1.2.5
+          usecase:
+            - HOME&KITCHEN
+    - key: ONDC:TRV14
+      version:
+        - key: 2.0.0
+          usecase:
+            - unreserved-entry-pass
+    - key: ONDC:FIS13
+      version:
+        - key: 2.0.0
+          usecase:
+            - transit-insurance
+
+    - key: ONDC:FIS11
+      version:
+        - key: 2.0.0
+          usecase:
+            - metro-card-recharge
