@@ -5,6 +5,7 @@ import { filterDomainData } from "../utils";
 export const getSupportedActions = async (req: Request, res: Response) => {
   try {
     const query = req.query;
+    console.log("queryyyy", query);
     const config = await getConfigService();
     const data = filterDomainData(
       config,

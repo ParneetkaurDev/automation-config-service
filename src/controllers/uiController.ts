@@ -6,7 +6,7 @@ export const getFlows = async (req: Request, res: Response) => {
   try {
     const query = req.query;
     const config = await getConfigService();
-
+    console.log("queryyyyyyyyy",query,config)
     const filePath = filterDomainData(
       config,
       query.domain as string,

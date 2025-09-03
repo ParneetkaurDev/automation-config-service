@@ -9,18 +9,17 @@ export function filterDomainData(
   property: string
 ) {
   if (!data || !data.domain) return null;
-
   for (const domain of data.domain) {
     if (domain.name === domainName) {
       for (const version of domain.versions) {
         if (version.id === versionId) {
-          console.log("gettting here?");
+          console.log("gettting here?",usecaseName,version.usecase);
           if (
             property === "supportedActions" ||
             property === "reporting" ||
             property === "devPortalFlows"
           ) {
-            console.log("wokring??????", version, property);
+            console.log("wokring??????", JSON.stringify(version.supportedActions.apiProperties), property);
             return version[property];
           }
           for (const usecase of version.usecase) {
@@ -38,9 +37,12 @@ export function filterDomainData(
 
 export const getFileFromRefrence = async (filePath: string) => {
   try {
+    console.log("filepathhhhhhhhhh=>>>>>>>>>",filePath)
     const config = await loadYAMLWithRefs(
       path.join(__dirname, "../config", filePath)
     );
+    console.log("config=>>>>>>>>>",config)
+
     return config;
   } catch (e) {
     console.error("error while fetching file", e);
