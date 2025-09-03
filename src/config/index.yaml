@@ -150,8 +150,6 @@ domain:
     versions:
       - id: 2.0.0
         reporting: false
-        supportedActions:
-          $ref: "src/config/RET13/V-1.2.5/supportedActions/index.yaml"
         usecase:
           - name: transit-insurance
             flows: "./FIS13/V-2.0.0/transit-insurance/flows/index.yaml"
