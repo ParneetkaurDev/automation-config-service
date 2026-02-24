@@ -1,6 +1,6 @@
 flows:
   - id: FEATURE_DISCOVERY
-    tags: ["WORKBENCH", "MANDATORY"]
+    tags: ["WORKBENCH", "MANDATORY","REPORTABLE"]
     description: This flow illustrates the feature discovery flow among network participants for point-to-hub-to-point (P2H2P) logistics operations
     sequence:
       - key: search_LOGISTICS
@@ -538,7 +538,7 @@ flows:
         pair: null
         owner: BPP
   - id: RTO_FLOW
-    tags: ["WORKBENCH", "MANDATORY"]
+    tags: ["WORKBENCH", "MANDATORY","REPORTABLE"]
     description: This flow illustrates the Return to Origin (RTO) process for Logistics Service Providers (LSPs) to handle situations where the buyer is unavailable, an accident occurs, or other unforeseen circumstances arise while the rider is out for delivery.
     sequence:
       - key: search_LOGISTICS
@@ -919,7 +919,7 @@ flows:
         pair: null
         owner: BPP
   - id: PICKUP_DELIVERY_ATTEMPT
-    tags: ["WORKBENCH", "MANDATORY"]
+    tags: ["WORKBENCH", "MANDATORY","REPORTABLE"]
     description: This flow illustrates scenarios where the LSP initiates a pickup or delivery attempt but is unable to complete it due to reasons such as customer unavailability, restricted access, or operational constraints. In such cases, the LSP marks the attempt as failed, provides a reason code, and reschedules the task for a future date. All attempts, including timestamps, statuses, and reason codes, are recorded in the system to maintain a complete and auditable trail of logistics activity.
     sequence:
       - key: search_LOGISTICS
@@ -1291,7 +1291,7 @@ flows:
         pair: null
         owner: BPP
   - id: PREPAID_PAYMENT_FLOW
-    tags: ["WORKBENCH", "MANDATORY"]
+    tags: ["WORKBENCH", "MANDATORY","REPORTABLE"]
     description: This flow illustrates the Payment Wallet process for Logistics Service Providers (LSPs), enabling them to establish a prepaid wallet system for logistics buyers. Payments for services are deducted directly from this wallet, ensuring a seamless and efficient transaction process.
     sequence:
       - key: search_LOGISTICS
@@ -1466,7 +1466,7 @@ flows:
         pair: null
         owner: BPP
   - id: CANCELLATION_TERMS_FLOW
-    tags: ["WORKBENCH", "MANDATORY"]
+    tags: ["WORKBENCH", "MANDATORY","REPORTABLE"]
     description: This Flow outlines the process for confirming and updating logistics orders with the Logistics Service Provider (LSP) and the Logistics Buyer Network Partner (LBNP). Here the LSP provides cancellation terms which would be applicable in case of a cancellation.
     sequence:
       - key: search_LOGISTICS
@@ -1631,7 +1631,7 @@ flows:
         pair: null
         owner: BPP
   - id: STATIC_OTP_PICKUP_DELIVERY
-    tags: ["WORKBENCH", "MANDATORY"]
+    tags: ["WORKBENCH", "MANDATORY","REPORTABLE"]
     description: This Flow outlines the process for confirming and updating logistics orders with the Logistics Service Provider (LSP) and the Logistics Buyer Network Partner (LBNP). Here the LBNP provides static OTP for pickup and delivery verification.
     sequence:
       - key: search_2_LOGISTICS
@@ -1962,7 +1962,7 @@ flows:
         pair: null
         owner: BPP
   - id: ORDER_FLOW_EXCHANGE_CUSTOMER_SUPPORT_DETAILS
-    tags: ["WORKBENCH", "MANDATORY"]
+    tags: ["WORKBENCH", "MANDATORY","REPORTABLE"]
     description: Standard point-to-point delivery flow including baseline features with customer support details
     sequence:
             - key: search_LOGISTICS
@@ -2112,7 +2112,7 @@ flows:
               pair: null
               owner: BPP
   - id: ORDER_FLOW_CODIFIED_STATIC_TERMS
-    tags: ["WORKBENCH", "MANDATORY"]
+    tags: ["WORKBENCH", "MANDATORY",REPORTABLE]
     description: Standard point-to-point delivery flow including baseline features with codifed static terms
     sequence:
     - key: search_LOGISTICS
@@ -2263,7 +2263,7 @@ flows:
       pair: null
       owner: BPP
   - id: ORDER_FLOW_RCM
-    tags: ["WORKBENCH", "MANDATORY"]
+    tags: ["WORKBENCH", "MANDATORY","REPORTABLE"]
     description: Standard point-to-point delivery flow including baseline features with rcm self-declartion
     sequence:
     - key: search_LOGISTICS
@@ -2414,7 +2414,7 @@ flows:
       pair: null
       owner: BPP
   - id: ORDER_FLOW_BASE_LINE_PUBLIC_SPECIAL_CAPABILITIES
-    tags: ["WORKBENCH", "MANDATORY"]
+    tags: ["WORKBENCH", "MANDATORY","REPORTABLE"]
     description: Standard point-to-point delivery flow including baseline features with public special capabilities
     sequence:
     - key: search_LOGISTICS
@@ -2564,7 +2564,7 @@ flows:
       pair: null
       owner: BPP
   - id: ORDER_FLOW_BASE_LINE_SLA_METRICS
-    tags: ["WORKBENCH", "MANDATORY"]
+    tags: ["WORKBENCH", "MANDATORY","REPORTABLE"]
     description: Standard point-to-point delivery flow including baseline features
     sequence:
     - key: search_LOGISTICS_SLA
@@ -2715,7 +2715,7 @@ flows:
       pair: null
       owner: BP
   - id: ORDER_FLOW_BASE_LINE_SELLER_CREDS
-    tags: ["WORKBENCH", "MANDATORY"]
+    tags: ["WORKBENCH", "MANDATORY","REPORTABLE"]
     description: Standard point-to-point delivery flow including baseline features
     sequence:
     - key: search_LOGISTICS
@@ -2866,7 +2866,7 @@ flows:
       pair: null
       owner: BPP
   - id: E-WAY_BILL
-    tags: ["WORKBENCH", "MANDATORY"]
+    tags: ["WORKBENCH", "MANDATORY","REPORTABLE"]
     description: Standard point-to-point delivery flow including baseline features
     sequence:
     - key: search_LOGISTICS
@@ -3017,7 +3017,7 @@ flows:
       pair: null
       owner: BPP
   - id: E-POD
-    tags: ["WORKBENCH", "MANDATORY"]
+    tags: ["WORKBENCH", "MANDATORY","REPORTABLE"]
     description: Standard point-to-point delivery flow including baseline features
     sequence:
     - key: search_LOGISTICS
@@ -3179,7 +3179,7 @@ flows:
       pair: null
       owner: BPP
   - id: Call-Masking
-    tags: ["WORKBENCH", "MANDATORY"]
+    tags: ["WORKBENCH", "MANDATORY","REPORTABLE"]
     description: Standard point-to-point delivery flow including baseline features
     sequence:
     - key: search_LOGISTICS
@@ -3351,7 +3351,7 @@ flows:
       pair: null
       owner: BPP
   - id: RATE_CARD (P2H2P)
-    tags: ["WORKBENCH", "MANDATORY"]
+    tags: ["WORKBENCH", "MANDATORY","REPORTABLE"]
     description: Rate Card for point-to-hub-to-point logistics operations
     sequence: 
     - key: search_rate_card_P2H2P_LOGISTICS
@@ -3527,7 +3527,7 @@ flows:
           name: "RTO (with return)"
 
   - id: REVERSE_QC
-    tags: ["WORKBENCH", "MANDATORY"]
+    tags: ["WORKBENCH", "MANDATORY","REPORTABLE"]
     description: This flow illustrates the Reverse QC (QC) process for Logistics Service Providers (LSPs) to handle situations where the buyer is unavailable, an accident occurs, or other unforeseen circumstances arise while the rider is out for delivery.
     sequence:
       - key: search_REVERSE_QC_LOGISTICS
@@ -3712,7 +3712,7 @@ flows:
         pair: null
         owner: BPP
   - id: ORDER_FLOW_BASE_LINE_WITH_IGM(v-2.0.0)
-    tags: ["WORKBENCH", "MANDATORY"]
+    tags: ["WORKBENCH", "MANDATORY","REPORTABLE"]
     description: point-to-hub-to-point (P2H2P) delivery flow including baseline features
     sequence:
     - key: search_LOGISTICS
@@ -3960,7 +3960,7 @@ flows:
       owner: BPP
       expect: false
   - id: ORDER_FLOW_BASE_LINE_WITH_IGM_REJECTION(v-2.0.0)
-    tags: ["WORKBENCH", "MANDATORY"]
+    tags: ["WORKBENCH", "MANDATORY","REPORTABLE"]
     description: Standard point-to-point delivery flow including baseline features
     sequence:
     - key: search_LOGISTICS
@@ -4237,7 +4237,7 @@ flows:
       expect: false
 
   - id: ORDER_FLOW_BASE_LINE_WITH_IGM_NO_ACTION(v-2.0.0)
-    tags: ["WORKBENCH", "MANDATORY"]
+    tags: ["WORKBENCH", "MANDATORY","REPORTABLE"]
     description: Standard point-to-point delivery flow including baseline features
     sequence:
     - key: search_LOGISTICS
@@ -4453,7 +4453,7 @@ flows:
         - "THUMBS_DOWN"
         default: "THUMBS_UP"
   - id: ORDER_FLOW_BASE_LINE_WITH_IGM(v-1.0.0)
-    tags: ["WORKBENCH", "MANDATORY"]
+    tags: ["WORKBENCH", "MANDATORY","REPORTABLE"]
     description: point-to-hub-to-point (P2H2P) delivery flow including baseline features
     sequence:
     - key: search_LOGISTICS
@@ -4642,7 +4642,7 @@ flows:
             - "THUMBS_DOWN"
           default: "THUMBS_UP"
   - id: BUYER_SIDE_ORDER_CANCELLATION
-    tags: ["WORKBENCH", "MANDATORY"]
+    tags: ["WORKBENCH", "MANDATORY","REPORTABLE"]
     description: Standard point-to-point cancellation flow
     sequence:
       - key: search_LOGISTICS
@@ -4774,7 +4774,7 @@ flows:
         pair: null
         owner: BPP
   - id: SELLER_SIDE_ORDER_CANCELLATION
-    tags: ["WORKBENCH", "MANDATORY"]
+    tags: ["WORKBENCH", "MANDATORY","REPORTABLE"]
     description: Standard point-to-point cancellation flow
     sequence:
       - key: search_LOGISTICS
