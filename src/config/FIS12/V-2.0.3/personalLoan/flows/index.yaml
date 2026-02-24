@@ -260,7 +260,7 @@ flows:
         owner: BPP
         expect: false
 
-      - key: consumer_information_form
+      - key: consumer_information_form_pl
         label: consumer information form
         type: HTML_FORM
         unsolicited: false
@@ -271,7 +271,7 @@ flows:
           - name: form_submission_id
             label: Enter Form Submission id
             type: HTML_FORM
-            reference: $.reference_data.consumer_information_form       
+            reference: $.reference_data.consumer_information_form        
 
       - key: select_1_personal_loan_3
         type: select
@@ -502,7 +502,7 @@ flows:
         owner: BPP
         expect: false
 
-      - key: consumer_information_form
+      - key: consumer_information_form_pl
         label: consumer information form
         type: HTML_FORM
         unsolicited: false
@@ -724,7 +724,7 @@ flows:
         owner: BPP
         expect: false
 
-      - key: consumer_information_form
+      - key: consumer_information_form_pl
         label: consumer information form
         type: HTML_FORM
         unsolicited: false
@@ -735,7 +735,7 @@ flows:
           - name: form_submission_id
             label: Enter Form Submission id
             type: HTML_FORM
-            reference: $.reference_data.consumer_information_form 
+            reference: $.reference_data.consumer_information_form       
 
       - key: select_1_personal_loan_3
         type: select
@@ -875,7 +875,7 @@ flows:
         owner: BPP
         expect: false
 
-      - key: consumer_information_form
+      - key: consumer_information_form_pl
         label: consumer information form
         type: HTML_FORM
         unsolicited: false
@@ -1124,7 +1124,7 @@ flows:
         owner: BPP
         expect: false
 
-      - key: consumer_information_form
+      - key: consumer_information_form_pl
         label: consumer information form
         type: HTML_FORM
         unsolicited: false
@@ -1135,7 +1135,7 @@ flows:
           - name: form_submission_id
             label: Enter Form Submission id
             type: HTML_FORM
-            reference: $.reference_data.consumer_information_form       
+            reference: $.reference_data.consumer_information_form         
 
       - key: select_1_personal_loan_3
         type: select
@@ -1373,7 +1373,7 @@ flows:
         owner: BPP
         expect: false
 
-      - key: consumer_information_form
+      - key: consumer_information_form_pl
         label: consumer information form
         type: HTML_FORM
         unsolicited: false
@@ -1384,7 +1384,7 @@ flows:
           - name: form_submission_id
             label: Enter Form Submission id
             type: HTML_FORM
-            reference: $.reference_data.consumer_information_form 
+            reference: $.reference_data.consumer_information_form       
 
       - key: select_1_personal_loan_3
         type: select
@@ -1617,7 +1617,7 @@ flows:
         owner: BPP
         expect: false
 
-      - key: consumer_information_form
+      - key: consumer_information_form_pl
         label: consumer information form
         type: HTML_FORM
         unsolicited: false
@@ -1628,7 +1628,7 @@ flows:
           - name: form_submission_id
             label: Enter Form Submission id
             type: HTML_FORM
-            reference: $.reference_data.consumer_information_form 
+            reference: $.reference_data.consumer_information_form       
 
       - key: select_1_personal_loan_3
         type: select
@@ -1861,7 +1861,7 @@ flows:
         owner: BPP
         expect: false
 
-      - key: consumer_information_form
+      - key: consumer_information_form_pl
         label: consumer information form
         type: HTML_FORM
         unsolicited: false
@@ -1872,7 +1872,7 @@ flows:
           - name: form_submission_id
             label: Enter Form Submission id
             type: HTML_FORM
-            reference: $.reference_data.consumer_information_form 
+            reference: $.reference_data.consumer_information_form       
 
       - key: select_1_personal_loan_3
         type: select
@@ -2096,7 +2096,7 @@ flows:
         owner: BPP
         expect: false
 
-      - key: consumer_information_form
+      - key: consumer_information_form_pl
         label: consumer information form
         type: HTML_FORM
         unsolicited: false
@@ -2107,7 +2107,7 @@ flows:
           - name: form_submission_id
             label: Enter Form Submission id
             type: HTML_FORM
-            reference: $.reference_data.consumer_information_form 
+            reference: $.reference_data.consumer_information_form       
 
       - key: select_1_personal_loan_3
         type: select
@@ -2331,7 +2331,7 @@ flows:
         owner: BPP
         expect: false
 
-      - key: consumer_information_form
+      - key: consumer_information_form_pl
         label: consumer information form
         type: HTML_FORM
         unsolicited: false
@@ -2342,7 +2342,7 @@ flows:
           - name: form_submission_id
             label: Enter Form Submission id
             type: HTML_FORM
-            reference: $.reference_data.consumer_information_form       
+            reference: $.reference_data.consumer_information_form          
 
       - key: select_bureau_consent_personal_loan_3
         type: select
