@@ -1,6 +1,6 @@
 flows:
 - id: FEATURE_DISCOVERY
-  tags: ["WORKBENCH", "MANDATORY"]
+  tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
   description: Feature discovery for point-to-point logistics operations
   sequence:
   - key: search_LOGISTICS
@@ -174,7 +174,7 @@ flows:
       - code: "022"
         name: "RTO (with return)"
 - id: ORDER_FLOW_BASE_LINE
-  tags: ["WORKBENCH", "MANDATORY"]
+  tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
   description: Standard point-to-point delivery flow including baseline features
   sequence:
   - key: search_LOGISTICS
@@ -331,7 +331,7 @@ flows:
     pair: null
     owner: BPP
 - id: IMMEDIATE_DELIVERY_FLOW
-  tags: ["WORKBENCH", "MANDATORY"]
+  tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
   description: The Immediate Delivery Flow outlines the process for confirming and updating logistics orders with the Logistics Service Provider (LSP) and the Logistics Buyer Network Partner (LBNP). This flow is mainly for F&B and Grocery orders. Ship to delivery (S2D) TAT for the same is less than 60 minutes.
   sequence:
   - key: search_LOGISTICS
@@ -496,7 +496,7 @@ flows:
     pair: null
     owner: BPP
 - id: FIFO_FLOW
-  tags: ["WORKBENCH", "MANDATORY"]
+  tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
   description: The Immediate Delivery Flow outlines the process for confirming and updating logistics orders with the Logistics Service Provider (LSP) and the Logistics Buyer Network Partner (LBNP). This flow is mainly for F&B and Grocery orders. Ship to delivery (S2D) TAT for the same is less than 60 minutes.
   sequence:
   - key: search_FIFO_LOGISTICS
@@ -674,7 +674,7 @@ flows:
     pair: null
     owner: BPP
 - id: RTO_FLOW
-  tags: ["WORKBENCH", "MANDATORY"]
+  tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
   description: Flow for Return to Origin (RTO) when buyer is unavailable or delivery fails. A separate RTO fulfillment is created and linked to the forward shipment. RTO quote is added before RTO completes. RTO ends with Delivered or Disposed, completing the order.
   sequence:
   - key: search_LOGISTICS
@@ -1043,7 +1043,7 @@ flows:
     pair: null
     owner: BPP
 - id: PREPAID_PAYMENT_FLOW
-  tags: ["WORKBENCH", "MANDATORY"]
+  tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
   description: This flow outlines the Payment Wallet process for Logistics Service Providers (LSPs), enabling them to establish a prepaid wallet system for logistics buyers.Payments for services are deducted directly from this wallet, ensuring a seamless and efficient transaction process.
   sequence:
   - key: search_LOGISTICS
@@ -1231,7 +1231,7 @@ flows:
     pair: null
     owner: BPP
 - id: QUICK_COMMERCE_FLOW
-  tags: ["WORKBENCH", "MANDATORY"]
+  tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
   description: This flow covers logistics for Quick Commerce, Milk Run, and SPMD models, enabling coordination between LBNPs and LSPs.
   sequence:
   - key: search_qc
@@ -1556,7 +1556,7 @@ flows:
     pair: null
     owner: BPP
 - id: CANCELLATION_TERMS_FLOW
-  tags: ["WORKBENCH", "MANDATORY"]
+  tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
   description: This Flow outlines the process for confirming and updating logistics orders with the Logistics Service Provider (LSP) and the Logistics Buyer Network Partner (LBNP). Here the LSP provides cancellation terms which would be applicable in case of a cancellation.
   sequence:
   - key: search_LOGISTICS
@@ -1724,7 +1724,7 @@ flows:
     pair: null
     owner: BPP
 - id: STATIC_OTP_PICKUP_DELIVERY
-  tags: ["WORKBENCH", "MANDATORY"]
+  tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
   description: This Flow outlines the process for confirming and updating logistics orders with the Logistics Service Provider (LSP) and the Logistics Buyer Network Partner (LBNP). Here the LBNP provides static OTP for pickup and delivery verification.
   sequence:
   - key: search_2_LOGISTICS
@@ -2052,7 +2052,7 @@ flows:
     pair: null
     owner: BPP
 - id: ORDER_FLOW_BASE_LINE_WITH_IGM(v-2.0.0)
-  tags: ["WORKBENCH", "MANDATORY"]
+  tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
   description: Standard point-to-point delivery flow including baseline features
   sequence:
   - key: search_LOGISTICS
@@ -2308,7 +2308,7 @@ flows:
     owner: BPP
     expect: false
 - id: ORDER_FLOW_BASE_LINE_WITH_IGM_REJECTION(v-2.0.0)
-  tags: ["WORKBENCH", "MANDATORY"]
+  tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
   description: Standard point-to-point delivery flow including baseline features
   sequence:
   - key: search_LOGISTICS
@@ -2593,7 +2593,7 @@ flows:
     expect: false
 
 - id: ORDER_FLOW_BASE_LINE_WITH_IGM_NO_ACTION(v-2.0.0)
-  tags: ["WORKBENCH", "MANDATORY"]
+  tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
   description: Standard point-to-point delivery flow including baseline features
   sequence:
   - key: search_LOGISTICS
@@ -2817,7 +2817,7 @@ flows:
         - "THUMBS_DOWN"
         default: "THUMBS_UP"
 - id: ORDER_FLOW_BASE_LINE_WITH_IGM(v-1.0.0)
-  tags: ["WORKBENCH", "MANDATORY"]
+  tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
   description: Standard point-to-point delivery flow including baseline features
   sequence:
   - key: search_LOGISTICS
@@ -3021,7 +3021,7 @@ flows:
 
 - id: FEATURE_DISCOVERY_SEARCH_DEV_PORTAL
   title: Feature Discovery
-  tags: [ "DEV_PORTAL", "SEARCH", "SPSD", "FD" ]
+  tags: [ "DEV_PORTAL", "SEARCH", "SPSD", "FD", "REPORTABLE"]
   description: Feature discovery for point-to-point logistics operations
   sequence:
   - key: search_LOGISTICS
@@ -3189,7 +3189,7 @@ flows:
 
 - id: ORDER_FLOW_BASE_LINE_INIT_DEV_PORTAL
   title: Baseline Flow
-  tags: [ "DEV_PORTAL", "INIT", "SPSD" ]
+  tags: [ "DEV_PORTAL", "INIT", "SPSD", "REPORTABLE"]
   description: Standard point-to-point delivery flow including baseline features
   sequence:
   - key: search_LOGISTICS
@@ -3279,7 +3279,7 @@ flows:
 
 - id: ORDER_FLOW_BASE_LINE_CONFIRM_DEV_PORTAL
   title: Baseline Flow
-  tags: [ "DEV_PORTAL", "CONFIRM", "SPSD" ]
+  tags: [ "DEV_PORTAL", "CONFIRM", "SPSD", "REPORTABLE"]
   description: Standard point-to-point delivery flow including baseline features
   sequence:
   - key: search_LOGISTICS
@@ -3379,7 +3379,7 @@ flows:
 
 # track
 - id: ORDER_FLOW_BASE_LINE_TRACK_DEV_PORTAL
-  tags: [ "DEV_PORTAL", "TRACK", "SPSD" ]
+  tags: [ "DEV_PORTAL", "TRACK", "SPSD", "REPORTABLE"]
   description: Standard point-to-point delivery flow including baseline features
   sequence:
   - key: search_LOGISTICS
@@ -3524,7 +3524,7 @@ flows:
 
 # update
 - id: ORDER_FLOW_BASE_LINE_UPDATE_DEV_PORTAL
-  tags: [ "DEV_PORTAL", "UPDATE", "SPSD" ]
+  tags: [ "DEV_PORTAL", "UPDATE", "SPSD", "REPORTABLE"]
   description: Standard point-to-point delivery flow including baseline features
   sequence:
   - key: search_LOGISTICS
@@ -3636,7 +3636,7 @@ flows:
 
 # status
 - id: ORDER_FLOW_BASE_LINE_STATUS_DEV_PORTAL
-  tags: [ "DEV_PORTAL", "STATUS", "SPSD" ]
+  tags: [ "DEV_PORTAL", "STATUS", "SPSD", "REPORTABLE"]
   description: Standard point-to-point delivery flow including baseline features
   sequence:
   - key: search_LOGISTICS
@@ -3798,7 +3798,7 @@ flows:
 # search
 
 - id: CASH_ON_DELIVERY_FLOW_SEARCH_DEV_PORTAL
-  tags: [ "DEV_PORTAL", "SEARCH", "COD" ]
+  tags: [ "DEV_PORTAL", "SEARCH", "COD", "REPORTABLE"]
   description: This flow defines the logistics process for Cash on Delivery (COD) retail orders, ensuring proper tracking and settlement between Logistics Buyer Network Participants (LBNPs) and Logistics Service Providers (LSPs).
   sequence:
   - key: search_1_LOGISITCS
@@ -3900,7 +3900,7 @@ flows:
 # init
 
 - id: CASH_ON_DELIVERY_FLOW_INIT_DEV_PORTAL
-  tags: [ "DEV_PORTAL", "INIT", "COD" ]
+  tags: [ "DEV_PORTAL", "INIT", "COD", "REPORTABLE"]
   description: This flow defines the logistics process for Cash on Delivery (COD) retail orders, ensuring proper tracking and settlement between Logistics Buyer Network Participants (LBNPs) and Logistics Service Providers (LSPs).
   sequence:
   - key: search_1_LOGISITCS
@@ -4014,7 +4014,7 @@ flows:
 # confirm
 
 - id: CASH_ON_DELIVERY_FLOW_CONFIRM_DEV_PORTAL
-  tags: [ "DEV_PORTAL", "CONFIRM", "COD" ]
+  tags: [ "DEV_PORTAL", "CONFIRM", "COD", "REPORTABLE"]
   description: This flow defines the logistics process for Cash on Delivery (COD) retail orders, ensuring proper tracking and settlement between Logistics Buyer Network Participants (LBNPs) and Logistics Service Providers (LSPs).
   sequence:
   - key: search_1_LOGISITCS
@@ -4142,7 +4142,7 @@ flows:
 # init
 
 - id: CANCELLATION_TERMS_FLOW_INIT_DEV_PORTAL
-  tags: [ "DEV_PORTAL", "INIT", "CT" ]
+  tags: [ "DEV_PORTAL", "INIT", "CT", "REPORTABLE"]
   description: This Flow outlines the process for confirming and updating logistics orders with the Logistics Service Provider (LSP) and the Logistics Buyer Network Partner (LBNP). Here the LSP provides cancellation terms which would be applicable in case of a cancellation.
   sequence:
   - key: search_LOGISTICS
@@ -4242,7 +4242,7 @@ flows:
 # confirm
 
 - id: STATIC_OTP_PICKUP_DELIVERY_CONFIRM_DEV_PORTAL
-  tags: [ "DEV_PORTAL", "CONFIRM", "SOV_P&D" ]
+  tags: [ "DEV_PORTAL", "CONFIRM", "SOV_P&D", "REPORTABLE"]
   description: This Flow outlines the process for confirming and updating logistics orders with the Logistics Service Provider (LSP) and the Logistics Buyer Network Partner (LBNP). Here the LBNP provides static OTP for pickup and delivery verification.
   sequence:
   - key: search_2_LOGISTICS
@@ -4351,7 +4351,7 @@ flows:
 # confirm
 
 - id: IMMEDIATE_DELIVERY_FLOW_CONFIRM_DEV_PORTAL
-  tags: [ "DEV_PORTAL", "CONFIRM", "UFID" ]
+  tags: [ "DEV_PORTAL", "CONFIRM", "UFID", "REPORTABLE"]
   description: The Immediate Delivery Flow outlines the process for confirming and updating logistics orders with the Logistics Service Provider (LSP) and the Logistics Buyer Network Partner (LBNP). This flow is mainly for F&B and Grocery orders. Ship to delivery (S2D) TAT for the same is less than 60 minutes.
   sequence:
   - key: search_LOGISTICS
@@ -4475,7 +4475,7 @@ flows:
 # search
 
 - id: STATIC_OTP_RTO_DELIVERY_SEARCB_DEV_PORTAL
-  tags: [ "DEV_PORTAL", "SEARCH", "SOV_RTO" ]
+  tags: [ "DEV_PORTAL", "SEARCH", "SOV_RTO", "REPORTABLE"]
   description: Flow for Return to Origin (RTO) when buyer is unavailable or delivery fails. A separate RTO fulfillment is created and linked to the forward shipment. RTO quote is added before RTO completes. RTO ends with Delivered or Disposed, completing the order. Here LBNP provides static OTP for RTO delivery verification.
   sequence:
   - key: search_3_LOGISTICS
@@ -4558,7 +4558,7 @@ flows:
 # init
 
 - id: STATIC_OTP_RTO_DELIVERY_INIT_DEV_PORTAL
-  tags: [ "DEV_PORTAL", "INIT", "SOV_RTO" ]
+  tags: [ "DEV_PORTAL", "INIT", "SOV_RTO", "REPORTABLE"]
   description: Flow for Return to Origin (RTO) when buyer is unavailable or delivery fails. A separate RTO fulfillment is created and linked to the forward shipment. RTO quote is added before RTO completes. RTO ends with Delivered or Disposed, completing the order. Here LBNP provides static OTP for RTO delivery verification.
   sequence:
   - key: search_3_LOGISTICS
@@ -4653,7 +4653,7 @@ flows:
 # confirm
 
 - id: STATIC_OTP_RTO_DELIVERY_CONFIRM_DEV_PORTAL
-  tags: [ "DEV_PORTAL", "CONFIRM", "SOV_RTO" ]
+  tags: [ "DEV_PORTAL", "CONFIRM", "SOV_RTO", "REPORTABLE"]
   description: Flow for Return to Origin (RTO) when buyer is unavailable or delivery fails. A separate RTO fulfillment is created and linked to the forward shipment. RTO quote is added before RTO completes. RTO ends with Delivered or Disposed, completing the order. Here LBNP provides static OTP for RTO delivery verification.
   sequence:
   - key: search_3_LOGISTICS
@@ -4769,7 +4769,7 @@ flows:
 # search
 
 - id: SURGE_FEE_FLOW_SEARCB_DEV_PORTAL
-  tags: [ "DEV_PORTAL", "SEARCH", "SF" ]
+  tags: [ "DEV_PORTAL", "SEARCH", "SF", "REPORTABLE"]
   description: This Flow outlines the process for confirming and updating logistics orders with the Logistics Service Provider (LSP) and the Logistics Buyer Network Partner (LBNP). This flow is mainly for F&B and Grocery orders. Here the LSP adds an additional surge charge due to any operational reason.
   sequence:
   - key: search_LOGISTICS
@@ -4855,7 +4855,7 @@ flows:
 # confirm
 
 - id: SURGE_FEE_FLOW_CONFIRM_DEV_PORTAL
-  tags: [ "DEV_PORTAL", "CONFIRM", "SF" ]
+  tags: [ "DEV_PORTAL", "CONFIRM", "SF", "REPORTABLE"]
   description: This Flow outlines the process for confirming and updating logistics orders with the Logistics Service Provider (LSP) and the Logistics Buyer Network Partner (LBNP). This flow is mainly for F&B and Grocery orders. Here the LSP adds an additional surge charge due to any operational reason.
   sequence:
   - key: search_LOGISTICS
@@ -4963,7 +4963,7 @@ flows:
     pair: null
     owner: BPP
 - id: ORDER_FLOW_EXCHANGE_CUSTOMER_SUPPORT_DETAILS
-  tags: ["WORKBENCH", "MANDATORY"]
+  tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
   description: Standard point-to-point delivery flow including baseline features with customer support details
   sequence:
   - key: search_LOGISTICS
@@ -5120,7 +5120,7 @@ flows:
     pair: null
     owner: BPP
 - id: ORDER_FLOW_CODIFIED_STATIC_TERMS
-  tags: ["WORKBENCH", "MANDATORY"]
+  tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
   description: Standard point-to-point delivery flow including baseline features with codifed static terms
   sequence:
   - key: search_LOGISTICS
@@ -5277,7 +5277,7 @@ flows:
     pair: null
     owner: BPP
 - id: ORDER_FLOW_RCM
-  tags: ["WORKBENCH", "MANDATORY"]
+  tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
   description: Standard point-to-point delivery flow including baseline features with rcm self-declartion
   sequence:
   - key: search_LOGISTICS
@@ -5434,7 +5434,7 @@ flows:
     pair: null
     owner: BPP
 - id: ORDER_FLOW_BASE_LINE_PUBLIC_SPECIAL_CAPABILITIES
-  tags: ["WORKBENCH", "MANDATORY"]
+  tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
   description: Standard point-to-point delivery flow including baseline features with public special capabilities
   sequence:
   - key: search_LOGISTICS
@@ -5591,7 +5591,7 @@ flows:
     pair: null
     owner: BPP
 - id: ORDER_FLOW_BASE_LINE_SLA_METRICS
-  tags: ["WORKBENCH", "MANDATORY"]
+  tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
   description: Standard point-to-point delivery flow including baseline features
   sequence:
   - key: search_LOGISTICS_SLA
@@ -5748,7 +5748,7 @@ flows:
     pair: null
     owner: BP
 - id: ORDER_FLOW_BASE_LINE_SELLER_CREDS
-  tags: ["WORKBENCH", "MANDATORY"]
+  tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
   description: Standard point-to-point delivery flow including baseline features
   sequence:
   - key: search_LOGISTICS
@@ -5906,7 +5906,7 @@ flows:
     owner: BPP
 
 - id: UPDATE_DELIVERY_ADDRESS
-  tags: ["WORKBENCH", "MANDATORY"]
+  tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
   description: Standard point-to-point delivery flow including baseline features
   sequence:
   - key: search_LOGISTICS
@@ -6142,7 +6142,7 @@ flows:
     owner: BPP
 
 - id: SELLER_BUYER_INSTRUCTIONS
-  tags: ["WORKBENCH", "MANDATORY"]
+  tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
   description: Standard point-to-point delivery flow including baseline features
   sequence:
   - key: search_LOGISTICS
@@ -6288,7 +6288,7 @@ flows:
     owner: BPP
 
 - id: E-WAY_BILL
-  tags: ["WORKBENCH", "MANDATORY"]
+  tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
   description: Standard point-to-point delivery flow including baseline features
   sequence:
   - key: search_LOGISTICS
@@ -6446,7 +6446,7 @@ flows:
     owner: BPP
 
 - id: E-POD
-  tags: ["WORKBENCH", "MANDATORY"]
+  tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
   description: Standard point-to-point delivery flow including baseline features
   sequence:
   - key: search_LOGISTICS
@@ -6616,7 +6616,7 @@ flows:
     owner: BPP
 
 - id: Call-Masking
-  tags: ["WORKBENCH", "MANDATORY"]
+  tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
   description: Standard point-to-point delivery flow including baseline features
   sequence:
   - key: search_LOGISTICS
@@ -6774,7 +6774,7 @@ flows:
     owner: BPP
 
 - id: RATE_CARD (P2P)
-  tags: ["WORKBENCH", "MANDATORY"]
+  tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
   description: Rate Card for point-to-point logistics operations
   sequence: 
   - key: search_rate_card_P2P_LOGISTICS
@@ -6948,7 +6948,7 @@ flows:
       - code: "022"
         name: "RTO (with return)"
 - id: BUYER_SIDE_ORDER_CANCELLATION
-  tags: ["WORKBENCH", "MANDATORY"]
+  tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
   description: Standard point-to-point cancellation flow
   sequence:
   - key: search_LOGISTICS
@@ -7082,7 +7082,7 @@ flows:
     pair: null
     owner: BPP
 - id: SELLER_SIDE_ORDER_CANCELLATION
-  tags: ["WORKBENCH", "MANDATORY"]
+  tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
   description: Standard point-to-point cancellation flow
   sequence:
   - key: search_LOGISTICS
