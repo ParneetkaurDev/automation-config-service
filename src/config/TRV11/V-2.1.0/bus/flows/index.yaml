@@ -989,6 +989,11 @@ flows:
         pair: on_select_BUS_Unlimited_Passes_210
         owner: BAP
         expect: true
+        input:
+          - name: pan_number
+            label: Enter PAN Number
+            type: text
+            payloadField: $.message.order.fulfillments[*].customer.person.creds[?(@.type=='PAN')].id
       - key: on_select_BUS_Unlimited_Passes_210
         type: on_select
         unsolicited: false
