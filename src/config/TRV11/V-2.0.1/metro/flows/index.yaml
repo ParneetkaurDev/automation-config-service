@@ -149,30 +149,30 @@ flows:
         description: on_status (Order Completed)
         pair: null
         owner: BPP  
-  - id: STATION_CODE_FLOW_ORDER (W/O Select)
+  - id: STATION_CODE_FLOW_ORDER (W/O Search1 and Select)
     tags: ["WORKBENCH","MANDATORY", "REPORTABLE"]
     description: User uses station code for searching metro
     sequence:
-      - key: search1_METRO_201
-        type: search
-        unsolicited: false
-        description:
-          User searches over the network to avail the metro mode of transport
-          in the city
-        pair: on_search1_METRO_201
-        owner: BAP
-        expect: true
-        input:
-          - name: city_code
-            label: Enter city code
-            type: text
-            payloadField: $.context.location.city.code
-      - key: on_search1_METRO_201
-        type: on_search
-        unsolicited: false
-        description: Response with all station codes
-        pair: null
-        owner: BPP
+      # - key: search1_METRO_201
+      #   type: search
+      #   unsolicited: false
+      #   description:
+      #     User searches over the network to avail the metro mode of transport
+      #     in the city
+      #   pair: on_search1_METRO_201
+      #   owner: BAP
+      #   expect: true
+      #   input:
+      #     - name: city_code
+      #       label: Enter city code
+      #       type: text
+      #       payloadField: $.context.location.city.code
+      # - key: on_search1_METRO_201
+      #   type: on_search
+      #   unsolicited: false
+      #   description: Response with all station codes
+      #   pair: null
+      #   owner: BPP
       - key: search2_METRO_201
         type: search
         unsolicited: false
@@ -181,7 +181,7 @@ flows:
           from one station to another
         pair: on_search2_METRO_201
         owner: BAP
-        expect: false
+        expect: true
         input:
           - name: vehicle_category
             label: Select vehicle category
@@ -189,6 +189,13 @@ flows:
             values:
               - METRO
             payloadField: $.message.intent.fulfillment.vehicle.category
+          - name: payment_type
+            label: Select Payment Type
+            type: select
+            values:
+              - BAP
+              - BPP
+            payloadField: $.message.intent.payment.collected_by
           - name: start_code
             label: Enter start station code
             type: text
@@ -201,6 +208,10 @@ flows:
             label: enter your bpp_id
             type: text
             payloadField: $.context.bpp_id
+          - name: city_code
+            label: enter your city_code
+            type: text
+            payloadField: $.context.location.city.code  
       - key: on_search2_METRO_201
         type: on_search
         unsolicited: false
@@ -390,30 +401,30 @@ flows:
           the cancellation
         pair: null
         owner: BPP
-  - id: TECHNICAL_CANCELLATION_FLOW (W/O Select)
+  - id: TECHNICAL_CANCELLATION_FLOW (W/O Search1 and Select)
     tags: ["WORKBENCH","MANDATORY", "REPORTABLE"]
     description: User cancels the metro booking
     sequence:
-      - key: search1_METRO_201
-        type: search
-        unsolicited: false
-        description:
-          User searches over the network to avail the metro mode of transport
-          in the city
-        pair: on_search1_METRO_201
-        owner: BAP
-        expect: true
-        input:
-          - name: city_code
-            label: Enter city code
-            type: text
-            payloadField: $.context.location.city.code
-      - key: on_search1_METRO_201
-        type: on_search
-        unsolicited: false
-        description: Response with all station codes
-        pair: null
-        owner: BPP
+      # - key: search1_METRO_201
+      #   type: search
+      #   unsolicited: false
+      #   description:
+      #     User searches over the network to avail the metro mode of transport
+      #     in the city
+      #   pair: on_search1_METRO_201
+      #   owner: BAP
+      #   expect: true
+      #   input:
+      #     - name: city_code
+      #       label: Enter city code
+      #       type: text
+      #       payloadField: $.context.location.city.code
+      # - key: on_search1_METRO_201
+      #   type: on_search
+      #   unsolicited: false
+      #   description: Response with all station codes
+      #   pair: null
+      #   owner: BPP
       - key: search2_METRO_201
         type: search
         unsolicited: false
@@ -422,7 +433,7 @@ flows:
           from one station to another
         pair: on_search2_METRO_201
         owner: BAP
-        expect: false
+        expect: true
         input:
           - name: vehicle_category
             label: Select vehicle category
@@ -430,6 +441,13 @@ flows:
             values:
               - METRO
             payloadField: $.message.intent.fulfillment.vehicle.category
+          - name: payment_type
+            label: Select Payment Type
+            type: select
+            values:
+              - BAP
+              - BPP
+            payloadField: $.message.intent.payment.collected_by
           - name: start_code
             label: Enter start station code
             type: text
@@ -442,6 +460,10 @@ flows:
             label: enter your bpp_id
             type: text
             payloadField: $.context.bpp_id
+          - name: city_code
+            label: enter your city_code
+            type: text
+            payloadField: $.context.location.city.code
       - key: on_search2_METRO_201
         type: on_search
         unsolicited: false
@@ -646,30 +668,30 @@ flows:
           the cancellation
         pair: null
         owner: BPP
-  - id: USER_CANCELLATION_FLOW (W/O Select)
+  - id: USER_CANCELLATION_FLOW (W/O Search1 and Select)
     tags: ["WORKBENCH","MANDATORY", "REPORTABLE"]
     description: User cancels the metro booking
     sequence:
-      - key: search1_METRO_201
-        type: search
-        unsolicited: false
-        description:
-          User searches over the network to avail the metro mode of transport
-          in the city
-        pair: on_search1_METRO_201
-        owner: BAP
-        expect: true
-        input:
-          - name: city_code
-            label: Enter city code
-            type: text
-            payloadField: $.context.location.city.code
-      - key: on_search1_METRO_201
-        type: on_search
-        unsolicited: false
-        description: Response with all station codes
-        pair: null
-        owner: BPP
+      # - key: search1_METRO_201
+      #   type: search
+      #   unsolicited: false
+      #   description:
+      #     User searches over the network to avail the metro mode of transport
+      #     in the city
+      #   pair: on_search1_METRO_201
+      #   owner: BAP
+      #   expect: true
+      #   input:
+      #     - name: city_code
+      #       label: Enter city code
+      #       type: text
+      #       payloadField: $.context.location.city.code
+      # - key: on_search1_METRO_201
+      #   type: on_search
+      #   unsolicited: false
+      #   description: Response with all station codes
+      #   pair: null
+      #   owner: BPP
       - key: search2_METRO_201
         type: search
         unsolicited: false
@@ -678,7 +700,7 @@ flows:
           from one station to another
         pair: on_search2_METRO_201
         owner: BAP
-        expect: false
+        expect: true
         input:
           - name: vehicle_category
             label: Select vehicle category
@@ -686,6 +708,13 @@ flows:
             values:
               - METRO
             payloadField: $.message.intent.fulfillment.vehicle.category
+          - name: payment_type
+            label: Select Payment Type
+            type: select
+            values:
+              - BAP
+              - BPP
+            payloadField: $.message.intent.payment.collected_by
           - name: start_code
             label: Enter start station code
             type: text
@@ -698,6 +727,10 @@ flows:
             label: enter your bpp_id
             type: text
             payloadField: $.context.bpp_id
+          - name: city_code
+            label: enter your city_code
+            type: text
+            payloadField: $.context.location.city.code
       - key: on_search2_METRO_201
         type: on_search
         unsolicited: false
@@ -909,30 +942,30 @@ flows:
         description: Provider platform updates the user with the details of the cancellation
         pair: null
         owner: BPP
-  - id: DELAYED_CANCELLATION_FLOW_ACCEPTED (W/O Select)
+  - id: DELAYED_CANCELLATION_FLOW_ACCEPTED (W/O Search1 and Select)
     tags: ["WORKBENCH","MANDATORY", "REPORTABLE"]
     description: User cancels the metro booking
     sequence:
-      - key: search1_METRO_201
-        type: search
-        unsolicited: false
-        description:
-          User searches over the network to avail the metro mode of transport
-          in the city
-        pair: on_search1_METRO_201
-        owner: BAP
-        expect: true
-        input:
-          - name: city_code
-            label: Enter city code
-            type: text
-            payloadField: $.context.location.city.code
-      - key: on_search1_METRO_201
-        type: on_search
-        unsolicited: false
-        description: Response with all station codes
-        pair: null
-        owner: BPP
+      # - key: search1_METRO_201
+      #   type: search
+      #   unsolicited: false
+      #   description:
+      #     User searches over the network to avail the metro mode of transport
+      #     in the city
+      #   pair: on_search1_METRO_201
+      #   owner: BAP
+      #   expect: true
+      #   input:
+      #     - name: city_code
+      #       label: Enter city code
+      #       type: text
+      #       payloadField: $.context.location.city.code
+      # - key: on_search1_METRO_201
+      #   type: on_search
+      #   unsolicited: false
+      #   description: Response with all station codes
+      #   pair: null
+      #   owner: BPP
       - key: search2_METRO_201
         type: search
         unsolicited: false
@@ -941,7 +974,7 @@ flows:
           from one station to another
         pair: on_search2_METRO_201
         owner: BAP
-        expect: false
+        expect: true
         input:
           - name: vehicle_category
             label: Select vehicle category
@@ -949,6 +982,13 @@ flows:
             values:
               - METRO
             payloadField: $.message.intent.fulfillment.vehicle.category
+          - name: payment_type
+            label: Select Payment Type
+            type: select
+            values:
+              - BAP
+              - BPP
+            payloadField: $.message.intent.payment.collected_by
           - name: start_code
             label: Enter start station code
             type: text
@@ -961,6 +1001,10 @@ flows:
             label: enter your bpp_id
             type: text
             payloadField: $.context.bpp_id
+          - name: city_code
+            label: enter your city_code
+            type: text
+            payloadField: $.context.location.city.code
       - key: on_search2_METRO_201
         type: on_search
         unsolicited: false
@@ -1177,30 +1221,30 @@ flows:
         description: Provider platform updates the user with the details of the cancellation
         pair: null
         owner: BPP
-  - id: DELAYED_CANCELLATION_FLOW_REJECTED (W/O Select)
+  - id: DELAYED_CANCELLATION_FLOW_REJECTED (W/O Search1 and Select)
     tags: ["WORKBENCH","MANDATORY", "REPORTABLE"]
     description: User cancels the metro booking
     sequence:
-      - key: search1_METRO_201
-        type: search
-        unsolicited: false
-        description:
-          User searches over the network to avail the metro mode of transport
-          in the city
-        pair: on_search1_METRO_201
-        owner: BAP
-        expect: true
-        input:
-          - name: city_code
-            label: Enter city code
-            type: text
-            payloadField: $.context.location.city.code
-      - key: on_search1_METRO_201
-        type: on_search
-        unsolicited: false
-        description: Response with all station codes
-        pair: null
-        owner: BPP
+      # - key: search1_METRO_201
+      #   type: search
+      #   unsolicited: false
+      #   description:
+      #     User searches over the network to avail the metro mode of transport
+      #     in the city
+      #   pair: on_search1_METRO_201
+      #   owner: BAP
+      #   expect: true
+      #   input:
+      #     - name: city_code
+      #       label: Enter city code
+      #       type: text
+      #       payloadField: $.context.location.city.code
+      # - key: on_search1_METRO_201
+      #   type: on_search
+      #   unsolicited: false
+      #   description: Response with all station codes
+      #   pair: null
+      #   owner: BPP
       - key: search2_METRO_201
         type: search
         unsolicited: false
@@ -1209,7 +1253,7 @@ flows:
           from one station to another
         pair: on_search2_METRO_201
         owner: BAP
-        expect: false
+        expect: true
         input:
           - name: vehicle_category
             label: Select vehicle category
@@ -1217,6 +1261,13 @@ flows:
             values:
               - METRO
             payloadField: $.message.intent.fulfillment.vehicle.category
+          - name: payment_type
+            label: Select Payment Type
+            type: select
+            values:
+              - BAP
+              - BPP
+            payloadField: $.message.intent.payment.collected_by
           - name: start_code
             label: Enter start station code
             type: text
@@ -1229,6 +1280,10 @@ flows:
             label: enter your bpp_id
             type: text
             payloadField: $.context.bpp_id
+          - name: city_code
+            label: enter your city_code
+            type: text
+            payloadField: $.context.location.city.code
       - key: on_search2_METRO_201
         type: on_search
         unsolicited: false
@@ -1449,30 +1504,30 @@ flows:
         pair: null
         owner: BPP
 
-  - id: END_STOP_UPDATE_FLOW (W/O Select)
+  - id: END_STOP_UPDATE_FLOW (W/O Search1 and Select)
     tags: ["WORKBENCH","MANDATORY", "REPORTABLE"]
     description: End stop update flow
     sequence:
-      - key: search1_METRO_201
-        type: search
-        unsolicited: false
-        description:
-          User searches over the network to avail the metro mode of transport
-          in the city
-        pair: on_search1_METRO_201
-        owner: BAP
-        expect: true
-        input:
-          - name: city_code
-            label: Enter city code
-            type: text
-            payloadField: $.context.location.city.code
-      - key: on_search1_METRO_201
-        type: on_search
-        unsolicited: false
-        description: Response with all station codes
-        pair: null
-        owner: BPP
+      # - key: search1_METRO_201
+      #   type: search
+      #   unsolicited: false
+      #   description:
+      #     User searches over the network to avail the metro mode of transport
+      #     in the city
+      #   pair: on_search1_METRO_201
+      #   owner: BAP
+      #   expect: true
+      #   input:
+      #     - name: city_code
+      #       label: Enter city code
+      #       type: text
+      #       payloadField: $.context.location.city.code
+      # - key: on_search1_METRO_201
+      #   type: on_search
+      #   unsolicited: false
+      #   description: Response with all station codes
+      #   pair: null
+      #   owner: BPP
       - key: search2_METRO_201
         type: search
         unsolicited: false
@@ -1481,7 +1536,7 @@ flows:
           from one station to another
         pair: on_search2_METRO_201
         owner: BAP
-        expect: false
+        expect: true
         input:
           - name: vehicle_category
             label: Select vehicle category
@@ -1489,6 +1544,13 @@ flows:
             values:
               - METRO
             payloadField: $.message.intent.fulfillment.vehicle.category
+          - name: payment_type
+            label: Select Payment Type
+            type: select
+            values:
+              - BAP
+              - BPP
+            payloadField: $.message.intent.payment.collected_by
           - name: start_code
             label: Enter start station code
             type: text
@@ -1501,6 +1563,10 @@ flows:
             label: enter your bpp_id
             type: text
             payloadField: $.context.bpp_id
+          - name: city_code
+            label: enter your city_code
+            type: text
+            payloadField: $.context.location.city.code
       - key: on_search2_METRO_201
         type: on_search
         unsolicited: false
@@ -1799,30 +1865,30 @@ flows:
       #   pair: null
       #   owner: BPP
       #   expect: false  
-  - id: STATION_CODE_FLOW_ORDER_IGM(v-2.0.0)(W/O Select)
+  - id: STATION_CODE_FLOW_ORDER_IGM(v-2.0.0)(W/O Search1 and Select)
     tags: ["WORKBENCH","MANDATORY", "REPORTABLE"]
     description: User uses station code for searching metro
     sequence:
-      - key: search1_METRO_201
-        type: search
-        unsolicited: false
-        description:
-          User searches over the network to avail the metro mode of transport
-          in the city
-        pair: on_search1_METRO_201
-        owner: BAP
-        expect: true
-        input:
-          - name: city_code
-            label: Enter city code
-            type: text
-            payloadField: $.context.location.city.code
-      - key: on_search1_METRO_201
-        type: on_search
-        unsolicited: false
-        description: Response with all station codes
-        pair: null
-        owner: BPP
+      # - key: search1_METRO_201
+      #   type: search
+      #   unsolicited: false
+      #   description:
+      #     User searches over the network to avail the metro mode of transport
+      #     in the city
+      #   pair: on_search1_METRO_201
+      #   owner: BAP
+      #   expect: true
+      #   input:
+      #     - name: city_code
+      #       label: Enter city code
+      #       type: text
+      #       payloadField: $.context.location.city.code
+      # - key: on_search1_METRO_201
+      #   type: on_search
+      #   unsolicited: false
+      #   description: Response with all station codes
+      #   pair: null
+      #   owner: BPP
       - key: search2_METRO_201
         type: search
         unsolicited: false
@@ -1831,7 +1897,7 @@ flows:
           from one station to another
         pair: on_search2_METRO_201
         owner: BAP
-        expect: false
+        expect: true
         input:
           - name: vehicle_category
             label: Select vehicle category
@@ -1839,6 +1905,13 @@ flows:
             values:
               - METRO
             payloadField: $.message.intent.fulfillment.vehicle.category
+          - name: payment_type
+            label: Select Payment Type
+            type: select
+            values:
+              - BAP
+              - BPP
+            payloadField: $.message.intent.payment.collected_by
           - name: start_code
             label: Enter start station code
             type: text
@@ -1851,6 +1924,10 @@ flows:
             label: enter your bpp_id
             type: text
             payloadField: $.context.bpp_id
+          - name: city_code
+            label: enter your city_code
+            type: text
+            payloadField: $.context.location.city.code
       - key: on_search2_METRO_201
         type: on_search
         unsolicited: false
@@ -2253,30 +2330,30 @@ flows:
       #   pair: null
       #   owner: BPP
       #   expect: false  
-  - id: STATION_CODE_FLOW_ORDER_IGM_Rejection(v-2.0.0)(W/O Select)
+  - id: STATION_CODE_FLOW_ORDER_IGM_Rejection(v-2.0.0)(W/O Search1 and Select)
     tags: ["WORKBENCH","MANDATORY", "REPORTABLE"]
     description: User uses station code for searching metro
     sequence:
-      - key: search1_METRO_201
-        type: search
-        unsolicited: false
-        description:
-          User searches over the network to avail the metro mode of transport
-          in the city
-        pair: on_search1_METRO_201
-        owner: BAP
-        expect: true
-        input:
-          - name: city_code
-            label: Enter city code
-            type: text
-            payloadField: $.context.location.city.code
-      - key: on_search1_METRO_201
-        type: on_search
-        unsolicited: false
-        description: Response with all station codes
-        pair: null
-        owner: BPP
+      # - key: search1_METRO_201
+      #   type: search
+      #   unsolicited: false
+      #   description:
+      #     User searches over the network to avail the metro mode of transport
+      #     in the city
+      #   pair: on_search1_METRO_201
+      #   owner: BAP
+      #   expect: true
+      #   input:
+      #     - name: city_code
+      #       label: Enter city code
+      #       type: text
+      #       payloadField: $.context.location.city.code
+      # - key: on_search1_METRO_201
+      #   type: on_search
+      #   unsolicited: false
+      #   description: Response with all station codes
+      #   pair: null
+      #   owner: BPP
       - key: search2_METRO_201
         type: search
         unsolicited: false
@@ -2285,7 +2362,7 @@ flows:
           from one station to another
         pair: on_search2_METRO_201
         owner: BAP
-        expect: false
+        expect: true
         input:
           - name: vehicle_category
             label: Select vehicle category
@@ -2293,6 +2370,13 @@ flows:
             values:
               - METRO
             payloadField: $.message.intent.fulfillment.vehicle.category
+          - name: payment_type
+            label: Select Payment Type
+            type: select
+            values:
+              - BAP
+              - BPP
+            payloadField: $.message.intent.payment.collected_by
           - name: start_code
             label: Enter start station code
             type: text
@@ -2305,6 +2389,10 @@ flows:
             label: enter your bpp_id
             type: text
             payloadField: $.context.bpp_id
+          - name: city_code
+            label: enter your city_code
+            type: text
+            payloadField: $.context.location.city.code
       - key: on_search2_METRO_201
         type: on_search
         unsolicited: false
@@ -2682,30 +2770,30 @@ flows:
       #   owner: BPP
       #   expect: false
       #   description: Status updates - order delivered     
-  - id: STATION_CODE_FLOW_ORDER_IGM_No_Action(v-2.0.0)(W/O Select)
+  - id: STATION_CODE_FLOW_ORDER_IGM_No_Action(v-2.0.0)(W/O Search1 and Select)
     tags: ["WORKBENCH","MANDATORY", "REPORTABLE"]
     description: User uses station code for searching metro
     sequence:
-      - key: search1_METRO_201
-        type: search
-        unsolicited: false
-        description:
-          User searches over the network to avail the metro mode of transport
-          in the city
-        pair: on_search1_METRO_201
-        owner: BAP
-        expect: true
-        input:
-          - name: city_code
-            label: Enter city code
-            type: text
-            payloadField: $.context.location.city.code
-      - key: on_search1_METRO_201
-        type: on_search
-        unsolicited: false
-        description: Response with all station codes
-        pair: null
-        owner: BPP
+      # - key: search1_METRO_201
+      #   type: search
+      #   unsolicited: false
+      #   description:
+      #     User searches over the network to avail the metro mode of transport
+      #     in the city
+      #   pair: on_search1_METRO_201
+      #   owner: BAP
+      #   expect: true
+      #   input:
+      #     - name: city_code
+      #       label: Enter city code
+      #       type: text
+      #       payloadField: $.context.location.city.code
+      # - key: on_search1_METRO_201
+      #   type: on_search
+      #   unsolicited: false
+      #   description: Response with all station codes
+      #   pair: null
+      #   owner: BPP
       - key: search2_METRO_201
         type: search
         unsolicited: false
@@ -2714,7 +2802,7 @@ flows:
           from one station to another
         pair: on_search2_METRO_201
         owner: BAP
-        expect: false
+        expect: true
         input:
           - name: vehicle_category
             label: Select vehicle category
@@ -2722,6 +2810,13 @@ flows:
             values:
               - METRO
             payloadField: $.message.intent.fulfillment.vehicle.category
+          - name: payment_type
+            label: Select Payment Type
+            type: select
+            values:
+              - BAP
+              - BPP
+            payloadField: $.message.intent.payment.collected_by
           - name: start_code
             label: Enter start station code
             type: text
@@ -2734,6 +2829,10 @@ flows:
             label: enter your bpp_id
             type: text
             payloadField: $.context.bpp_id
+          - name: city_code
+            label: enter your city_code
+            type: text
+            payloadField: $.context.location.city.code
       - key: on_search2_METRO_201
         type: on_search
         unsolicited: false
@@ -3024,30 +3123,30 @@ flows:
               - "THUMBS_UP"
               - "THUMBS_DOWN"
             default: "THUMBS_UP"          
-  - id: STATION_CODE_FLOW_ORDER_IGM_No_Action(v-1.0.0)(W/O Select)
+  - id: STATION_CODE_FLOW_ORDER_IGM_No_Action(v-1.0.0)(W/O Search1 and Select)
     tags: ["WORKBENCH","MANDATORY", "REPORTABLE"]
     description: User uses station code for searching metro
     sequence:
-      - key: search1_METRO_201
-        type: search
-        unsolicited: false
-        description:
-          User searches over the network to avail the metro mode of transport
-          in the city
-        pair: on_search1_METRO_201
-        owner: BAP
-        expect: true
-        input:
-          - name: city_code
-            label: Enter city code
-            type: text
-            payloadField: $.context.location.city.code
-      - key: on_search1_METRO_201
-        type: on_search
-        unsolicited: false
-        description: Response with all station codes
-        pair: null
-        owner: BPP
+      # - key: search1_METRO_201
+      #   type: search
+      #   unsolicited: false
+      #   description:
+      #     User searches over the network to avail the metro mode of transport
+      #     in the city
+      #   pair: on_search1_METRO_201
+      #   owner: BAP
+      #   expect: true
+      #   input:
+      #     - name: city_code
+      #       label: Enter city code
+      #       type: text
+      #       payloadField: $.context.location.city.code
+      # - key: on_search1_METRO_201
+      #   type: on_search
+      #   unsolicited: false
+      #   description: Response with all station codes
+      #   pair: null
+      #   owner: BPP
       - key: search2_METRO_201
         type: search
         unsolicited: false
@@ -3056,7 +3155,7 @@ flows:
           from one station to another
         pair: on_search2_METRO_201
         owner: BAP
-        expect: false
+        expect: true
         input:
           - name: vehicle_category
             label: Select vehicle category
@@ -3064,6 +3163,13 @@ flows:
             values:
               - METRO
             payloadField: $.message.intent.fulfillment.vehicle.category
+          - name: payment_type
+            label: Select Payment Type
+            type: select
+            values:
+              - BAP
+              - BPP
+            payloadField: $.message.intent.payment.collected_by
           - name: start_code
             label: Enter start station code
             type: text
@@ -3076,6 +3182,10 @@ flows:
             label: enter your bpp_id
             type: text
             payloadField: $.context.bpp_id
+          - name: city_code
+            label: enter your city_code
+            type: text
+            payloadField: $.context.location.city.code
       - key: on_search2_METRO_201
         type: on_search
         unsolicited: false

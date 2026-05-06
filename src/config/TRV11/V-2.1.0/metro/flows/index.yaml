@@ -31,30 +31,30 @@ flows:
     tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
     description: User uses station code for searching metro
     sequence:
-      - key: search_MASTER_METRO_210
-        type: search
-        unsolicited: false
-        description:
-          User searches over the network to avail the metro mode of transport
-          in the city
-        pair: on_search_MASTER_METRO_210
-        owner: BAP
-        expect: true
-        input:
-          - name: collected_by
-            label: Choose collected_by
-            type: select
-            values:
-              - BAP
-              - BPP
-            defaultValue: BPP
-            payloadField: $.message.intent.payment.collected_by
-      - key: on_search_MASTER_METRO_210
-        type: on_search
-        unsolicited: false
-        description: Response with all station codes
-        pair: null
-        owner: BPP
+      # - key: search_MASTER_METRO_210
+      #   type: search
+      #   unsolicited: false
+      #   description:
+      #     User searches over the network to avail the metro mode of transport
+      #     in the city
+      #   pair: on_search_MASTER_METRO_210
+      #   owner: BAP
+      #   expect: true
+      #   input:
+      #     - name: collected_by
+      #       label: Choose collected_by
+      #       type: select
+      #       values:
+      #         - BAP
+      #         - BPP
+      #       defaultValue: BPP
+      #       payloadField: $.message.intent.payment.collected_by
+      # - key: on_search_MASTER_METRO_210
+      #   type: on_search
+      #   unsolicited: false
+      #   description: Response with all station codes
+      #   pair: null
+      #   owner: BPP
       - key: search2_METRO_210
         type: search
         unsolicited: false
@@ -97,7 +97,7 @@ flows:
               - BPP
             defaultValue: BPP
             payloadField: $.message.intent.payment.collected_by 
-        expect: false 
+        expect: true 
       - key: on_search2_METRO_210
         type: on_search
         unsolicited: false
@@ -168,30 +168,30 @@ flows:
     tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
     description: User cancels the metro booking
     sequence:
-      - key: search_MASTER_METRO_210
-        type: search
-        unsolicited: false
-        description:
-          User searches over the network to avail the metro mode of transport
-          in the city
-        pair: on_search_MASTER_METRO_210
-        owner: BAP
-        expect: true
-        input:
-          - name: collected_by
-            label: Choose collected_by
-            type: select
-            values:
-              - BAP
-              - BPP
-            defaultValue: BPP
-            payloadField: $.message.intent.payment.collected_by
-      - key: on_search_MASTER_METRO_210
-        type: on_search
-        unsolicited: false
-        description: Response with all station codes
-        pair: null
-        owner: BPP
+      # - key: search_MASTER_METRO_210
+      #   type: search
+      #   unsolicited: false
+      #   description:
+      #     User searches over the network to avail the metro mode of transport
+      #     in the city
+      #   pair: on_search_MASTER_METRO_210
+      #   owner: BAP
+      #   expect: true
+      #   input:
+      #     - name: collected_by
+      #       label: Choose collected_by
+      #       type: select
+      #       values:
+      #         - BAP
+      #         - BPP
+      #       defaultValue: BPP
+      #       payloadField: $.message.intent.payment.collected_by
+      # - key: on_search_MASTER_METRO_210
+      #   type: on_search
+      #   unsolicited: false
+      #   description: Response with all station codes
+      #   pair: null
+      #   owner: BPP
       - key: search2_METRO_210
         type: search
         unsolicited: false
@@ -333,30 +333,30 @@ flows:
     tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
     description: User cancels the metro booking
     sequence:
-      - key: search_MASTER_METRO_210
-        type: search
-        unsolicited: false
-        description:
-          User searches over the network to avail the metro mode of transport
-          in the city
-        pair: on_search_MASTER_METRO_210
-        owner: BAP
-        expect: true
-        input:
-          - name: collected_by
-            label: Choose collected_by
-            type: select
-            values:
-              - BAP
-              - BPP
-            defaultValue: BPP
-            payloadField: $.message.intent.payment.collected_by
-      - key: on_search_MASTER_METRO_210
-        type: on_search
-        unsolicited: false
-        description: Response with all station codes
-        pair: null
-        owner: BPP
+      # - key: search_MASTER_METRO_210
+      #   type: search
+      #   unsolicited: false
+      #   description:
+      #     User searches over the network to avail the metro mode of transport
+      #     in the city
+      #   pair: on_search_MASTER_METRO_210
+      #   owner: BAP
+      #   expect: true
+      #   input:
+      #     - name: collected_by
+      #       label: Choose collected_by
+      #       type: select
+      #       values:
+      #         - BAP
+      #         - BPP
+      #       defaultValue: BPP
+      #       payloadField: $.message.intent.payment.collected_by
+      # - key: on_search_MASTER_METRO_210
+      #   type: on_search
+      #   unsolicited: false
+      #   description: Response with all station codes
+      #   pair: null
+      #   owner: BPP
       - key: search2_METRO_210
         type: search
         unsolicited: false
@@ -502,30 +502,30 @@ flows:
     tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
     description: User cancels the metro booking
     sequence:
-      - key: search_MASTER_METRO_210
-        type: search
-        unsolicited: false
-        description:
-          User searches over the network to avail the metro mode of transport
-          in the city
-        pair: on_search_MASTER_METRO_210
-        owner: BAP
-        expect: true
-        input:
-          - name: collected_by
-            label: Choose collected_by
-            type: select
-            values:
-              - BAP
-              - BPP
-            defaultValue: BPP
-            payloadField: $.message.intent.payment.collected_by
-      - key: on_search_MASTER_METRO_210
-        type: on_search
-        unsolicited: false
-        description: Response with all station codes
-        pair: null
-        owner: BPP
+      # - key: search_MASTER_METRO_210
+      #   type: search
+      #   unsolicited: false
+      #   description:
+      #     User searches over the network to avail the metro mode of transport
+      #     in the city
+      #   pair: on_search_MASTER_METRO_210
+      #   owner: BAP
+      #   expect: true
+      #   input:
+      #     - name: collected_by
+      #       label: Choose collected_by
+      #       type: select
+      #       values:
+      #         - BAP
+      #         - BPP
+      #       defaultValue: BPP
+      #       payloadField: $.message.intent.payment.collected_by
+      # - key: on_search_MASTER_METRO_210
+      #   type: on_search
+      #   unsolicited: false
+      #   description: Response with all station codes
+      #   pair: null
+      #   owner: BPP
       - key: search2_METRO_210
         type: search
         unsolicited: false
@@ -568,7 +568,7 @@ flows:
               - BPP
             defaultValue: BPP
             payloadField: $.message.intent.payment.collected_by 
-        expect: false 
+        expect: true 
       - key: on_search2_METRO_210
         type: on_search
         unsolicited: false
@@ -647,30 +647,30 @@ flows:
     tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
     description: User cancels the metro booking
     sequence:
-      - key: search_MASTER_METRO_210
-        type: search
-        unsolicited: false
-        description:
-          User searches over the network to avail the metro mode of transport
-          in the city
-        pair: on_search_MASTER_METRO_210
-        owner: BAP
-        expect: true
-        input:
-          - name: collected_by
-            label: Choose collected_by
-            type: select
-            values:
-              - BAP
-              - BPP
-            defaultValue: BPP
-            payloadField: $.message.intent.payment.collected_by
-      - key: on_search_MASTER_METRO_210
-        type: on_search
-        unsolicited: false
-        description: Response with all station codes
-        pair: null
-        owner: BPP
+      # - key: search_MASTER_METRO_210
+      #   type: search
+      #   unsolicited: false
+      #   description:
+      #     User searches over the network to avail the metro mode of transport
+      #     in the city
+      #   pair: on_search_MASTER_METRO_210
+      #   owner: BAP
+      #   expect: true
+      #   input:
+      #     - name: collected_by
+      #       label: Choose collected_by
+      #       type: select
+      #       values:
+      #         - BAP
+      #         - BPP
+      #       defaultValue: BPP
+      #       payloadField: $.message.intent.payment.collected_by
+      # - key: on_search_MASTER_METRO_210
+      #   type: on_search
+      #   unsolicited: false
+      #   description: Response with all station codes
+      #   pair: null
+      #   owner: BPP
       - key: search2_METRO_210
         type: search
         unsolicited: false
@@ -713,7 +713,7 @@ flows:
               - BPP
             defaultValue: BPP
             payloadField: $.message.intent.payment.collected_by 
-        expect: false 
+        expect: true 
       - key: on_search2_METRO_210
         type: on_search
         unsolicited: false
@@ -792,30 +792,30 @@ flows:
     tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
     description: End stop update flow
     sequence:
-      - key: search_MASTER_METRO_210
-        type: search
-        unsolicited: false
-        description:
-          User searches over the network to avail the metro mode of transport
-          in the city
-        pair: on_search_MASTER_METRO_210
-        owner: BAP
-        expect: true
-        input:
-          - name: collected_by
-            label: Choose collected_by
-            type: select
-            values:
-              - BAP
-              - BPP
-            defaultValue: BPP
-            payloadField: $.message.intent.payment.collected_by
-      - key: on_search_MASTER_METRO_210
-        type: on_search
-        unsolicited: false
-        description: Response with all station codes
-        pair: null
-        owner: BPP
+      # - key: search_MASTER_METRO_210
+      #   type: search
+      #   unsolicited: false
+      #   description:
+      #     User searches over the network to avail the metro mode of transport
+      #     in the city
+      #   pair: on_search_MASTER_METRO_210
+      #   owner: BAP
+      #   expect: true
+      #   input:
+      #     - name: collected_by
+      #       label: Choose collected_by
+      #       type: select
+      #       values:
+      #         - BAP
+      #         - BPP
+      #       defaultValue: BPP
+      #       payloadField: $.message.intent.payment.collected_by
+      # - key: on_search_MASTER_METRO_210
+      #   type: on_search
+      #   unsolicited: false
+      #   description: Response with all station codes
+      #   pair: null
+      #   owner: BPP
       - key: search2_METRO_210
         type: search
         unsolicited: false
@@ -858,7 +858,7 @@ flows:
               - BPP
             defaultValue: BPP
             payloadField: $.message.intent.payment.collected_by 
-        expect: false 
+        expect: true 
       - key: on_search2_METRO_210
         type: on_search
         unsolicited: false
@@ -957,49 +957,50 @@ flows:
     tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
     description: User uses station code for searching metro
     sequence:
-      - key: search_MASTER_METRO_210
-        type: search
-        unsolicited: false
-        description:
-          User searches over the network to avail the metro mode of transport
-          in the city
-        pair: on_search_Metro_unlimitedpass_210
-        owner: BAP
-        expect: true
-        input:
-          - name: collected_by
-            label: Choose collected_by
-            type: select
-            values:
-              - BAP
-              - BPP
-            defaultValue: BPP
-            payloadField: $.message.intent.payment.collected_by
-      - key: on_search_Metro_unlimitedpass_210
-        type: on_search
-        unsolicited: false
-        description: Response with all station codes
-        pair: null
-        owner: BPP
+      # - key: search_MASTER_METRO_210
+      #   type: search
+      #   unsolicited: false
+      #   description:
+      #     User searches over the network to avail the metro mode of transport
+      #     in the city
+      #   pair: on_search_Metro_unlimitedpass_210
+      #   owner: BAP
+      #   expect: true
+      #   input:
+      #     - name: collected_by
+      #       label: Choose collected_by
+      #       type: select
+      #       values:
+      #         - BAP
+      #         - BPP
+      #       defaultValue: BPP
+      #       payloadField: $.message.intent.payment.collected_by
+      # - key: on_search_Metro_unlimitedpass_210
+      #   type: on_search
+      #   unsolicited: false
+      #   description: Response with all station codes
+      #   pair: null
+      #   owner: BPP
       - key: select_METRO_UNLIMITEDPASS_210
         type: select
         unsolicited: false
         description: User selects the station code
         pair: on_select_METRO_UNLIMITEDPASS_210
         owner: BAP
-        input:
-          - name: city_code
-            label: Enter City Code
-            type: text
-            payloadField: "$.context.location.city.code"
-          - name: item_quantity
-            label: Enter Item Quantity
-            type: text
-            payloadField: "$.message.order.items[*].quantity.selected.count"  
         # input:
-        #   - name: select_input
-        #     label: Enter
-        #     type: trv11_210_select
+        #   - name: city_code
+        #     label: Enter City Code
+        #     type: text
+        #     payloadField: "$.context.location.city.code"
+        #   - name: item_quantity
+        #     label: Enter Item Quantity
+        #     type: text
+        #     payloadField: "$.message.order.items[*].quantity.selected.count" 
+        expect: true 
+        input:
+          - name: select_input
+            label: Enter
+            type: trv11_210_common_item_fulfillment_select
       - key: on_select_METRO_UNLIMITEDPASS_210
         type: on_select
         unsolicited: false
@@ -1014,6 +1015,15 @@ flows:
           order
         pair: on_init_METRO_UNLIMITEDPASS_210
         owner: BAP
+        input:
+          - name: collected_by
+            label: Choose collected_by
+            type: select
+            values:
+              - BAP
+              - BPP
+            defaultValue: BPP
+            payloadField: $.message.order.payments[0].collected_by
       - key: on_init_METRO_UNLIMITEDPASS_210
         type: on_init
         unsolicited: false
@@ -1043,45 +1053,46 @@ flows:
     tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
     description: User uses station code for searching metro
     sequence:
-      - key: search_MASTER_METRO_210
-        type: search
-        unsolicited: false
-        description:
-          User searches over the network to avail the metro mode of transport
-          in the city
-        pair: on_search_Metro_purchase_210
-        owner: BAP
-        expect: true
-        input:
-          - name: collected_by
-            label: Choose collected_by
-            type: select
-            values:
-              - BAP
-              - BPP
-            defaultValue: BPP
-            payloadField: $.message.intent.payment.collected_by
-      - key: on_search_Metro_purchase_210
-        type: on_search
-        unsolicited: false
-        description: Response with all station codes
-        pair: null
-        owner: BPP
+      # - key: search_MASTER_METRO_210
+      #   type: search
+      #   unsolicited: false
+      #   description:
+      #     User searches over the network to avail the metro mode of transport
+      #     in the city
+      #   pair: on_search_Metro_purchase_210
+      #   owner: BAP
+      #   expect: true
+      #   input:
+      #     - name: collected_by
+      #       label: Choose collected_by
+      #       type: select
+      #       values:
+      #         - BAP
+      #         - BPP
+      #       defaultValue: BPP
+      #       payloadField: $.message.intent.payment.collected_by
+      # - key: on_search_Metro_purchase_210
+      #   type: on_search
+      #   unsolicited: false
+      #   description: Response with all station codes
+      #   pair: null
+      #   owner: BPP
       - key: select_METRO_PURCHASE_210
         type: select
         unsolicited: false
         description: User selects the station code
         pair: on_select_METRO_PURCHASE_210
         owner: BAP
-        input:
-          - name: city_code
-            label: Enter City Code
-            type: text
-            payloadField: "$.context.location.city.code"
+        expect: true 
         # input:
-        #   - name: select_input
-        #     label: Enter
-        #     type: trv11_210_select
+        #   - name: city_code
+        #     label: Enter City Code
+        #     type: text
+        #     payloadField: "$.context.location.city.code"
+        input:
+          - name: select_input
+            label: Enter
+            type: trv11_210_common_item_fulfillment_select
       - key: on_select_METRO_PURCHASE_210
         type: on_select
         unsolicited: false
@@ -1096,6 +1107,15 @@ flows:
           order
         pair: on_init_METRO_PURCHASE_210
         owner: BAP
+        input:
+          - name: collected_by
+            label: Choose collected_by
+            type: select
+            values:
+              - BAP
+              - BPP
+            defaultValue: BPP
+            payloadField: $.message.order.payments[0].collected_by
       - key: on_init_METRO_PURCHASE_210
         type: on_init
         unsolicited: false
@@ -1125,45 +1145,46 @@ flows:
     tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
     description: User uses station code for searching metro
     sequence:
-      - key: search_MASTER_METRO_210
-        type: search
-        unsolicited: false
-        description:
-          User searches over the network to avail the metro mode of transport
-          in the city
-        pair: on_search_Metro_recharge_210
-        owner: BAP
-        expect: true
-        input:
-          - name: collected_by
-            label: Choose collected_by
-            type: select
-            values:
-              - BAP
-              - BPP
-            defaultValue: BPP
-            payloadField: $.message.intent.payment.collected_by
-      - key: on_search_Metro_recharge_210
-        type: on_search
-        unsolicited: false
-        description: Response with all station codes
-        pair: null
-        owner: BPP
+      # - key: search_MASTER_METRO_210
+      #   type: search
+      #   unsolicited: false
+      #   description:
+      #     User searches over the network to avail the metro mode of transport
+      #     in the city
+      #   pair: on_search_Metro_recharge_210
+      #   owner: BAP
+      #   expect: true
+      #   input:
+      #     - name: collected_by
+      #       label: Choose collected_by
+      #       type: select
+      #       values:
+      #         - BAP
+      #         - BPP
+      #       defaultValue: BPP
+      #       payloadField: $.message.intent.payment.collected_by
+      # - key: on_search_Metro_recharge_210
+      #   type: on_search
+      #   unsolicited: false
+      #   description: Response with all station codes
+      #   pair: null
+      #   owner: BPP
       - key: select_METRO_RECHARGE_210
         type: select
         unsolicited: false
         description: User selects the station code
         pair: on_select_METRO_RECHARGE_210
         owner: BAP
-        input:
-          - name: city_code
-            label: Enter City Code
-            type: text
-            payloadField: "$.context.location.city.code"
+        expect: true 
         # input:
-        #   - name: select_input
-        #     label: Enter
-        #     type: trv11_210_select
+          # - name: city_code
+          #   label: Enter City Code
+          #   type: text
+          #   payloadField: "$.context.location.city.code"
+        input:
+          - name: select_input
+            label: Enter
+            type: trv11_210_common_item_fulfillment_select
       - key: on_select_METRO_RECHARGE_210
         type: on_select
         unsolicited: false
@@ -1178,6 +1199,15 @@ flows:
           order
         pair: on_init_METRO_RECHARGE_210
         owner: BAP
+        input:
+          - name: collected_by
+            label: Choose collected_by
+            type: select
+            values:
+              - BAP
+              - BPP
+            defaultValue: BPP
+            payloadField: $.message.order.payments[0].collected_by
       - key: on_init_METRO_RECHARGE_210
         type: on_init
         unsolicited: false
@@ -1207,30 +1237,30 @@ flows:
     tags: ["WORKBENCH", "MANDATORY", "REPORTABLE"]
     description: User uses station code for searching metro
     sequence:
-      - key: search_MASTER_METRO_210
-        type: search
-        unsolicited: false
-        description:
-          User searches over the network to avail the metro mode of transport
-          in the city
-        pair: on_search_MASTER_METRO_210
-        owner: BAP
-        expect: true
-        input:
-          - name: collected_by
-            label: Choose collected_by
-            type: select
-            values:
-              - BAP
-              - BPP
-            defaultValue: BPP
-            payloadField: $.message.intent.payment.collected_by
-      - key: on_search_MASTER_METRO_210
-        type: on_search
-        unsolicited: false
-        description: Response with all station codes
-        pair: null
-        owner: BPP
+      # - key: search_MASTER_METRO_210
+      #   type: search
+      #   unsolicited: false
+      #   description:
+      #     User searches over the network to avail the metro mode of transport
+      #     in the city
+      #   pair: on_search_MASTER_METRO_210
+      #   owner: BAP
+      #   expect: true
+      #   input:
+      #     - name: collected_by
+      #       label: Choose collected_by
+      #       type: select
+      #       values:
+      #         - BAP
+      #         - BPP
+      #       defaultValue: BPP
+      #       payloadField: $.message.intent.payment.collected_by
+      # - key: on_search_MASTER_METRO_210
+      #   type: on_search
+      #   unsolicited: false
+      #   description: Response with all station codes
+      #   pair: null
+      #   owner: BPP
       - key: search2_METRO_210
         type: search
         unsolicited: false
