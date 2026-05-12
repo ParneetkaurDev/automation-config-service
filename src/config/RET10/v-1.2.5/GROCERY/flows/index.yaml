@@ -509,13 +509,13 @@ flows:
         owner: BPP
         expect: false
         description: Part cancellation request
-      - key: update_settlement_trail
-        type: update
-        unsolicited: false
-        pair: null
-        owner: BAP
-        expect: false
-        description: settlement trail update
+      # - key: update_settlement_trail
+      #   type: update
+      #   unsolicited: false
+      #   pair: null
+      #   owner: BAP
+      #   expect: false
+      #   description: settlement trail update
       - key: on_status_packed
         type: on_status
         unsolicited: true
@@ -551,6 +551,13 @@ flows:
         owner: BPP
         expect: false
         description: RTO initiated
+      - key: update_settlement_trail
+        type: update
+        unsolicited: false
+        pair: null
+        owner: BAP
+        expect: false
+        description: settlement trail update
       - key: on_status_rto_delivered
         type: on_status
         unsolicited: true
