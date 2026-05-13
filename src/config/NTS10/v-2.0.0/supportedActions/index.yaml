@@ -2,7 +2,7 @@ supportedActions:
   "": ["recon"]
   "null": ["recon"]
   recon: ["on_recon"]
-  on_recon: ["on_recon"]
+  on_recon: ["recon","on_recon"]
 
 apiProperties:
   recon:
