@@ -2344,7 +2344,7 @@ flows:
       - key: search
         type: search
         unsolicited: false
-        pair: on_search
+        pair: on_search_catalog_rejection
         owner: BAP
         expect: true
         description: Buyer requests catalog from seller
