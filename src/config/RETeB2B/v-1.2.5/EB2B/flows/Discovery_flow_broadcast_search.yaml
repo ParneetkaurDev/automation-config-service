@@ -102,9 +102,9 @@ steps:
           context:
             domain: ONDC:RETeB2B
             action: search
-            timestamp: 2026-05-08T06:40:58.619Z
+            timestamp: 2026-05-19T09:36:12.934Z
             transaction_id: 9e8654ed-0dd3-4315-81f2-814780f13e79
-            message_id: 3fb945db-d54d-4afd-982a-5d8500ad2b59
+            message_id: 5fb518b3-7fc7-4456-a459-1e20446c62ad
             bap_id: sample-bap-id
             bap_uri: https://bap.example.com
             ttl: PT30S
@@ -128,10 +128,12 @@ steps:
                     - code: static_terms_new
                       value: https://github.com/ONDC-Official/NP-Static-Terms/buyerNP_BNP/1.0/tc.pdf
                     - code: effective_date
-                      value: 2026-05-18T06:40:58.625Z
+                      value: 2026-05-29T09:36:12.938Z
                 - code: bap_features
                   list:
                     - code: 01A
+                      value: yes
+                    - code: "0091"
                       value: yes
         type: request
         description: Category-level broadcast search for regional distributor discovery
@@ -201,8 +203,8 @@ steps:
                       timestamp: 2025-01-08T07:30:30.000Z
                       schedule:
                         holidays:
-                          - 2026-05-26
-                          - 2026-08-15
+                          - 2026-05-26T00:00:00.000Z
+                          - 2026-08-15T00:00:00.000Z
                     gps: 12.9675,77.7496
                     address:
                       locality: Jayanagar
@@ -216,8 +218,8 @@ steps:
                       timestamp: 2025-01-08T07:30:30.000Z
                       schedule:
                         holidays:
-                          - 2026-06-26
-                          - 2026-08-15
+                          - 2026-06-26T00:00:00.000Z
+                          - 2026-08-15T00:00:00.000Z
                     gps: 12.9352,77.6245
                     address:
                       locality: BTM Layout
@@ -1187,9 +1189,9 @@ steps:
           context:
             domain: ONDC:RETeB2B
             action: on_search
-            timestamp: 2026-05-08T06:40:58.633Z
+            timestamp: 2026-05-19T09:36:12.952Z
             transaction_id: 9e8654ed-0dd3-4315-81f2-814780f13e79
-            message_id: 3fb945db-d54d-4afd-982a-5d8500ad2b59
+            message_id: 5fb518b3-7fc7-4456-a459-1e20446c62ad
             bap_id: sample-bap-id
             bap_uri: https://bap.example.com
             ttl: PT30S
@@ -1216,7 +1218,7 @@ steps:
                 - id: P1
                   time:
                     label: enable
-                    timestamp: 2026-05-08T06:40:58.633Z
+                    timestamp: 2026-05-19T09:36:12.952Z
                   descriptor:
                     name: ABC Manufacturer
                     code: distributor
@@ -1236,15 +1238,15 @@ steps:
                     - id: L1
                       time:
                         label: enable
-                        timestamp: 2026-05-08T06:40:58.633Z
+                        timestamp: 2026-05-19T09:36:12.952Z
                         schedule:
                           holidays:
-                            - 2026-05-08
-                            - 2026-05-09
-                            - 2026-05-10
-                            - 2026-05-11
-                            - 2026-05-12
-                            - 2026-05-13
+                            - 2026-05-19
+                            - 2026-05-20
+                            - 2026-05-21
+                            - 2026-05-22
+                            - 2026-05-23
+                            - 2026-05-24
                       gps: 12.9675,77.7496
                       address:
                         locality: Jayanagar
@@ -1255,15 +1257,15 @@ steps:
                     - id: L2
                       time:
                         label: enable
-                        timestamp: 2026-05-08T06:40:58.633Z
+                        timestamp: 2026-05-19T09:36:12.952Z
                         schedule:
                           holidays:
-                            - 2026-05-08
-                            - 2026-05-09
-                            - 2026-05-10
-                            - 2026-05-11
-                            - 2026-05-12
-                            - 2026-05-13
+                            - 2026-05-19
+                            - 2026-05-20
+                            - 2026-05-21
+                            - 2026-05-22
+                            - 2026-05-23
+                            - 2026-05-24
                       gps: 12.9352,77.6245
                       address:
                         locality: BTM Layout
@@ -1330,8 +1332,8 @@ steps:
                       time:
                         label: valid
                         range:
-                          start: 2026-05-08T00:00:00.000Z
-                          end: 2026-05-13T23:59:59.999Z
+                          start: 2026-05-19T00:00:00.000Z
+                          end: 2026-05-24T23:59:59.999Z
                       tags:
                         - code: qualifier
                           list:
@@ -1368,8 +1370,8 @@ steps:
                       time:
                         label: valid
                         range:
-                          start: 2026-05-08T00:00:00.000Z
-                          end: 2026-05-13T23:59:59.999Z
+                          start: 2026-05-19T00:00:00.000Z
+                          end: 2026-05-24T23:59:59.999Z
                       tags:
                         - code: qualifier
                           list:
@@ -1400,8 +1402,8 @@ steps:
                       time:
                         label: valid
                         range:
-                          start: 2026-05-08T00:00:00.000Z
-                          end: 2026-05-13T23:59:59.999Z
+                          start: 2026-05-19T00:00:00.000Z
+                          end: 2026-05-24T23:59:59.999Z
                       tags:
                         - code: qualifier
                           list:
@@ -1436,8 +1438,8 @@ steps:
                       time:
                         label: valid
                         range:
-                          start: 2026-05-08T00:00:00.000Z
-                          end: 2026-05-13T23:59:59.999Z
+                          start: 2026-05-19T00:00:00.000Z
+                          end: 2026-05-24T23:59:59.999Z
                       tags:
                         - code: qualifier
                           list:
@@ -1472,8 +1474,8 @@ steps:
                       time:
                         label: valid
                         range:
-                          start: 2026-05-08T00:00:00.000Z
-                          end: 2026-05-13T23:59:59.999Z
+                          start: 2026-05-19T00:00:00.000Z
+                          end: 2026-05-24T23:59:59.999Z
                       tags:
                         - code: qualifier
                           list:
@@ -1499,8 +1501,8 @@ steps:
                       time:
                         label: valid
                         range:
-                          start: 2026-05-08T00:00:00.000Z
-                          end: 2026-05-13T23:59:59.999Z
+                          start: 2026-05-19T00:00:00.000Z
+                          end: 2026-05-24T23:59:59.999Z
                       tags:
                         - code: qualifier
                           list:
@@ -1524,7 +1526,7 @@ steps:
                     - id: I1
                       time:
                         label: enable
-                        timestamp: 2026-05-08T06:40:58.633Z
+                        timestamp: 2026-05-19T09:36:12.952Z
                       parent_item_id: V1
                       descriptor:
                         name: Ashirwad Plain Atta 1kg
@@ -1593,7 +1595,7 @@ steps:
                     - id: I2
                       time:
                         label: enable
-                        timestamp: 2026-05-08T06:40:58.633Z
+                        timestamp: 2026-05-19T09:36:12.952Z
                       parent_item_id: V1
                       descriptor:
                         name: Ashirwad Plain Atta 5kg
@@ -1662,7 +1664,7 @@ steps:
                     - id: I3
                       time:
                         label: enable
-                        timestamp: 2026-05-08T06:40:58.633Z
+                        timestamp: 2026-05-19T09:36:12.952Z
                       parent_item_id: V1
                       descriptor:
                         name: Fortune Chakki Atta 1kg
@@ -1731,7 +1733,7 @@ steps:
                     - id: I4
                       time:
                         label: enable
-                        timestamp: 2026-05-08T06:40:58.633Z
+                        timestamp: 2026-05-19T09:36:12.952Z
                       parent_item_id: V1
                       descriptor:
                         name: Fortune Chakki Atta 5kg
@@ -1800,7 +1802,7 @@ steps:
                     - id: I5
                       time:
                         label: enable
-                        timestamp: 2026-05-08T06:40:58.633Z
+                        timestamp: 2026-05-19T09:36:12.952Z
                       parent_item_id: V2
                       descriptor:
                         name: Coca-Cola 300ml (Case of 24)
@@ -1864,7 +1866,7 @@ steps:
                     - id: I6
                       time:
                         label: enable
-                        timestamp: 2026-05-08T06:40:58.633Z
+                        timestamp: 2026-05-19T09:36:12.952Z
                       parent_item_id: V2
                       descriptor:
                         name: Coca-Cola 2L (Pack of 6)
@@ -1928,7 +1930,7 @@ steps:
                     - id: I7
                       time:
                         label: enable
-                        timestamp: 2026-05-08T06:40:58.633Z
+                        timestamp: 2026-05-19T09:36:12.952Z
                       parent_item_id: V2
                       descriptor:
                         name: Pepsi 300ml (Case of 24)
@@ -1991,7 +1993,7 @@ steps:
                     - id: I8
                       time:
                         label: enable
-                        timestamp: 2026-05-08T06:40:58.633Z
+                        timestamp: 2026-05-19T09:36:12.952Z
                       parent_item_id: V2
                       descriptor:
                         name: Pepsi 2L (Pack of 6)
@@ -2241,8 +2243,6 @@ steps:
           message_id: M1
           bap_id: sample-bap-id
           bap_uri: https://bap.example.com
-          bpp_id: sample-bpp-id
-          bpp_uri: https://bpp.example.com
           ttl: PT30S
           country: IND
           city: "*"
@@ -2349,9 +2349,9 @@ steps:
           context:
             domain: ONDC:RETeB2B
             action: search
-            timestamp: 2026-05-08T06:41:09.893Z
+            timestamp: 2026-05-19T09:36:30.218Z
             transaction_id: 9e8654ed-0dd3-4315-81f2-814780f13e79
-            message_id: cdadf22e-f67b-44f4-abfc-c51642002cdc
+            message_id: 08415a42-2aba-43b5-9394-58fb0c18dbc8
             bap_id: sample-bap-id
             bap_uri: https://bap.example.com
             ttl: PT30S
@@ -2367,7 +2367,7 @@ steps:
               fulfillment:
                 type: Delivery
                 customer:
-                  id: CUST-2024-0015421
+                  id: CUST-2024-001234
         type: request
         description: Search request to discover providers on the ONDC network based on
           provider ID and fulfillment type.
@@ -2493,9 +2493,9 @@ steps:
           context:
             domain: ONDC:RETeB2B
             action: on_search
-            timestamp: 2026-05-08T06:41:09.906Z
+            timestamp: 2026-05-19T09:36:30.232Z
             transaction_id: 9e8654ed-0dd3-4315-81f2-814780f13e79
-            message_id: cdadf22e-f67b-44f4-abfc-c51642002cdc
+            message_id: 08415a42-2aba-43b5-9394-58fb0c18dbc8
             bap_id: sample-bap-id
             bap_uri: https://bap.example.com
             ttl: PT30S
@@ -2518,7 +2518,7 @@ steps:
                             - code: remaining_quantity
                               value: "35"
                             - code: valid_till
-                              value: 2026-08-06T06:41:09.906Z
+                              value: 2026-08-17T09:36:30.232Z
                             - code: tier
                               value: silver
                     - id: flat150
@@ -2530,7 +2530,7 @@ steps:
                             - code: remaining_quantity
                               value: "50"
                             - code: valid_till
-                              value: 2026-08-06T06:41:09.906Z
+                              value: 2026-08-17T09:36:30.232Z
                             - code: tier
                               value: silver
                     - id: slab1
@@ -2542,7 +2542,7 @@ steps:
                             - code: remaining_purchase_value
                               value: "25700"
                             - code: valid_till
-                              value: 2026-08-06T06:41:09.906Z
+                              value: 2026-08-17T09:36:30.232Z
                             - code: tier
                               value: silver
                     - id: freebie1
@@ -2554,7 +2554,7 @@ steps:
                             - code: remaining_quantity
                               value: "50"
                             - code: valid_till
-                              value: 2026-08-06T06:41:09.906Z
+                              value: 2026-08-17T09:36:30.232Z
                             - code: tier
                               value: silver
                     - id: buy2get3
@@ -2566,7 +2566,7 @@ steps:
                             - code: remaining_quantity
                               value: "50"
                             - code: valid_till
-                              value: 2026-08-06T06:41:09.906Z
+                              value: 2026-08-17T09:36:30.232Z
                             - code: tier
                               value: silver
                   tags:
@@ -2575,7 +2575,7 @@ steps:
                         - code: credit_limit
                           value: "25000.00"
                         - code: valid_till
-                          value: 2026-08-06T06:41:09.906Z
+                          value: 2026-08-17T09:36:30.232Z
                     - code: poc
                       list:
                         - code: name
