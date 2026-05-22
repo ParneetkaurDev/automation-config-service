@@ -9,22 +9,42 @@ flows:
     config:
       $ref:  "src/config/FIS12/V-2.3.0/business-loans/flows/master_search.yaml"
   - type: playground
-    id: business_term_loan_with_offline_online
+    id: business_term_loan_with_offline_online_foreclosure
     usecase: BUSINESS_LOAN
     tags:
       - WORKBENCH
       - REPORTABLE
       # - PERSONAL LOAN
-    description: Business Loan - Term Loan with Offline & Online Journey
+    description: Business Loan - Term Loan with Offline & Online Journey (ForeClosure)
     config:
-      $ref:  "src/config/FIS12/V-2.3.0/business-loans/flows/business_term_loan_with_offline_online.yaml"
+      $ref:  "src/config/FIS12/V-2.3.0/business-loans/flows/business_term_loan_with_offline_online_foreclosure.yaml"
   - type: playground
-    id: business_term_loan_without_aa
+    id: business_term_loan_with_offline_online_missed_emi
     usecase: BUSINESS_LOAN
     tags:
       - WORKBENCH
       - REPORTABLE
       # - PERSONAL LOAN
-    description: Business Loan - Term Loan without Account Aggregator
+    description: Business Loan - Term Loan with Offline & Online Journey (Missed EMI)
     config:
-      $ref: "src/config/FIS12/V-2.3.0/business-loans/flows/business_term_loan_without_aa.yaml"
+      $ref:  "src/config/FIS12/V-2.3.0/business-loans/flows/business_term_loan_with_offline_online_missed_emi.yaml"
+  - type: playground
+    id: business_term_loan_with_offline_online_pre_part
+    usecase: BUSINESS_LOAN
+    tags:
+      - WORKBENCH
+      - REPORTABLE
+      # - PERSONAL LOAN
+    description: Business Loan - Term Loan with Offline & Online Journey(Pre Part) 
+    config:
+      $ref:  "src/config/FIS12/V-2.3.0/business-loans/flows/business_term_loan_with_offline_online_pre_part.yaml"        
+  # - type: playground
+  #   id: business_term_loan_without_aa
+  #   usecase: BUSINESS_LOAN
+  #   tags:
+  #     - WORKBENCH
+  #     - REPORTABLE
+  #     # - PERSONAL LOAN
+  #   description: Business Loan - Term Loan without Account Aggregator
+  #   config:
+  #     $ref: "src/config/FIS12/V-2.3.0/business-loans/flows/business_term_loan_without_aa.yaml"
