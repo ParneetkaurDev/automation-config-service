@@ -45,7 +45,7 @@ jobs:
           if [ "${{ github.ref_name }}" = "main" ]; then
             echo "ENVIRONMENT=prod" >> $GITHUB_ENV
             echo "IMAGE_TAG=prod-${IMAGE_TAG_SUFFIX}" >> $GITHUB_ENV
-            echo "TARGET_FILE=k8/aws/helm/service-layer/values-prod.yaml" >> $GITHUB_ENV
+            echo "TARGET_FILE=k8/aws/helm/service-layer/values.yaml" >> $GITHUB_ENV
           else
             echo "ENVIRONMENT=dev" >> $GITHUB_ENV
             echo "IMAGE_TAG=dev-${IMAGE_TAG_SUFFIX}" >> $GITHUB_ENV
