@@ -1178,6 +1178,14 @@ steps:
                         value: "true"
                       - code: type
                         value: existing
+                  - code: brand_images
+                    list:
+                      - code: Pepsi
+                        value: https://cdn.example.com/brands/pepsi.png
+                      - code: Aashirwad
+                        value: https://cdn.example.com/brands/aashirwad.png
+                      - code: Fortune
+                        value: https://cdn.example.com/brands/fortune.png
       saveData:
         transactionId: $.context.transaction_id
         latestMessage_id: $.context.message_id
