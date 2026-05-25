@@ -786,7 +786,7 @@ steps:
         bppId: $.context.bpp_id
         bppUri: $.context.bpp_uri
         city_code: $.context.location.city.code
-        journey_offline_form_id: $.message.order.items[0].xinput.form.id
+        form_id: $.message.order.items[0].xinput.form.id
         journey_offline: $.message.order.items[0].xinput.form.url
       inputs: {}
   - api: dynamic_form

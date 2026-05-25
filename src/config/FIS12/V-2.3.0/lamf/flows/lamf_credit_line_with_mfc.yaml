@@ -799,7 +799,7 @@ steps:
         bppId: $.context.bpp_id
         bppUri: $.context.bpp_uri
         city_code: $.context.location.city.code
-        journey_offline_form_id: $.message.order.items[0].xinput.form.id
+        form_id: $.message.order.items[0].xinput.form.id
         kyc_form: $.message.order.items[0].xinput.form.url
       inputs: {}
   - api: dynamic_form
@@ -966,6 +966,7 @@ steps:
         bppId: $.context.bpp_id
         bppUri: $.context.bpp_uri
         city_code: $.context.location.city.code
+        form_id: $.message.order.items[0].xinput.form.id
         lien_marking: $.message.order.items[0].xinput.form.url
       inputs: {}
   - api: dynamic_form
