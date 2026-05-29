@@ -14,16 +14,61 @@ flows:
     tags:
       - WORKBENCH
       - REPORTABLE
-    description: Master Search
+    description: LAMF Credit Line with Offline Journey
     config:
       $ref:  "src/config/FIS12/V-2.3.0/lamf/flows/lamf_credit_line_with_mfc_offline_journey.yaml"
+  - type: playground
+    id: lamf_credit_line_with_mfc_offline_journey_drawdown
+    usecase: LAMF_LOAN
+    tags:
+      - WORKBENCH
+      - REPORTABLE
+    description: Drawdown - LAMF Credit Line with Offline Journey
+    config:
+      $ref:  "src/config/FIS12/V-2.3.0/lamf/flows/lamf_credit_line_with_mfc_offline_journey_drawdown.yaml"
+  - type: playground
+    id: lamf_credit_line_with_mfc_offline_journey_drawdown_foreclosure
+    usecase: LAMF_LOAN
+    tags:
+      - WORKBENCH
+      - REPORTABLE
+    description: Drawdown - LAMF Credit Line with Offline Journey(ForeClosure)
+    config:
+      $ref:  "src/config/FIS12/V-2.3.0/lamf/flows/lamf_credit_line_with_mfc_offline_journey_drawdown_foreclosure.yaml"
+  - type: playground
+    id: lamf_credit_line_with_mfc_offline_journey_drawdown_missed_emi
+    usecase: LAMF_LOAN
+    tags:
+      - WORKBENCH
+      - REPORTABLE
+    description: Drawdown - LAMF Credit Line with Offline Journey(Missed EMI)
+    config:
+      $ref:  "src/config/FIS12/V-2.3.0/lamf/flows/lamf_credit_line_with_mfc_offline_journey_drawdown_missed_emi.yaml"
+  - type: playground
+    id: lamf_credit_line_with_mfc_offline_journey_drawdown_pre_part
+    usecase: LAMF_LOAN
+    tags:
+      - WORKBENCH
+      - REPORTABLE
+    description: Drawdown - LAMF Credit Line with Offline Journey(Pre Part)
+    config:
+      $ref:  "src/config/FIS12/V-2.3.0/lamf/flows/lamf_credit_line_with_mfc_offline_journey_drawdown_pre_part.yaml"                
+  - type: playground
+    id: lamf_credit_line_with_mfc_single_redirection
+    usecase: LAMF_LOAN
+    tags:
+      - WORKBENCH
+      - REPORTABLE
+    description: LAMF Credit Line with MFC
+    config:
+      $ref:  "src/config/FIS12/V-2.3.0/lamf/flows/lamf_credit_line_with_mfc_single_redirection_deployment_config.yaml"
   - type: playground
     id: lamf_credit_line_with_mfc
     usecase: LAMF_LOAN
     tags:
       - WORKBENCH
       - REPORTABLE
-    description: Master Search
+    description: LAMF Credit Line with MFC
     config:
       $ref:  "src/config/FIS12/V-2.3.0/lamf/flows/lamf_credit_line_with_mfc.yaml"        
  
