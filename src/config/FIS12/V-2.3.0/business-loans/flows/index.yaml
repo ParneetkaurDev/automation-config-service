@@ -1,6 +1,8 @@
 flows:
   - type: playground
     id: master_search
+    meta:
+      order: 0
     usecase: BUSINESS_LOAN
     tags:
       - WORKBENCH
@@ -10,6 +12,8 @@ flows:
       $ref:  "src/config/FIS12/V-2.3.0/business-loans/flows/master_search.yaml"
   - type: playground
     id: business_term_loan_with_offline_online_foreclosure
+    meta:
+      order: 1
     usecase: BUSINESS_LOAN
     tags:
       - WORKBENCH
@@ -21,6 +25,8 @@ flows:
   - type: playground
     id: business_term_loan_with_offline_online_missed_emi
     usecase: BUSINESS_LOAN
+    meta:
+      order: 2
     tags:
       - WORKBENCH
       - REPORTABLE
@@ -30,6 +36,8 @@ flows:
       $ref:  "src/config/FIS12/V-2.3.0/business-loans/flows/business_term_loan_with_offline_online_missed_emi.yaml"
   - type: playground
     id: business_term_loan_with_offline_online_pre_part
+    meta:
+      order: 3
     usecase: BUSINESS_LOAN
     tags:
       - WORKBENCH
