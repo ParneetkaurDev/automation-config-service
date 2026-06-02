@@ -74,6 +74,7 @@ steps:
               type: string
               description: Enter the city code
               minLength: 1
+              default: std:080
             bap_features:
               type: object
               properties:
@@ -102,9 +103,9 @@ steps:
           context:
             domain: ONDC:RETeB2B
             action: search
-            timestamp: 2026-05-25T12:42:52.600Z
+            timestamp: 2026-06-02T11:27:26.342Z
             transaction_id: 9e8654ed-0dd3-4315-81f2-814780f13e79
-            message_id: 599bc9f9-efb7-4396-bd95-e96d37b20dfb
+            message_id: 78db8257-ded3-40b9-9c7b-168100359379
             bap_id: sample-bap-id
             bap_uri: https://bap.example.com
             ttl: PT30S
@@ -128,7 +129,7 @@ steps:
                     - code: static_terms_new
                       value: https://github.com/ONDC-Official/NP-Static-Terms/buyerNP_BNP/1.0/tc.pdf
                     - code: effective_date
-                      value: 2026-06-04T12:42:52.604Z
+                      value: 2026-06-12T11:27:26.347Z
                 - code: bap_features
                   list:
                     - code: 01A
@@ -148,7 +149,7 @@ steps:
       discovery.
     mock:
       generate: LyoqCiAqIEdlbmVyYXRlcyB0aGUgbW9jayBwYXlsb2FkIGZvciBhbiBBUEkgY2FsbCBpbiB0aGUgdHJhbnNhY3Rpb24gZmxvdy4KICogVGhpcyBmdW5jdGlvbiBhbGxvd3MgY3VzdG9taXphdGlvbiBvZiB0aGUgZGVmYXVsdCBwYXlsb2FkIHVzaW5nIHNlc3Npb24gZGF0YQogKiBmcm9tIHByZXZpb3VzIHN0ZXBzIGFuZCB1c2VyIGlucHV0cy4KICoKICogQHBhcmFtIHtPYmplY3R9IGRlZmF1bHRQYXlsb2FkIC0gVGhlIGJhc2UgcGF5bG9hZCBvYmplY3Qgd2l0aCBjb250ZXh0IGFscmVhZHkgcG9wdWxhdGVkLgogKiBAcGFyYW0ge09iamVjdH0gc2Vzc2lvbkRhdGEgLSBEYXRhIGNvbGxlY3RlZCBmcm9tIHByZXZpb3VzIHRyYW5zYWN0aW9uIHN0ZXBzLgogKiBAcGFyYW0ge09iamVjdH0gc2Vzc2lvbkRhdGEudXNlcl9pbnB1dHMgLSBVc2VyLXByb3ZpZGVkIGlucHV0IHZhbHVlcyBmb3IgdGhpcyBzdGVwLgogKiBAcGFyYW0geyp9IHNlc3Npb25EYXRhLltrZXldIC0gQW55IHNhdmVkIGRhdGEgZnJvbSBwcmV2aW91cyBzdGVwcyAoZGVmaW5lZCBpbiBzYXZlRGF0YSBjb25maWcpLgogKgogKiBAcmV0dXJucyB7T2JqZWN0fSBUaGUgZ2VuZXJhdGVkIHBheWxvYWQgb2JqZWN0IHRvIGJlIHNlbnQgaW4gdGhlIEFQSSByZXF1ZXN0LgogKi8KYXN5bmMgZnVuY3Rpb24gZ2VuZXJhdGUoZGVmYXVsdFBheWxvYWQsIHNlc3Npb25EYXRhKSB7CiAgY29uc3QgY2l0eSA9IHNlc3Npb25EYXRhPy5jaXR5Py5bMF07CgogIGlmIChjaXR5KSB7CiAgICBkZWZhdWx0UGF5bG9hZC5jb250ZXh0LmNpdHkgPSBjaXR5OwogICAgY29uc29sZS5sb2coIkNpdHkgc2V0IHRvOiIsIGNpdHkpOwogIH0KCiAgZGVmYXVsdFBheWxvYWQuY29udGV4dC5tZXNzYWdlX2lkID0gc2Vzc2lvbkRhdGEubGF0ZXN0TWVzc2FnZV9pZFswXTsKICBhcHBseUR5bmFtaWNUaW1lc3RhbXBzKGRlZmF1bHRQYXlsb2FkKTsKCiAgZnVuY3Rpb24gZ2V0VG9kYXlTdGFydFVUQygpIHsKICAgIGNvbnN0IGQgPSBuZXcgRGF0ZSgpOwogICAgcmV0dXJuIG5ldyBEYXRlKERhdGUuVVRDKGQuZ2V0VVRDRnVsbFllYXIoKSwgZC5nZXRVVENNb250aCgpLCBkLmdldFVUQ0RhdGUoKSwgMCwgMCwgMCwgMCkpLnRvSVNPU3RyaW5nKCk7CiAgfQoKICBmdW5jdGlvbiBnZXRUb2RheVBsdXM1RW5kVVRDKCkgewogICAgY29uc3QgZCA9IG5ldyBEYXRlKCk7CiAgICByZXR1cm4gbmV3IERhdGUoRGF0ZS5VVEMoZC5nZXRVVENGdWxsWWVhcigpLCBkLmdldFVUQ01vbnRoKCksIGQuZ2V0VVRDRGF0ZSgpICsgNSwgMjMsIDU5LCA1OSwgOTk5KSkudG9JU09TdHJpbmcoKTsKICB9CgogIGNvbnN0IG9mZmVyU3RhcnQgPSBnZXRUb2RheVN0YXJ0VVRDKCk7CiAgY29uc3Qgb2ZmZXJFbmQgPSBnZXRUb2RheVBsdXM1RW5kVVRDKCk7CgogIGZ1bmN0aW9uIHVwZGF0ZU9mZmVyUmFuZ2VzKG5vZGUpIHsKICAgIGlmICghbm9kZSB8fCB0eXBlb2Ygbm9kZSAhPT0gIm9iamVjdCIpIHJldHVybjsKCiAgICBpZiAoQXJyYXkuaXNBcnJheShub2RlKSkgewogICAgICBub2RlLmZvckVhY2godXBkYXRlT2ZmZXJSYW5nZXMpOwogICAgICByZXR1cm47CiAgICB9CgogICAgZm9yIChjb25zdCBrZXkgb2YgT2JqZWN0LmtleXMobm9kZSkpIHsKICAgICAgaWYgKGtleSA9PT0gIm9mZmVycyIgJiYgQXJyYXkuaXNBcnJheShub2RlW2tleV0pKSB7CiAgICAgICAgbm9kZVtrZXldLmZvckVhY2goKG9mZmVyKSA9PiB7CiAgICAgICAgICBpZiAob2ZmZXI/LnRpbWU/LnJhbmdlKSB7CiAgICAgICAgICAgIG9mZmVyLnRpbWUucmFuZ2Uuc3RhcnQgPSBvZmZlclN0YXJ0OwogICAgICAgICAgICBvZmZlci50aW1lLnJhbmdlLmVuZCA9IG9mZmVyRW5kOwogICAgICAgICAgfQogICAgICAgIH0pOwogICAgICB9IGVsc2UgewogICAgICAgIHVwZGF0ZU9mZmVyUmFuZ2VzKG5vZGVba2V5XSk7CiAgICAgIH0KICAgIH0KICB9CgogIGZ1bmN0aW9uIGdldE5leHQ2RGF0ZXNVVEMoKSB7CiAgICBjb25zdCBkYXRlcyA9IFtdOwogICAgY29uc3QgYmFzZSA9IG5ldyBEYXRlKCk7CgogICAgZm9yIChsZXQgaSA9IDA7IGkgPD0gNTsgaSsrKSB7CiAgICAgIGNvbnN0IGQgPSBuZXcgRGF0ZShiYXNlKTsKICAgICAgZC5zZXRVVENEYXRlKGQuZ2V0VVRDRGF0ZSgpICsgaSk7CiAgICAgIGRhdGVzLnB1c2goZC50b0lTT1N0cmluZygpLnNsaWNlKDAsIDEwKSk7CiAgICB9CgogICAgcmV0dXJuIGRhdGVzOwogIH0KCiAgZnVuY3Rpb24gdXBkYXRlSG9saWRheXMobm9kZSkgewogICAgaWYgKCFub2RlIHx8IHR5cGVvZiBub2RlICE9PSAib2JqZWN0IikgcmV0dXJuOwoKICAgIGlmIChBcnJheS5pc0FycmF5KG5vZGUpKSB7CiAgICAgIG5vZGUuZm9yRWFjaCh1cGRhdGVIb2xpZGF5cyk7CiAgICAgIHJldHVybjsKICAgIH0KCiAgICBmb3IgKGNvbnN0IGtleSBvZiBPYmplY3Qua2V5cyhub2RlKSkgewogICAgICBpZiAoa2V5ID09PSAiaG9saWRheXMiICYmIEFycmF5LmlzQXJyYXkobm9kZVtrZXldKSkgewogICAgICAgIG5vZGVba2V5XSA9IFsuLi5ob2xpZGF5c107CiAgICAgIH0gZWxzZSB7CiAgICAgICAgdXBkYXRlSG9saWRheXMobm9kZVtrZXldKTsKICAgICAgfQogICAgfQogIH0KCiAgY29uc3QgaG9saWRheXMgPSBnZXROZXh0NkRhdGVzVVRDKCk7CgogIHVwZGF0ZU9mZmVyUmFuZ2VzKGRlZmF1bHRQYXlsb2FkKTsKICB1cGRhdGVIb2xpZGF5cyhkZWZhdWx0UGF5bG9hZCk7CgogIHJldHVybiBkZWZhdWx0UGF5bG9hZDsKfQ==
-      validate: LyoqCiAqIFZhbGlkYXRlcyB0aGUgaW5jb21pbmcgcmVxdWVzdCBwYXlsb2FkIGZvciBhbiBBUEkgY2FsbCBpbiB0aGUgdHJhbnNhY3Rpb24gZmxvdy4KICogCiAqIEBwYXJhbSB7T2JqZWN0fSB0YXJnZXRQYXlsb2FkIC0gVGhlIGluY29taW5nIHJlcXVlc3QgcGF5bG9hZCB0byB2YWxpZGF0ZS4KICogQHBhcmFtIHtPYmplY3R9IHNlc3Npb25EYXRhIC0gRGF0YSBjb2xsZWN0ZWQgZnJvbSBwcmV2aW91cyB0cmFuc2FjdGlvbiBzdGVwcy4KICogCiAqIEByZXR1cm5zIHtPYmplY3R9IHsgdmFsaWQ6IGJvb2xlYW4sIGNvZGU6IG51bWJlciwgZGVzY3JpcHRpb246IHN0cmluZyB9CiAqLwpmdW5jdGlvbiB2YWxpZGF0ZSh0YXJnZXRQYXlsb2FkLCBzZXNzaW9uRGF0YSkgewogIHJldHVybiB7IHZhbGlkOiB0cnVlLCBjb2RlOiAyMDAsIGRlc2NyaXB0aW9uOiAiVmFsaWQgcmVxdWVzdCIgfTsKfQ==
+      validate: LyoqCiAqIFZhbGlkYXRlcyB0aGUgaW5jb21pbmcgcmVxdWVzdCBwYXlsb2FkIGZvciBhbiBBUEkgY2FsbCBpbiB0aGUgdHJhbnNhY3Rpb24gZmxvdy4KICogCiAqIEBwYXJhbSB7T2JqZWN0fSB0YXJnZXRQYXlsb2FkIC0gVGhlIGluY29taW5nIHJlcXVlc3QgcGF5bG9hZCB0byB2YWxpZGF0ZS4KICogQHBhcmFtIHtPYmplY3R9IHNlc3Npb25EYXRhIC0gRGF0YSBjb2xsZWN0ZWQgZnJvbSBwcmV2aW91cyB0cmFuc2FjdGlvbiBzdGVwcy4KICogCiAqIEByZXR1cm5zIHtPYmplY3R9IHsgdmFsaWQ6IGJvb2xlYW4sIGNvZGU6IG51bWJlciwgZGVzY3JpcHRpb246IHN0cmluZyB9CiAqLwpmdW5jdGlvbiB2YWxpZGF0ZSh0YXJnZXRQYXlsb2FkLCBzZXNzaW9uRGF0YSkgewogICAgY29uc3QgcHJvdmlkZXJzID0KICAgICAgICB0YXJnZXRQYXlsb2FkPy5tZXNzYWdlPy5jYXRhbG9nPy5bImJwcC9wcm92aWRlcnMiXTsKCiAgICBpZiAoIUFycmF5LmlzQXJyYXkocHJvdmlkZXJzKSkgewogICAgICAgIHJldHVybiB7CiAgICAgICAgICAgIHZhbGlkOiBmYWxzZSwKICAgICAgICAgICAgY29kZTogNDAwLAogICAgICAgICAgICBkZXNjcmlwdGlvbjogInByb3ZpZGVycyBtdXN0IGJlIGFuIGFycmF5IiwKICAgICAgICB9OwogICAgfQoKCiAgICBmb3IgKGNvbnN0IHByb3ZpZGVyIG9mIHByb3ZpZGVycykgewogICAgICAgIGl0ZW1DYXRlZ29yaWVzTWFwID0gbmV3IFNldCgpCiAgICAgICAgaXRlbUJyYW5kQXJydGlidXRlVGFnID0gbmV3IFNldCgpCiAgICAgICAgZm9yICggY29uc3QgaXRlbSBvZiBwcm92aWRlci5pdGVtcyApewogICAgICAgICAgICBpZighaXRlbT8uY2F0ZWdvcnlfaWQpewogICAgICAgICAgICAgICAgcmV0dXJuIHsKICAgICAgICAgICAgICAgICAgICB2YWxpZDogZmFsc2UsCiAgICAgICAgICAgICAgICAgICAgY29kZTogNDAwLAogICAgICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBgcHJvdmlkZXIgJHtwcm92aWRlcj8uaWQgfHwgIiJ9IGl0ZW0gJHtpdGVtPy5pZCB8fCAiIn0gY2F0ZWdvcnlfaWQgaXMgcmVxdWlyZWRgLAogICAgICAgICAgICAgICAgfTsKICAgICAgICAgICAgfQogICAgICAgICAgICBpdGVtQ2F0ZWdvcmllc01hcC5hZGQoaXRlbS5jYXRlZ29yeV9pZCkKICAgICAgICAgICAgaWYoaXRlbT8udGFncyl7CiAgICAgICAgICAgICAgICBmb3IoIGNvbnN0IHRhZyBvZiBpdGVtLnRhZ3MpewogICAgICAgICAgICAgICAgICAgIGlmKHRhZz8uY29kZSA9PT0gImF0dHJpYnV0ZSIpewogICAgICAgICAgICAgICAgICAgICAgICBmb3IoIGNvbnN0IHZhbHVlIG9mIHRhZy5saXN0KXsKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmKHZhbHVlLmNvZGUgPT09ICJicmFuZCIpewogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGl0ZW1CcmFuZEFycnRpYnV0ZVRhZy5hZGQodmFsdWUudmFsdWUpCiAgICAgICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICAgICAgY29uc3QgdGFncyA9IHByb3ZpZGVyPy50YWdzOwoKICAgICAgICBpZiAoIUFycmF5LmlzQXJyYXkodGFncykgfHwgdGFncy5sZW5ndGggPT09IDApIHsKICAgICAgICAgICAgcmV0dXJuIHsKICAgICAgICAgICAgICAgIHZhbGlkOiBmYWxzZSwKICAgICAgICAgICAgICAgIGNvZGU6IDQwMCwKICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBgcHJvdmlkZXIgJHtwcm92aWRlcj8uaWQgfHwgIiJ9IHRhZ3MgbXVzdCBiZSBhIG5vbi1lbXB0eSBhcnJheWAsCiAgICAgICAgICAgIH07CiAgICAgICAgfQoKICAgICAgICBjb25zdCBicmFuZEltYWdlcyA9IHRhZ3MuZmluZCgKICAgICAgICAgICAgKGl0ZW0pID0+IGl0ZW0/LmNvZGUgPT09ICJicmFuZF9pbWFnZXMiCiAgICAgICAgKTsKICAgICAgICBmb3IgKHRhZyBvZiB0YWdzKXsKICAgICAgICAgICAgaWYgKHRhZy5jb2RlID09PSAic2VydmljZWFiaWxpdHkiKSB7CiAgICAgICAgICAgICAgICBmb3IgKCBjb25zdCB2YWx1ZSBvZiB0YWcubGlzdCl7CiAgICAgICAgICAgICAgICAgICAgaWYodmFsdWUuY29kZSA9PT0gImNhdGVnb3J5Iil7CiAgICAgICAgICAgICAgICAgICAgICAgLy9pdCBzaG91bGQgZXhpc3QgaW4gaXRlbUNhdGVvZ3J5TWFwCiAgICAgICAgICAgICAgICAgICAgICAgaWYgKCFpdGVtQ2F0ZWdvcmllc01hcC5oYXModmFsdWUudmFsdWUpICYmIHZhbHVlLnZhbHVlICE9PSAiKiIpewogICAgICAgICAgICAgICAgICAgICAgICByZXR1cm4gewogICAgICAgICAgICAgICAgICAgICAgICAgICAgdmFsaWQ6IGZhbHNlLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgY29kZTogNDAwLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IGBwcm92aWRlciAke3Byb3ZpZGVyPy5pZCB8fCAiIn0gc2VydmljZWFiaWxpdHkgY2F0ZWdvcnkgJHt2YWx1ZS52YWx1ZX0gaXMgbm90IG1hdGNoaW5nIHdpdGggaXRlbXMgY2F0ZWdvcnlgLAogICAgICAgICAgICAgICAgICAgICAgICB9OwogICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICAgICAgaWYgKCFicmFuZEltYWdlcykgewogICAgICAgICAgICByZXR1cm4gewogICAgICAgICAgICAgICAgdmFsaWQ6IGZhbHNlLAogICAgICAgICAgICAgICAgY29kZTogNDAwLAogICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IGBwcm92aWRlciAke3Byb3ZpZGVyPy5pZCB8fCAiIn0gYnJhbmRfaW1hZ2VzIGNvbmZpZ3VyYXRpb24gaXMgcmVxdWlyZWRgLAogICAgICAgICAgICB9OwogICAgICAgIH0KCiAgICAgICAgaWYgKAogICAgICAgICAgICAhQXJyYXkuaXNBcnJheShicmFuZEltYWdlcy5saXN0KSB8fAogICAgICAgICAgICBicmFuZEltYWdlcy5saXN0Lmxlbmd0aCA9PT0gMAogICAgICAgICkgewogICAgICAgICAgICByZXR1cm4gewogICAgICAgICAgICAgICAgdmFsaWQ6IGZhbHNlLAogICAgICAgICAgICAgICAgY29kZTogNDAwLAogICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IGBwcm92aWRlciAke3Byb3ZpZGVyPy5pZCB8fCAiIn0gYnJhbmRfaW1hZ2VzIGxpc3QgbXVzdCBub3QgYmUgZW1wdHlgLAogICAgICAgICAgICB9OwogICAgICAgIH0KCiAgICAgICAgZm9yIChsZXQgaSA9IDA7IGkgPCBicmFuZEltYWdlcy5saXN0Lmxlbmd0aDsgaSsrKSB7CiAgICAgICAgICAgIGNvbnN0IGl0ZW0gPSBicmFuZEltYWdlcy5saXN0W2ldOwoKICAgICAgICAgICAgaWYgKAogICAgICAgICAgICAgICAgIWl0ZW0gfHwKICAgICAgICAgICAgICAgIHR5cGVvZiBpdGVtLmNvZGUgIT09ICJzdHJpbmciIHx8CiAgICAgICAgICAgICAgICBpdGVtLmNvZGUudHJpbSgpID09PSAiIgogICAgICAgICAgICApIHsKICAgICAgICAgICAgICAgIHJldHVybiB7CiAgICAgICAgICAgICAgICAgICAgdmFsaWQ6IGZhbHNlLAogICAgICAgICAgICAgICAgICAgIGNvZGU6IDQwMCwKICAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogYHByb3ZpZGVyICR7cHJvdmlkZXI/LmlkIHx8ICIifSBpbnZhbGlkIG9yIG1pc3NpbmcgY29kZSBhdCBpbmRleCAke2l9YCwKICAgICAgICAgICAgICAgIH07CiAgICAgICAgICAgIH0KCiAgICAgICAgICAgIGlmICgKICAgICAgICAgICAgICAgIHR5cGVvZiBpdGVtLnZhbHVlICE9PSAic3RyaW5nIiB8fAogICAgICAgICAgICAgICAgaXRlbS52YWx1ZS50cmltKCkgPT09ICIiCiAgICAgICAgICAgICkgewogICAgICAgICAgICAgICAgcmV0dXJuIHsKICAgICAgICAgICAgICAgICAgICB2YWxpZDogZmFsc2UsCiAgICAgICAgICAgICAgICAgICAgY29kZTogNDAwLAogICAgICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBgcHJvdmlkZXIgJHtwcm92aWRlcj8uaWQgfHwgIiJ9IGludmFsaWQgb3IgbWlzc2luZyB2YWx1ZSBhdCBpbmRleCAke2l9YCwKICAgICAgICAgICAgICAgIH07CiAgICAgICAgICAgIH0KICAgICAgICAgICAgaWYgKCFpdGVtQnJhbmRBcnJ0aWJ1dGVUYWcuaGFzKGl0ZW0uY29kZSkpIHsKICAgICAgICAgICAgICAgIHJldHVybiB7CiAgICAgICAgICAgICAgICAgICAgdmFsaWQ6IGZhbHNlLAogICAgICAgICAgICAgICAgICAgIGNvZGU6IDQwMCwKICAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogYGJyYW5kIGltYWcgIiR7aXRlbS5jb2RlfSIgZG9lcyBub3QgbWF0Y2ggd2l0aCBpdGVtcyBicmFuZCBhdHRyaWJ1dGVgCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICB9CgogICAgcmV0dXJuIHsKICAgICAgICB2YWxpZDogdHJ1ZSwKICAgICAgICBjb2RlOiAyMDAsCiAgICAgICAgZGVzY3JpcHRpb246ICJWYWxpZCByZXF1ZXN0IiwKICAgIH07Cn0=
       requirements: LyoqCiAqIENoZWNrcyBpZiB0aGUgcmVxdWlyZW1lbnRzIGZvciBwcm9jZWVkaW5nIHdpdGggdGhlIEFQSSBjYWxsIGFyZSBtZXQuCiAqIAogKiBAcGFyYW0ge09iamVjdH0gc2Vzc2lvbkRhdGEgLSBEYXRhIGNvbGxlY3RlZCBmcm9tIHByZXZpb3VzIHRyYW5zYWN0aW9uIHN0ZXBzLgogKiAKICogQHJldHVybnMge09iamVjdH0geyB2YWxpZDogYm9vbGVhbiwgY29kZTogbnVtYmVyLCBkZXNjcmlwdGlvbjogc3RyaW5nIH0KICovCmZ1bmN0aW9uIG1lZXRzUmVxdWlyZW1lbnRzKHNlc3Npb25EYXRhKSB7CiAgcmV0dXJuIHsgdmFsaWQ6IHRydWUsIGNvZGU6IDIwMCwgZGVzY3JpcHRpb246ICJSZXF1aXJlbWVudHMgbWV0IiB9Owp9
       defaultPayload:
         context:
@@ -528,6 +529,14 @@ steps:
                       other_FSSAI_license_no: "12345678901234"
                       importer_FSSAI_license_no: ""
                     tags:
+                      - code: pack_config
+                        list:
+                          - code: unit
+                            value: "1"
+                          - code: set
+                            value: "10"
+                          - code: case
+                            value: "40"
                       - code: origin
                         list:
                           - code: country
@@ -1160,8 +1169,8 @@ steps:
                     list:
                       - code: Pepsi
                         value: https://cdn.example.com/brands/pepsi.png
-                      - code: Aashirwad
-                        value: https://cdn.example.com/brands/aashirwad.png
+                      - code: Ashirwad
+                        value: https://cdn.example.com/brands/Ashirwad.png
                       - code: Fortune
                         value: https://cdn.example.com/brands/fortune.png
                   - code: retailer_info_required
@@ -1197,9 +1206,9 @@ steps:
           context:
             domain: ONDC:RETeB2B
             action: on_search
-            timestamp: 2026-05-25T12:42:52.618Z
+            timestamp: 2026-06-02T11:27:26.360Z
             transaction_id: 9e8654ed-0dd3-4315-81f2-814780f13e79
-            message_id: 599bc9f9-efb7-4396-bd95-e96d37b20dfb
+            message_id: 78db8257-ded3-40b9-9c7b-168100359379
             bap_id: sample-bap-id
             bap_uri: https://bap.example.com
             ttl: PT30S
@@ -1226,7 +1235,7 @@ steps:
                 - id: P1
                   time:
                     label: enable
-                    timestamp: 2026-05-25T12:42:52.618Z
+                    timestamp: 2026-06-02T11:27:26.360Z
                   descriptor:
                     name: ABC Manufacturer
                     code: distributor
@@ -1246,15 +1255,15 @@ steps:
                     - id: L1
                       time:
                         label: enable
-                        timestamp: 2026-05-25T12:42:52.618Z
+                        timestamp: 2026-06-02T11:27:26.360Z
                         schedule:
                           holidays:
-                            - 2026-05-25
-                            - 2026-05-26
-                            - 2026-05-27
-                            - 2026-05-28
-                            - 2026-05-29
-                            - 2026-05-30
+                            - 2026-06-02
+                            - 2026-06-03
+                            - 2026-06-04
+                            - 2026-06-05
+                            - 2026-06-06
+                            - 2026-06-07
                       gps: 12.9675,77.7496
                       address:
                         locality: Jayanagar
@@ -1265,15 +1274,15 @@ steps:
                     - id: L2
                       time:
                         label: enable
-                        timestamp: 2026-05-25T12:42:52.618Z
+                        timestamp: 2026-06-02T11:27:26.360Z
                         schedule:
                           holidays:
-                            - 2026-05-25
-                            - 2026-05-26
-                            - 2026-05-27
-                            - 2026-05-28
-                            - 2026-05-29
-                            - 2026-05-30
+                            - 2026-06-02
+                            - 2026-06-03
+                            - 2026-06-04
+                            - 2026-06-05
+                            - 2026-06-06
+                            - 2026-06-07
                       gps: 12.9352,77.6245
                       address:
                         locality: BTM Layout
@@ -1340,8 +1349,8 @@ steps:
                       time:
                         label: valid
                         range:
-                          start: 2026-05-25T00:00:00.000Z
-                          end: 2026-05-30T23:59:59.999Z
+                          start: 2026-06-02T00:00:00.000Z
+                          end: 2026-06-07T23:59:59.999Z
                       tags:
                         - code: qualifier
                           list:
@@ -1378,8 +1387,8 @@ steps:
                       time:
                         label: valid
                         range:
-                          start: 2026-05-25T00:00:00.000Z
-                          end: 2026-05-30T23:59:59.999Z
+                          start: 2026-06-02T00:00:00.000Z
+                          end: 2026-06-07T23:59:59.999Z
                       tags:
                         - code: qualifier
                           list:
@@ -1410,8 +1419,8 @@ steps:
                       time:
                         label: valid
                         range:
-                          start: 2026-05-25T00:00:00.000Z
-                          end: 2026-05-30T23:59:59.999Z
+                          start: 2026-06-02T00:00:00.000Z
+                          end: 2026-06-07T23:59:59.999Z
                       tags:
                         - code: qualifier
                           list:
@@ -1446,8 +1455,8 @@ steps:
                       time:
                         label: valid
                         range:
-                          start: 2026-05-25T00:00:00.000Z
-                          end: 2026-05-30T23:59:59.999Z
+                          start: 2026-06-02T00:00:00.000Z
+                          end: 2026-06-07T23:59:59.999Z
                       tags:
                         - code: qualifier
                           list:
@@ -1482,8 +1491,8 @@ steps:
                       time:
                         label: valid
                         range:
-                          start: 2026-05-25T00:00:00.000Z
-                          end: 2026-05-30T23:59:59.999Z
+                          start: 2026-06-02T00:00:00.000Z
+                          end: 2026-06-07T23:59:59.999Z
                       tags:
                         - code: qualifier
                           list:
@@ -1509,8 +1518,8 @@ steps:
                       time:
                         label: valid
                         range:
-                          start: 2026-05-25T00:00:00.000Z
-                          end: 2026-05-30T23:59:59.999Z
+                          start: 2026-06-02T00:00:00.000Z
+                          end: 2026-06-07T23:59:59.999Z
                       tags:
                         - code: qualifier
                           list:
@@ -1534,7 +1543,7 @@ steps:
                     - id: I1
                       time:
                         label: enable
-                        timestamp: 2026-05-25T12:42:52.618Z
+                        timestamp: 2026-06-02T11:27:26.360Z
                       parent_item_id: V1
                       descriptor:
                         name: Ashirwad Plain Atta 1kg
@@ -1582,6 +1591,14 @@ steps:
                         other_FSSAI_license_no: "12345678901234"
                         importer_FSSAI_license_no: ""
                       tags:
+                        - code: pack_config
+                          list:
+                            - code: unit
+                              value: "1"
+                            - code: set
+                              value: "10"
+                            - code: case
+                              value: "40"
                         - code: origin
                           list:
                             - code: country
@@ -1603,7 +1620,7 @@ steps:
                     - id: I2
                       time:
                         label: enable
-                        timestamp: 2026-05-25T12:42:52.618Z
+                        timestamp: 2026-06-02T11:27:26.360Z
                       parent_item_id: V1
                       descriptor:
                         name: Ashirwad Plain Atta 5kg
@@ -1672,7 +1689,7 @@ steps:
                     - id: I3
                       time:
                         label: enable
-                        timestamp: 2026-05-25T12:42:52.618Z
+                        timestamp: 2026-06-02T11:27:26.360Z
                       parent_item_id: V1
                       descriptor:
                         name: Fortune Chakki Atta 1kg
@@ -1741,7 +1758,7 @@ steps:
                     - id: I4
                       time:
                         label: enable
-                        timestamp: 2026-05-25T12:42:52.618Z
+                        timestamp: 2026-06-02T11:27:26.360Z
                       parent_item_id: V1
                       descriptor:
                         name: Fortune Chakki Atta 5kg
@@ -1810,7 +1827,7 @@ steps:
                     - id: I5
                       time:
                         label: enable
-                        timestamp: 2026-05-25T12:42:52.618Z
+                        timestamp: 2026-06-02T11:27:26.360Z
                       parent_item_id: V2
                       descriptor:
                         name: Coca-Cola 300ml (Case of 24)
@@ -1874,7 +1891,7 @@ steps:
                     - id: I6
                       time:
                         label: enable
-                        timestamp: 2026-05-25T12:42:52.618Z
+                        timestamp: 2026-06-02T11:27:26.360Z
                       parent_item_id: V2
                       descriptor:
                         name: Coca-Cola 2L (Pack of 6)
@@ -1938,7 +1955,7 @@ steps:
                     - id: I7
                       time:
                         label: enable
-                        timestamp: 2026-05-25T12:42:52.618Z
+                        timestamp: 2026-06-02T11:27:26.360Z
                       parent_item_id: V2
                       descriptor:
                         name: Pepsi 300ml (Case of 24)
@@ -2001,7 +2018,7 @@ steps:
                     - id: I8
                       time:
                         label: enable
-                        timestamp: 2026-05-25T12:42:52.618Z
+                        timestamp: 2026-06-02T11:27:26.360Z
                       parent_item_id: V2
                       descriptor:
                         name: Pepsi 2L (Pack of 6)
@@ -2215,8 +2232,8 @@ steps:
                       list:
                         - code: Pepsi
                           value: https://cdn.example.com/brands/pepsi.png
-                        - code: Aashirwad
-                          value: https://cdn.example.com/brands/aashirwad.png
+                        - code: Ashirwad
+                          value: https://cdn.example.com/brands/Ashirwad.png
                         - code: Fortune
                           value: https://cdn.example.com/brands/fortune.png
                     - code: retailer_info_required
@@ -2247,7 +2264,7 @@ steps:
     description: Search request to discover providers on the ONDC network based on
       provider ID and fulfillment type.
     mock:
-      generate: LyoqCiAqIEdlbmVyYXRlcyAvc2VhcmNoIHBheWxvYWQgZm9yIE9OREMgUkVUZUIyQiBiYXNlZCBvbiB1c2VyIGlucHV0cy4KICogU3VwcG9ydHM6CiAqICAtIE5ldyBSZXRhaWxlcgogKiAgLSBFeGlzdGluZyBSZXRhaWxlciB3aXRoIEN1c3RvbWVyIElECiAqICAtIEV4aXN0aW5nIFJldGFpbGVyIHdpdGhvdXQgQ3VzdG9tZXIgSUQKICovCmFzeW5jIGZ1bmN0aW9uIGdlbmVyYXRlKGRlZmF1bHRQYXlsb2FkLCBzZXNzaW9uRGF0YSkgewogIHRyeSB7CiAgICBkZWZhdWx0UGF5bG9hZC5jb250ZXh0LmJwcF9pZCA9IHNlc3Npb25EYXRhLmJwcElkWzBdCiAgICBkZWZhdWx0UGF5bG9hZC5jb250ZXh0LmJwcF91cmkgPSBzZXNzaW9uRGF0YS5icHBVcmlbMF0KICAgIGNvbnN0IGlucHV0ID0gc2Vzc2lvbkRhdGE/LnVzZXJfaW5wdXRzIHx8IHt9OwoKICAgIGNvbnN0IGZ1bGZpbGxtZW50ID0gZGVmYXVsdFBheWxvYWQ/Lm1lc3NhZ2U/LmludGVudD8uZnVsZmlsbG1lbnQ7CiAgICBpZiAoIWZ1bGZpbGxtZW50KSByZXR1cm4gZGVmYXVsdFBheWxvYWQ7CgogICAgY29uc3QgY2l0eSA9IHNlc3Npb25EYXRhPy5jaXR5Py5bMF07CgogICAgaWYgKGNpdHkpIHsKICAgICAgZGVmYXVsdFBheWxvYWQuY29udGV4dC5jaXR5ID0gY2l0eTsKICAgICAgY29uc29sZS5sb2coIkNpdHkgc2V0IHRvOiIsIGNpdHkpOwogICAgfQoKICAgIGlmICghaW5wdXQ/LnR5cGUpIHsKICAgICAgcmV0dXJuIGRlZmF1bHRQYXlsb2FkOwogICAgfQoKICAgIGxldCBjdXN0b21lciA9IHt9OwoKICAgIGlmIChpbnB1dC50eXBlID09PSAiZXhpc3RpbmciICYmIGlucHV0LmN1c3RvbWVyX2lkKSB7CiAgICAgIGN1c3RvbWVyLmlkID0gaW5wdXQuY3VzdG9tZXJfaWQ7CiAgICB9IGVsc2UgewoKICAgICAgaWYgKGlucHV0LnRheF9udW1iZXIgfHwgaW5wdXQucHJvdmlkZXJfdGF4X251bWJlcikgewogICAgICAgIGN1c3RvbWVyLnBlcnNvbiA9IHsgY3JlZHM6IFtdIH07CgogICAgICAgIGlmIChpbnB1dC50YXhfbnVtYmVyKSB7CiAgICAgICAgICBjdXN0b21lci5wZXJzb24uY3JlZHMucHVzaCh7CiAgICAgICAgICAgIGlkOiBpbnB1dC50YXhfbnVtYmVyLAogICAgICAgICAgICB0eXBlOiAidGF4X251bWJlciIKICAgICAgICAgIH0pOwogICAgICAgIH0KCiAgICAgICAgaWYgKGlucHV0LnByb3ZpZGVyX3RheF9udW1iZXIpIHsKICAgICAgICAgIGN1c3RvbWVyLnBlcnNvbi5jcmVkcy5wdXNoKHsKICAgICAgICAgICAgaWQ6IGlucHV0LnByb3ZpZGVyX3RheF9udW1iZXIsCiAgICAgICAgICAgIHR5cGU6ICJwcm92aWRlcl90YXhfbnVtYmVyIgogICAgICAgICAgfSk7CiAgICAgICAgfQogICAgICB9CgogICAgICBpZiAoaW5wdXQudHlwZSA9PT0gIm5ldyIgJiYgaW5wdXQuc2hvcF9uYW1lKSB7CiAgICAgICAgY3VzdG9tZXIub3JnYW5pemF0aW9uID0gewogICAgICAgICAgZGVzY3JpcHRvcjogeyBuYW1lOiBpbnB1dC5zaG9wX25hbWUgfSwKICAgICAgICAgIGFkZHJlc3M6IGlucHV0LmFkZHJlc3MsCiAgICAgICAgICBjaXR5OiB7IGNvZGU6IGlucHV0LmNpdHlfY29kZSB9LAogICAgICAgICAgc3RhdGU6IHsgY29kZTogaW5wdXQuc3RhdGVfY29kZSB8fCAiS0EiIH0KICAgICAgICB9OwogICAgICB9CgogICAgICBpZiAoaW5wdXQucGhvbmVfbnVtYmVyIHx8IGlucHV0LmVtYWlsKSB7CiAgICAgICAgY3VzdG9tZXIuY29udGFjdCA9IHt9OwogICAgICAgIGlmIChpbnB1dC5waG9uZV9udW1iZXIpIGN1c3RvbWVyLmNvbnRhY3QucGhvbmUgPSBpbnB1dC5waG9uZV9udW1iZXI7CiAgICAgICAgaWYgKGlucHV0LmVtYWlsKSBjdXN0b21lci5jb250YWN0LmVtYWlsID0gaW5wdXQuZW1haWw7CiAgICAgIH0KICAgIH0KCiAgICBpZiAoT2JqZWN0LmtleXMoY3VzdG9tZXIpLmxlbmd0aCA+IDApIHsKICAgICAgZnVsZmlsbG1lbnQuY3VzdG9tZXIgPSBjdXN0b21lcjsKICAgIH0gZWxzZSB7CiAgICAgIGNvbnNvbGUubG9nKCJDdXN0b21lciBvYmplY3QgZW1wdHkg4oCUIG5vdGhpbmcgYXBwZW5kZWQiKTsKICAgIH0KICBjb25zb2xlLmxvZygiY29udGV4dDogIiwgSlNPTi5zdHJpbmdpZnkoZGVmYXVsdFBheWxvYWQ/LmNvbnRleHQpKTsKICBkZWZhdWx0UGF5bG9hZC5jb250ZXh0ID0gewogIC4uLmRlZmF1bHRQYXlsb2FkLmNvbnRleHQsCiAgYnBwX2lkOiAic2FtcGxlLWJwcC1pZCIsCiAgYnBwX3VyaTogImh0dHBzOi8vYnBwLmV4YW1wbGUuY29tIiwKfTsKCiAgICByZXR1cm4gZGVmYXVsdFBheWxvYWQ7CgogIH0gY2F0Y2ggKGVycikgewogICAgY29uc29sZS5lcnJvcigiRVJST1I6IiwgZXJyKTsKICAgIHJldHVybiBkZWZhdWx0UGF5bG9hZDsKICB9Cn0KCgo=
+      generate: YXN5bmMgZnVuY3Rpb24gZ2VuZXJhdGUoZGVmYXVsdFBheWxvYWQsIHNlc3Npb25EYXRhKSB7CiAgdHJ5IHsKICAgIGRlZmF1bHRQYXlsb2FkLmNvbnRleHQuYnBwX2lkID0gc2Vzc2lvbkRhdGEuYnBwSWRbMF0KICAgIGRlZmF1bHRQYXlsb2FkLmNvbnRleHQuYnBwX3VyaSA9IEFycmF5LmlzQXJyYXkoc2Vzc2lvbkRhdGEuYnBwVXJpKQogID8gc2Vzc2lvbkRhdGEuYnBwVXJpPy5bMF0gPz8gIiIKICA6IHNlc3Npb25EYXRhLmJwcFVyaSA/PyAiIjsKICAgIGNvbnN0IGlucHV0ID0gc2Vzc2lvbkRhdGE/LnVzZXJfaW5wdXRzIHx8IHt9OwoKICAgIGNvbnN0IGZ1bGZpbGxtZW50ID0gZGVmYXVsdFBheWxvYWQ/Lm1lc3NhZ2U/LmludGVudD8uZnVsZmlsbG1lbnQ7CiAgICBpZiAoIWZ1bGZpbGxtZW50KSByZXR1cm4gZGVmYXVsdFBheWxvYWQ7CgogICAgY29uc3QgY2l0eSA9IHNlc3Npb25EYXRhPy5jaXR5Py5bMF07CgogICAgaWYgKGNpdHkpIHsKICAgICAgZGVmYXVsdFBheWxvYWQuY29udGV4dC5jaXR5ID0gY2l0eTsKICAgICAgY29uc29sZS5sb2coIkNpdHkgc2V0IHRvOiIsIGNpdHkpOwogICAgfQoKICAgIGlmICghaW5wdXQ/LnR5cGUpIHsKICAgICAgcmV0dXJuIGRlZmF1bHRQYXlsb2FkOwogICAgfQoKICAgIGxldCBjdXN0b21lciA9IHt9OwoKICAgIGlmIChpbnB1dC50eXBlID09PSAiZXhpc3RpbmciICYmIGlucHV0LmN1c3RvbWVyX2lkKSB7CiAgICAgIGN1c3RvbWVyLmlkID0gaW5wdXQuY3VzdG9tZXJfaWQ7CiAgICB9IGVsc2UgewoKICAgICAgaWYgKGlucHV0LnRheF9udW1iZXIgfHwgaW5wdXQucHJvdmlkZXJfdGF4X251bWJlcikgewogICAgICAgIGN1c3RvbWVyLnBlcnNvbiA9IHsgY3JlZHM6IFtdIH07CgogICAgICAgIGlmIChpbnB1dC50YXhfbnVtYmVyKSB7CiAgICAgICAgICBjdXN0b21lci5wZXJzb24uY3JlZHMucHVzaCh7CiAgICAgICAgICAgIGlkOiBpbnB1dC50YXhfbnVtYmVyLAogICAgICAgICAgICB0eXBlOiAidGF4X251bWJlciIKICAgICAgICAgIH0pOwogICAgICAgIH0KCiAgICAgICAgaWYgKGlucHV0LnByb3ZpZGVyX3RheF9udW1iZXIpIHsKICAgICAgICAgIGN1c3RvbWVyLnBlcnNvbi5jcmVkcy5wdXNoKHsKICAgICAgICAgICAgaWQ6IGlucHV0LnByb3ZpZGVyX3RheF9udW1iZXIsCiAgICAgICAgICAgIHR5cGU6ICJwcm92aWRlcl90YXhfbnVtYmVyIgogICAgICAgICAgfSk7CiAgICAgICAgfQogICAgICB9CgogICAgICAKICAgICAgIAogICAgICAKCiAgICAgIGlmIChpbnB1dC5waG9uZV9udW1iZXIgfHwgaW5wdXQuZW1haWwpIHsKICAgICAgICBjdXN0b21lci5jb250YWN0ID0ge307CiAgICAgICAgaWYgKGlucHV0LnBob25lX251bWJlcikgY3VzdG9tZXIuY29udGFjdC5waG9uZSA9IGlucHV0LnBob25lX251bWJlcjsKICAgICAgICBpZiAoaW5wdXQuZW1haWwpIGN1c3RvbWVyLmNvbnRhY3QuZW1haWwgPSBpbnB1dC5lbWFpbDsKICAgICAgfQogICAgfQogICAgIGN1c3RvbWVyLm9yZ2FuaXphdGlvbiA9IHsKICAgICAgICAgIGRlc2NyaXB0b3I6IHsgbmFtZTogaW5wdXQ/LnNob3BfbmFtZSB8fCAic3RvcmUifSwKICAgICAgICAgIGFkZHJlc3M6IGlucHV0Py5hZGRyZXNzIHx8ICIxMjMgTWFpbiBTdCIsCiAgICAgICAgICBjaXR5OiB7IGNvZGU6IGlucHV0Py5jaXR5X2NvZGUgfHwgInN0ZDowODAifSwKICAgICAgICAgIHN0YXRlOiB7IGNvZGU6IGlucHV0Py5zdGF0ZV9jb2RlIHx8ICJLQSIgfQogICAgICAgIH07CiAgICBpZiAoT2JqZWN0LmtleXMoY3VzdG9tZXIpLmxlbmd0aCA+IDApIHsKICAgICAgZnVsZmlsbG1lbnQuY3VzdG9tZXIgPSBjdXN0b21lcjsKICAgIH0gZWxzZSB7CiAgICAgIGNvbnNvbGUubG9nKCJDdXN0b21lciBvYmplY3QgZW1wdHkg4oCUIG5vdGhpbmcgYXBwZW5kZWQiKTsKICAgIH0KICBjb25zb2xlLmxvZygiY29udGV4dDogIiwgSlNPTi5zdHJpbmdpZnkoZGVmYXVsdFBheWxvYWQ/LmNvbnRleHQpKTsKCiAgICByZXR1cm4gZGVmYXVsdFBheWxvYWQ7CgogIH0gY2F0Y2ggKGVycikgewogICAgY29uc29sZS5lcnJvcigiRVJST1I6IiwgZXJyKTsKICAgIHJldHVybiBkZWZhdWx0UGF5bG9hZDsKICB9Cn0K
       validate: LyoqCiAqIFZhbGlkYXRlcyB0aGUgaW5jb21pbmcgcmVxdWVzdCBwYXlsb2FkIGZvciBhbiBBUEkgY2FsbCBpbiB0aGUgdHJhbnNhY3Rpb24gZmxvdy4KICogCiAqIEBwYXJhbSB7T2JqZWN0fSB0YXJnZXRQYXlsb2FkIC0gVGhlIGluY29taW5nIHJlcXVlc3QgcGF5bG9hZCB0byB2YWxpZGF0ZS4KICogQHBhcmFtIHtPYmplY3R9IHNlc3Npb25EYXRhIC0gRGF0YSBjb2xsZWN0ZWQgZnJvbSBwcmV2aW91cyB0cmFuc2FjdGlvbiBzdGVwcy4KICogCiAqIEByZXR1cm5zIHtPYmplY3R9IHsgdmFsaWQ6IGJvb2xlYW4sIGNvZGU6IG51bWJlciwgZGVzY3JpcHRpb246IHN0cmluZyB9CiAqLwpmdW5jdGlvbiB2YWxpZGF0ZSh0YXJnZXRQYXlsb2FkLCBzZXNzaW9uRGF0YSkgewogIGlmICghdGFyZ2V0UGF5bG9hZD8ubWVzc2FnZT8uaW50ZW50Py5mdWxmaWxsbWVudD8uY3VzdG9tZXIpewogICAgcmV0dXJuIHsgdmFsaWQ6IGZhbHNlLCBjb2RlOiAyMDAsIGRlc2NyaXB0aW9uOiAiUHJvdmlkZSBjdXN0b21lciBkZXRhaWxzIiB9OwogIH0KICByZXR1cm4geyB2YWxpZDogdHJ1ZSwgY29kZTogMjAwLCBkZXNjcmlwdGlvbjogIlZhbGlkIHJlcXVlc3QiIH07Cn0=
       requirements: LyoqCiAqIENoZWNrcyBpZiB0aGUgcmVxdWlyZW1lbnRzIGZvciBwcm9jZWVkaW5nIHdpdGggdGhlIEFQSSBjYWxsIGFyZSBtZXQuCiAqIAogKiBAcGFyYW0ge09iamVjdH0gc2Vzc2lvbkRhdGEgLSBEYXRhIGNvbGxlY3RlZCBmcm9tIHByZXZpb3VzIHRyYW5zYWN0aW9uIHN0ZXBzLgogKiAKICogQHJldHVybnMge09iamVjdH0geyB2YWxpZDogYm9vbGVhbiwgY29kZTogbnVtYmVyLCBkZXNjcmlwdGlvbjogc3RyaW5nIH0KICovCmZ1bmN0aW9uIG1lZXRzUmVxdWlyZW1lbnRzKHNlc3Npb25EYXRhKSB7CiAgcmV0dXJuIHsgdmFsaWQ6IHRydWUsIGNvZGU6IDIwMCwgZGVzY3JpcHRpb246ICJSZXF1aXJlbWVudHMgbWV0IiB9Owp9
       defaultPayload:
@@ -2293,10 +2310,12 @@ steps:
               enum:
                 - new
                 - existing
+              default: existing
               description: Retailer type
             customer_id:
               type: string
               description: Customer ID
+              default: CUST-1234-1234
             phone_number:
               type: string
               description: Retailer phone number
@@ -2313,45 +2332,42 @@ steps:
             shop_name:
               type: string
               description: Retailer shop name
+              default: kajriwal store
             address:
               type: string
               description: Retailer address
+              default: chandi chowk
             city_code:
               type: string
               description: City code
+              default: std:080
             state_code:
               type: string
               description: State code (default KA)
+              default: KA
           required:
             - type
           allOf:
             - if:
-                type: object
                 properties:
                   type:
                     const: existing
                 required:
                   - type
               then:
-                type: object
-                anyOf:
-                  - type: object
-                    required:
-                      - customer_id
-                  - type: object
-                    required:
-                      - phone_number
-                      - provider_tax_number
-                      - tax_number
+                required:
+                  - customer_id
+                  - shop_name
+                  - address
+                  - city_code
+                  - state_code
             - if:
-                type: object
                 properties:
                   type:
                     const: new
                 required:
                   - type
               then:
-                type: object
                 required:
                   - phone_number
                   - email
@@ -2367,9 +2383,9 @@ steps:
           context:
             domain: ONDC:RETeB2B
             action: search
-            timestamp: 2026-05-25T12:43:11.898Z
+            timestamp: 2026-06-02T11:27:30.913Z
             transaction_id: 9e8654ed-0dd3-4315-81f2-814780f13e79
-            message_id: 69fabfa4-6579-4deb-974a-a8a3ad242d93
+            message_id: dab2d04e-bc93-4aa7-82e8-64b3af5887e6
             bap_id: sample-bap-id
             bap_uri: https://bap.example.com
             ttl: PT30S
@@ -2385,7 +2401,15 @@ steps:
               fulfillment:
                 type: Delivery
                 customer:
-                  id: CUST-2024-0015421
+                  id: CUST-1234-1234
+                  organization:
+                    descriptor:
+                      name: kajriwal store
+                    address: chandi chowk
+                    city:
+                      code: std:080
+                    state:
+                      code: KA
         type: request
         description: Search request to discover providers on the ONDC network based on
           provider ID and fulfillment type.
@@ -2511,9 +2535,9 @@ steps:
           context:
             domain: ONDC:RETeB2B
             action: on_search
-            timestamp: 2026-05-25T12:43:11.911Z
+            timestamp: 2026-06-02T11:27:30.926Z
             transaction_id: 9e8654ed-0dd3-4315-81f2-814780f13e79
-            message_id: 69fabfa4-6579-4deb-974a-a8a3ad242d93
+            message_id: dab2d04e-bc93-4aa7-82e8-64b3af5887e6
             bap_id: sample-bap-id
             bap_uri: https://bap.example.com
             ttl: PT30S
@@ -2536,7 +2560,7 @@ steps:
                             - code: remaining_quantity
                               value: "35"
                             - code: valid_till
-                              value: 2026-08-23T12:43:11.911Z
+                              value: 2026-08-31T11:27:30.926Z
                             - code: tier
                               value: silver
                     - id: flat150
@@ -2548,7 +2572,7 @@ steps:
                             - code: remaining_quantity
                               value: "50"
                             - code: valid_till
-                              value: 2026-08-23T12:43:11.911Z
+                              value: 2026-08-31T11:27:30.926Z
                             - code: tier
                               value: silver
                     - id: slab1
@@ -2560,7 +2584,7 @@ steps:
                             - code: remaining_purchase_value
                               value: "25700"
                             - code: valid_till
-                              value: 2026-08-23T12:43:11.911Z
+                              value: 2026-08-31T11:27:30.926Z
                             - code: tier
                               value: silver
                     - id: freebie1
@@ -2572,7 +2596,7 @@ steps:
                             - code: remaining_quantity
                               value: "50"
                             - code: valid_till
-                              value: 2026-08-23T12:43:11.911Z
+                              value: 2026-08-31T11:27:30.926Z
                             - code: tier
                               value: silver
                     - id: buy2get3
@@ -2584,7 +2608,7 @@ steps:
                             - code: remaining_quantity
                               value: "50"
                             - code: valid_till
-                              value: 2026-08-23T12:43:11.911Z
+                              value: 2026-08-31T11:27:30.926Z
                             - code: tier
                               value: silver
                   tags:
@@ -2593,7 +2617,7 @@ steps:
                         - code: credit_limit
                           value: "25000.00"
                         - code: valid_till
-                          value: 2026-08-23T12:43:11.911Z
+                          value: 2026-08-31T11:27:30.926Z
                     - code: poc
                       list:
                         - code: name
