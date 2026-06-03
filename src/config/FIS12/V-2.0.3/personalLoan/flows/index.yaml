@@ -1,28 +1,32 @@
 flows:
   - type: playground
     id: Personal_Loan_Offline
+    meta:
+      order: 0
     usecase: PERSONAL_LOAN
     tags:
       - WORKBENCH
       - REPORTABLE
-      - WITH_ACCOUNT_AGGREGATOR
     description: Personal Loan - Offline Verification and Processing
     config:
       $ref: "src/config/FIS12/V-2.0.3/personalLoan/flows/Personal_Loan_Offline.yaml"
 
   - type: playground
     id: Personal_Loan_Single_Redirection
+    meta:
+      order: 1
     usecase: PERSONAL_LOAN
     tags:
       - WORKBENCH
       - REPORTABLE
-      - WITH_ACCOUNT_AGGREGATOR
     description: Personal Loan - Single Redirection Journey
     config:
       $ref: "src/config/FIS12/V-2.0.3/personalLoan/flows/Personal_Loan_Single_Redirection.yaml"
 
   - type: playground
     id: Personal_Loan_Dedupe_Check
+    meta:
+      order: 2
     usecase: PERSONAL_LOAN
     tags:
       - WORKBENCH
@@ -33,33 +37,37 @@ flows:
 
   - type: playground
     id: Personal_Loan_Foreclosure_Offline
+    meta:
+      order: 3
     usecase: PERSONAL_LOAN
     tags:
       - WORKBENCH
       - REPORTABLE
-      - WITH_ACCOUNT_AGGREGATOR
     description: Personal Loan - Loan Foreclosure (Offline)
     config:
       $ref: "src/config/FIS12/V-2.0.3/personalLoan/flows/Personal_Loan_Foreclosure_Offline.yaml"
 
   - type: playground
     id: Personal_Loan_Missed_EMI_Offline
+    meta:
+      order: 4
     usecase: PERSONAL_LOAN
     tags:
       - WORKBENCH
       - REPORTABLE
-      - WITH_ACCOUNT_AGGREGATOR
     description: Personal Loan - Missed EMI (Offline)
     config:
       $ref: "src/config/FIS12/V-2.0.3/personalLoan/flows/Personal_Loan_Missed_EMI_Offline.yaml"
 
   - type: playground
     id: Personal_Loan_Pre_Part_Payment_Offline
+    meta:
+      order: 5
     usecase: PERSONAL_LOAN
     tags:
       - WORKBENCH
       - REPORTABLE
-      - WITH_ACCOUNT_AGGREGATOR
     description: Personal Loan - Pre Part Payment (Offline)
     config:
       $ref: "src/config/FIS12/V-2.0.3/personalLoan/flows/Personal_Loan_Pre_Part_Payment_Offline.yaml"
+
