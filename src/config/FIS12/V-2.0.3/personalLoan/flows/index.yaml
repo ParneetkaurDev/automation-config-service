@@ -70,4 +70,3 @@ flows:
     description: Personal Loan - Pre Part Payment (Offline)
     config:
       $ref: "src/config/FIS12/V-2.0.3/personalLoan/flows/Personal_Loan_Pre_Part_Payment_Offline.yaml"
-
