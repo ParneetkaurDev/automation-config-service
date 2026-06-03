@@ -1499,12 +1499,7 @@ steps:
       requirements: LyoqCiAqIENoZWNrcyBpZiB0aGUgcmVxdWlyZW1lbnRzIGZvciBwcm9jZWVkaW5nIHdpdGggdGhlIEFQSSBjYWxsIGFyZSBtZXQuCiAqIAogKiBAcGFyYW0ge09iamVjdH0gc2Vzc2lvbkRhdGEgLSBEYXRhIGNvbGxlY3RlZCBmcm9tIHByZXZpb3VzIHRyYW5zYWN0aW9uIHN0ZXBzLgogKiAKICogQHJldHVybnMge09iamVjdH0geyB2YWxpZDogYm9vbGVhbiwgY29kZTogbnVtYmVyLCBkZXNjcmlwdGlvbjogc3RyaW5nIH0KICovCmZ1bmN0aW9uIG1lZXRzUmVxdWlyZW1lbnRzKHNlc3Npb25EYXRhKSB7CiAgcmV0dXJuIHsgdmFsaWQ6IHRydWUsIGNvZGU6IDIwMCwgZGVzY3JpcHRpb246ICJSZXF1aXJlbWVudHMgbWV0IiB9Owp9
       defaultPayload: {}
       saveData: {}
-      inputs:
-        - name: form_submission_id
-          label: Enter Form Submission id
-          type: DYNAMIC_FORM
-          payloadField: form_submission_id
-          reference: $.reference_data.single_redirection
+      inputs: {}
       formHtml: PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9ImVuIj4KCjxoZWFkPgogIDxtZXRhIGNoYXJzZXQ9IlVURi04Ij4KICA8bWV0YSBuYW1lPSJ2aWV3cG9ydCIgY29udGVudD0id2lkdGg9ZGV2aWNlLXdpZHRoLCBpbml0aWFsLXNjYWxlPTEuMCI+CiAgPHRpdGxlPktZQyBGb3JtIFN0YXR1czwvdGl0bGU+CiAKPC9oZWFkPgoKCjxib2R5PgoKICAgIDxmb3JtIGlkPSJzaW5nbGVfcmVkaXJlY3Rpb24iIG1ldGhvZD0iUE9TVCIgYWN0aW9uPSI8JT0gYWN0aW9uVXJsICU+Ij4KICAgICAgICA8bGFiZWwgZm9yPSJpZFR5cGUiPgogICAgICAgICAgRm9ybSBTdGF0dXMKICAgICAgICAgIDxzcGFuIGNsYXNzPSJyZXF1aXJlZC1pbmRpY2F0b3IiPio8L3NwYW4+CiAgICAgICAgPC9sYWJlbD4KICAgICAgICA8c2VsZWN0IGlkPSJpZFR5cGUiIG5hbWU9ImlkVHlwZSIgcmVxdWlyZWQ+CiAgICAgICAgICA8b3B0aW9uIHZhbHVlPSIiPi0tIFNlbGVjdCBTdGF0dXMgLS08L29wdGlvbj4KICAgICAgICAgIDxvcHRpb24gdmFsdWU9IkNPTVBMRVRFRCI+Q09NUExFVEVEPC9vcHRpb24+CiAgICAgICAgICA8IS0tIDxvcHRpb24gdmFsdWU9IlJFSkVDVEVEIj5SRUpFQ1RFRDwvb3B0aW9uPiAtLT4KICAgICAgICA8L3NlbGVjdD4KCiAgICAgIDxidXR0b24gdHlwZT0ic3VibWl0IiBjbGFzcz0ic3VibWl0LWJ0biI+U3VibWl0PC9idXR0b24+CiAgICA8L2Zvcm0+Cgo8L2JvZHk+Cgo8L2h0bWw+
     examples:
       - name: example for dynamic_form
