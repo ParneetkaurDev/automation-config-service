@@ -10,7 +10,7 @@ transaction_data:
   bpp_id: sample-bpp-id
   bpp_uri: https://bpp.example.com
 steps:
-  - $ref: "./select.yaml" 
+  - $ref: "src/config/RETeB2B/v-1.2.5/EB2B/flows/select.yaml" 
   - api: on_select
     action_id: on_select
     owner: BPP
