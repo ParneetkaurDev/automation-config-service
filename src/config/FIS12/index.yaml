@@ -41,8 +41,8 @@ versions:
   - id: 2.3.0
     reporting: false
     usecase:
-      - name: BUSINESS_LOAN
-        flows: "./V-2.3.0/business-loans/flows/index.yaml"
+      # - name: BUSINESS_LOAN
+      #   flows: "./V-2.3.0/business-loans/flows/index.yaml"
       - name: LAMF_LOAN
         flows: "./V-2.3.0/lamf/flows/index.yaml"  
     supportedActions:
