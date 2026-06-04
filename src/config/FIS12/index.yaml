@@ -46,9 +46,4 @@ versions:
       - name: LAMF_LOAN
         flows: "./V-2.3.0/lamf/flows/index.yaml"  
     supportedActions:
-      $ref: "src/config/FIS12/V-2.3.0/supportedActions/index.yaml"    
-
-
-
-
-     
+      $ref: "src/config/FIS12/V-2.3.0/supportedActions/index.yaml"
