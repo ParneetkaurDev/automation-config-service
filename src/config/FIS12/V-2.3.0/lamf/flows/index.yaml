@@ -87,4 +87,3 @@ flows:
     description: LAMF Credit Line with MFC
     config:
       $ref:  "src/config/FIS12/V-2.3.0/lamf/flows/lamf_credit_line_with_mfc.yaml"        
- 
