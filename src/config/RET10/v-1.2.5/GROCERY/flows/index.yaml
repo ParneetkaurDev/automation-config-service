@@ -2189,7 +2189,7 @@ flows:
         owner: BPP
         expect: false
         description: Seller Accepts confirmation
-      - key: on_status_pending
+      - key: on_status_accepted
         type: on_status
         unsolicited: true
         pair: null
