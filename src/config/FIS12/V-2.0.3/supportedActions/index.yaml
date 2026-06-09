@@ -3,7 +3,7 @@ supportedActions:
   search: ["on_search"]
   on_search: ["select"]
   select: ["on_select", "select"]
-  on_select: ["init", "select", "on_status"]
+  on_select: ["init", "select", "on_status", "confirm"]
   init: ["on_init"]
   on_init: ["confirm", "init", "on_status"]
   confirm: ["on_confirm"]
@@ -37,7 +37,7 @@ apiProperties:
     transaction_partner: ["init"]
   confirm:
     async_predecessor: null
-    transaction_partner: ["on_init"]
+    transaction_partner: []
   on_confirm:
     async_predecessor: "confirm"
     transaction_partner: ["confirm"]
