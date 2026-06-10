@@ -709,7 +709,7 @@ flows:
         owner: BPP
         expect: false
   - id: Intercity(Bus)_Rating(Success)
-    tags: ["WORKBENCH", "MANDATORY"]
+    tags: ["WORKBENCH"]
     description: Intercity(Bus) - Rating(Success)
     sequence:
       - key: search_BUS_201
@@ -843,7 +843,7 @@ flows:
         owner: BAP
         expect: false
   - id: Intercity(Bus)_Rating(Error Flow)
-    tags: ["WORKBENCH", "MANDATORY"]
+    tags: ["WORKBENCH"]
     description: Intercity(Bus) - Rating(Error Flow)
     sequence:
       - key: search_BUS_201
@@ -1126,7 +1126,7 @@ flows:
 
   # ----------------------------------IGM(1.0.0)--------------------------------
   - id: Intercity(Bus)_Station_Code_Based_Flow_WITH_IGM(v-1.0.0)
-    tags: ["WORKBENCH", "MANDATORY","PRAAMAN", "REPORTABLE"]
+    tags: ["WORKBENCH","PRAAMAN", "REPORTABLE"]
     description: Intercity(Bus) - Station Code Based Flow
     sequence:
       - key: search_BUS_201

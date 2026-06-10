@@ -10,6 +10,10 @@ flows:
         owner: BAP
         expect: true
         input:
+          - name: city_code
+            label: Enter the city code
+            type: text
+            payloadField: $.context.city
           - label: Options
             name: options
             type: checkbox
@@ -758,6 +762,170 @@ flows:
         pair: null
         owner: BAP
         expect: false
+  - id: REPLACEMENT_FLOW
+    description: Retail 1.2.5 (Replacement)
+    sequence:
+      - key: select
+        type: select
+        unsolicited: false
+        pair: on_select
+        owner: BAP
+        expect: true
+        description: BAP select the item
+        input:
+          - label: Items
+            name: items
+            type: nestedSelect
+          - name: providerId
+            label: Enter provider id
+            type: text
+          - name: locationId
+            label: Enter location id
+            type: text
+          - name: gps
+            label: Enter gps coordinates
+            type: text
+            default: 77.1976,28.5671
+          - name: area_code
+            label: Enter area code
+            type: text
+            default: "110088"
+      - key: on_select
+        type: on_select
+        unsolicited: false
+        pair: null
+        owner: BPP
+        expect: false
+        description:
+          BPP returns item breakup when item is in stock and offer applied
+          (if any)
+      - key: init
+        type: init
+        unsolicited: false
+        pair: on_init
+        owner: BAP
+        expect: false
+        description: Buyer initiate the product and send the updated fulfillment id
+      - key: on_init
+        type: on_init
+        unsolicited: false
+        pair: null
+        owner: BPP
+        expect: false
+        description: Respond to init
+      - key: confirm
+        type: confirm
+        unsolicited: false
+        pair: on_confirm
+        owner: BAP
+        expect: false
+        description: Buyer confirms product
+      - key: on_confirm
+        type: on_confirm
+        unsolicited: false
+        pair: null
+        owner: BPP
+        expect: false
+        description: Seller Accepts confirmation
+      - key: on_status_pending
+        type: on_status
+        unsolicited: true
+        pair: null
+        owner: BPP
+        expect: false
+        description: Status updates - order accepted
+      - key: on_status_packed
+        type: on_status
+        unsolicited: true
+        pair: null
+        owner: BPP
+        expect: false
+        description: Status updates - order packed
+      - key: on_status_order_picked
+        type: on_status
+        unsolicited: true
+        pair: null
+        owner: BPP
+        expect: false
+        description: Status updates - order picked up
+      - key: on_status_at_delivery
+        type: on_status
+        unsolicited: true
+        pair: null
+        owner: BPP
+        expect: false
+        description: Status updates - order out for delivery
+      - key: on_status_order_delivered
+        type: on_status
+        unsolicited: true
+        pair: null
+        owner: BPP
+        expect: false
+        description: Status updates - order delivered
+      - key: update_reverse_qc_rep
+        type: update
+        unsolicited: false
+        pair: on_update_interim_reverseQc
+        owner: BAP
+        expect: false
+        description: Buyer updates product
+      - key: on_update_interim_reverseQc
+        type: on_update
+        unsolicited: false
+        pair: null
+        owner: BPP
+        expect: false
+        description: Seller Accepts update request
+      - key: on_update_return_approved
+        type: on_update
+        unsolicited: true
+        pair: null
+        owner: BPP
+        expect: false
+        description: Update request approved
+      - key: on_update_return_picked_rep
+        type: on_update
+        unsolicited: true
+        pair: null
+        owner: BPP
+        expect: false
+        description: Update request picked
+      - key: on_update_return_delivered_rep
+        type: on_update
+        unsolicited: true
+        pair: null
+        owner: BPP
+        expect: false
+        description: Update request delivered
+      - key: on_status_packed_rep
+        type: on_status
+        unsolicited: true
+        pair: null
+        owner: BPP
+        expect: false
+        description: Status updates - order packed for replacement
+      - key: on_status_picked_rep
+        type: on_status
+        unsolicited: true
+        pair: null
+        owner: BPP
+        expect: false
+        description: Status updates - order picked up for replacement
+      - key: on_status_out_for_delivery_rep
+        type: on_status
+        unsolicited: true
+        pair: null
+        owner: BPP
+        expect: false
+        description: Status updates - order out for delivery for replacement
+      - key: on_status_order_delivered_rep
+        type: on_status
+        unsolicited: true
+        pair: null
+        owner: BPP
+        expect: false
+        description: Status updates - order delivered for replacement
+  
   - id: FORCE_CANCEL
     description: Retail 1.2.5 (Buyer Side Order Cancellation)
     sequence:

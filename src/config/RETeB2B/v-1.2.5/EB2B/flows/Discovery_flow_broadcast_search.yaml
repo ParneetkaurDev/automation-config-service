@@ -2,6 +2,9 @@ meta:
   domain: ONDC:RETeB2B
   version: 1.2.5
   flowId: Discovery_flow_broadcast_search
+  description: Buyer Search & Quotation
+  flowName: Discovery flow broadcast search
+  use_case_id: eB2B
 transaction_data:
   transaction_id: 9e8654ed-0dd3-4315-81f2-814780f13e79
   latest_timestamp: 1970-01-01T00:00:00.000Z
@@ -71,6 +74,7 @@ steps:
               type: string
               description: Enter the city code
               minLength: 1
+              default: std:080
             bap_features:
               type: object
               properties:
@@ -93,6 +97,48 @@ steps:
           required:
             - city
           additionalProperties: false
+    examples:
+      - name: example for search
+        payload:
+          context:
+            domain: ONDC:RETeB2B
+            action: search
+            timestamp: 2026-06-02T11:27:26.342Z
+            transaction_id: 9e8654ed-0dd3-4315-81f2-814780f13e79
+            message_id: 78db8257-ded3-40b9-9c7b-168100359379
+            bap_id: sample-bap-id
+            bap_uri: https://bap.example.com
+            ttl: PT30S
+            country: IND
+            city: std:080
+            core_version: 1.2.5
+          message:
+            intent:
+              category:
+                id: Energy and Soft Drinks
+              fulfillment:
+                type: Delivery
+              payment:
+                "@ondc/org/buyer_app_finder_fee_type": percent
+                "@ondc/org/buyer_app_finder_fee_amount": "3.54"
+              tags:
+                - code: bap_terms
+                  list:
+                    - code: static_terms
+                      value: ""
+                    - code: static_terms_new
+                      value: https://github.com/ONDC-Official/NP-Static-Terms/buyerNP_BNP/1.0/tc.pdf
+                    - code: effective_date
+                      value: 2026-06-12T11:27:26.347Z
+                - code: bap_features
+                  list:
+                    - code: 01A
+                      value: yes
+                    - code: "0091"
+                      value: yes
+        type: request
+        description: Category-level broadcast search for regional distributor discovery
+          and publishing of buyer static terms
   - api: on_search
     action_id: on_search
     owner: BPP
@@ -102,8 +148,8 @@ steps:
       items, and details matching the buyer’s search criteria for product
       discovery.
     mock:
-      generate: LyoqCiAqIEdlbmVyYXRlcyB0aGUgbW9jayBwYXlsb2FkIGZvciBhbiBBUEkgY2FsbCBpbiB0aGUgdHJhbnNhY3Rpb24gZmxvdy4KICogVGhpcyBmdW5jdGlvbiBhbGxvd3MgY3VzdG9taXphdGlvbiBvZiB0aGUgZGVmYXVsdCBwYXlsb2FkIHVzaW5nIHNlc3Npb24gZGF0YQogKiBmcm9tIHByZXZpb3VzIHN0ZXBzIGFuZCB1c2VyIGlucHV0cy4KICogCiAqIEBwYXJhbSB7T2JqZWN0fSBkZWZhdWx0UGF5bG9hZCAtIFRoZSBiYXNlIHBheWxvYWQgb2JqZWN0IHdpdGggY29udGV4dCBhbHJlYWR5IHBvcHVsYXRlZC4KICogQHBhcmFtIHtPYmplY3R9IHNlc3Npb25EYXRhIC0gRGF0YSBjb2xsZWN0ZWQgZnJvbSBwcmV2aW91cyB0cmFuc2FjdGlvbiBzdGVwcy4KICogQHBhcmFtIHtPYmplY3R9IHNlc3Npb25EYXRhLnVzZXJfaW5wdXRzIC0gVXNlci1wcm92aWRlZCBpbnB1dCB2YWx1ZXMgZm9yIHRoaXMgc3RlcC4KICogQHBhcmFtIHsqfSBzZXNzaW9uRGF0YS5ba2V5XSAtIEFueSBzYXZlZCBkYXRhIGZyb20gcHJldmlvdXMgc3RlcHMgKGRlZmluZWQgaW4gc2F2ZURhdGEgY29uZmlnKS4KICogCiAqIEByZXR1cm5zIHtPYmplY3R9IFRoZSBnZW5lcmF0ZWQgcGF5bG9hZCBvYmplY3QgdG8gYmUgc2VudCBpbiB0aGUgQVBJIHJlcXVlc3QuCiAqLwphc3luYyBmdW5jdGlvbiBnZW5lcmF0ZShkZWZhdWx0UGF5bG9hZCwgc2Vzc2lvbkRhdGEpIHsKICBjb25zdCBjaXR5ID0gc2Vzc2lvbkRhdGE/LmNpdHk/LlswXTsKCiAgaWYgKGNpdHkpIHsKICAgIGRlZmF1bHRQYXlsb2FkLmNvbnRleHQuY2l0eSA9IGNpdHk7CiAgICBjb25zb2xlLmxvZygiQ2l0eSBzZXQgdG86IiwgY2l0eSk7CiAgfQogIGRlZmF1bHRQYXlsb2FkLmNvbnRleHQubWVzc2FnZV9pZCA9IHNlc3Npb25EYXRhLmxhdGVzdE1lc3NhZ2VfaWRbMF0KICAgIGFwcGx5RHluYW1pY1RpbWVzdGFtcHMoZGVmYXVsdFBheWxvYWQpOwoKCiAgcmV0dXJuIGRlZmF1bHRQYXlsb2FkOwp9CiAKCgoKCgoKCgoKCgoKCgoKCgo=
-      validate: LyoqCiAqIFZhbGlkYXRlcyB0aGUgaW5jb21pbmcgcmVxdWVzdCBwYXlsb2FkIGZvciBhbiBBUEkgY2FsbCBpbiB0aGUgdHJhbnNhY3Rpb24gZmxvdy4KICogCiAqIEBwYXJhbSB7T2JqZWN0fSB0YXJnZXRQYXlsb2FkIC0gVGhlIGluY29taW5nIHJlcXVlc3QgcGF5bG9hZCB0byB2YWxpZGF0ZS4KICogQHBhcmFtIHtPYmplY3R9IHNlc3Npb25EYXRhIC0gRGF0YSBjb2xsZWN0ZWQgZnJvbSBwcmV2aW91cyB0cmFuc2FjdGlvbiBzdGVwcy4KICogCiAqIEByZXR1cm5zIHtPYmplY3R9IHsgdmFsaWQ6IGJvb2xlYW4sIGNvZGU6IG51bWJlciwgZGVzY3JpcHRpb246IHN0cmluZyB9CiAqLwpmdW5jdGlvbiB2YWxpZGF0ZSh0YXJnZXRQYXlsb2FkLCBzZXNzaW9uRGF0YSkgewogIHJldHVybiB7IHZhbGlkOiB0cnVlLCBjb2RlOiAyMDAsIGRlc2NyaXB0aW9uOiAiVmFsaWQgcmVxdWVzdCIgfTsKfQ==
+      generate: LyoqCiAqIEdlbmVyYXRlcyB0aGUgbW9jayBwYXlsb2FkIGZvciBhbiBBUEkgY2FsbCBpbiB0aGUgdHJhbnNhY3Rpb24gZmxvdy4KICogVGhpcyBmdW5jdGlvbiBhbGxvd3MgY3VzdG9taXphdGlvbiBvZiB0aGUgZGVmYXVsdCBwYXlsb2FkIHVzaW5nIHNlc3Npb24gZGF0YQogKiBmcm9tIHByZXZpb3VzIHN0ZXBzIGFuZCB1c2VyIGlucHV0cy4KICoKICogQHBhcmFtIHtPYmplY3R9IGRlZmF1bHRQYXlsb2FkIC0gVGhlIGJhc2UgcGF5bG9hZCBvYmplY3Qgd2l0aCBjb250ZXh0IGFscmVhZHkgcG9wdWxhdGVkLgogKiBAcGFyYW0ge09iamVjdH0gc2Vzc2lvbkRhdGEgLSBEYXRhIGNvbGxlY3RlZCBmcm9tIHByZXZpb3VzIHRyYW5zYWN0aW9uIHN0ZXBzLgogKiBAcGFyYW0ge09iamVjdH0gc2Vzc2lvbkRhdGEudXNlcl9pbnB1dHMgLSBVc2VyLXByb3ZpZGVkIGlucHV0IHZhbHVlcyBmb3IgdGhpcyBzdGVwLgogKiBAcGFyYW0geyp9IHNlc3Npb25EYXRhLltrZXldIC0gQW55IHNhdmVkIGRhdGEgZnJvbSBwcmV2aW91cyBzdGVwcyAoZGVmaW5lZCBpbiBzYXZlRGF0YSBjb25maWcpLgogKgogKiBAcmV0dXJucyB7T2JqZWN0fSBUaGUgZ2VuZXJhdGVkIHBheWxvYWQgb2JqZWN0IHRvIGJlIHNlbnQgaW4gdGhlIEFQSSByZXF1ZXN0LgogKi8KYXN5bmMgZnVuY3Rpb24gZ2VuZXJhdGUoZGVmYXVsdFBheWxvYWQsIHNlc3Npb25EYXRhKSB7CiAgY29uc3QgY2l0eSA9IHNlc3Npb25EYXRhPy5jaXR5Py5bMF07CgogIGlmIChjaXR5KSB7CiAgICBkZWZhdWx0UGF5bG9hZC5jb250ZXh0LmNpdHkgPSBjaXR5OwogICAgY29uc29sZS5sb2coIkNpdHkgc2V0IHRvOiIsIGNpdHkpOwogIH0KCiAgZGVmYXVsdFBheWxvYWQuY29udGV4dC5tZXNzYWdlX2lkID0gc2Vzc2lvbkRhdGEubGF0ZXN0TWVzc2FnZV9pZFswXTsKICBhcHBseUR5bmFtaWNUaW1lc3RhbXBzKGRlZmF1bHRQYXlsb2FkKTsKCiAgZnVuY3Rpb24gZ2V0VG9kYXlTdGFydFVUQygpIHsKICAgIGNvbnN0IGQgPSBuZXcgRGF0ZSgpOwogICAgcmV0dXJuIG5ldyBEYXRlKERhdGUuVVRDKGQuZ2V0VVRDRnVsbFllYXIoKSwgZC5nZXRVVENNb250aCgpLCBkLmdldFVUQ0RhdGUoKSwgMCwgMCwgMCwgMCkpLnRvSVNPU3RyaW5nKCk7CiAgfQoKICBmdW5jdGlvbiBnZXRUb2RheVBsdXM1RW5kVVRDKCkgewogICAgY29uc3QgZCA9IG5ldyBEYXRlKCk7CiAgICByZXR1cm4gbmV3IERhdGUoRGF0ZS5VVEMoZC5nZXRVVENGdWxsWWVhcigpLCBkLmdldFVUQ01vbnRoKCksIGQuZ2V0VVRDRGF0ZSgpICsgNSwgMjMsIDU5LCA1OSwgOTk5KSkudG9JU09TdHJpbmcoKTsKICB9CgogIGNvbnN0IG9mZmVyU3RhcnQgPSBnZXRUb2RheVN0YXJ0VVRDKCk7CiAgY29uc3Qgb2ZmZXJFbmQgPSBnZXRUb2RheVBsdXM1RW5kVVRDKCk7CgogIGZ1bmN0aW9uIHVwZGF0ZU9mZmVyUmFuZ2VzKG5vZGUpIHsKICAgIGlmICghbm9kZSB8fCB0eXBlb2Ygbm9kZSAhPT0gIm9iamVjdCIpIHJldHVybjsKCiAgICBpZiAoQXJyYXkuaXNBcnJheShub2RlKSkgewogICAgICBub2RlLmZvckVhY2godXBkYXRlT2ZmZXJSYW5nZXMpOwogICAgICByZXR1cm47CiAgICB9CgogICAgZm9yIChjb25zdCBrZXkgb2YgT2JqZWN0LmtleXMobm9kZSkpIHsKICAgICAgaWYgKGtleSA9PT0gIm9mZmVycyIgJiYgQXJyYXkuaXNBcnJheShub2RlW2tleV0pKSB7CiAgICAgICAgbm9kZVtrZXldLmZvckVhY2goKG9mZmVyKSA9PiB7CiAgICAgICAgICBpZiAob2ZmZXI/LnRpbWU/LnJhbmdlKSB7CiAgICAgICAgICAgIG9mZmVyLnRpbWUucmFuZ2Uuc3RhcnQgPSBvZmZlclN0YXJ0OwogICAgICAgICAgICBvZmZlci50aW1lLnJhbmdlLmVuZCA9IG9mZmVyRW5kOwogICAgICAgICAgfQogICAgICAgIH0pOwogICAgICB9IGVsc2UgewogICAgICAgIHVwZGF0ZU9mZmVyUmFuZ2VzKG5vZGVba2V5XSk7CiAgICAgIH0KICAgIH0KICB9CgogIGZ1bmN0aW9uIGdldE5leHQ2RGF0ZXNVVEMoKSB7CiAgICBjb25zdCBkYXRlcyA9IFtdOwogICAgY29uc3QgYmFzZSA9IG5ldyBEYXRlKCk7CgogICAgZm9yIChsZXQgaSA9IDA7IGkgPD0gNTsgaSsrKSB7CiAgICAgIGNvbnN0IGQgPSBuZXcgRGF0ZShiYXNlKTsKICAgICAgZC5zZXRVVENEYXRlKGQuZ2V0VVRDRGF0ZSgpICsgaSk7CiAgICAgIGRhdGVzLnB1c2goZC50b0lTT1N0cmluZygpLnNsaWNlKDAsIDEwKSk7CiAgICB9CgogICAgcmV0dXJuIGRhdGVzOwogIH0KCiAgZnVuY3Rpb24gdXBkYXRlSG9saWRheXMobm9kZSkgewogICAgaWYgKCFub2RlIHx8IHR5cGVvZiBub2RlICE9PSAib2JqZWN0IikgcmV0dXJuOwoKICAgIGlmIChBcnJheS5pc0FycmF5KG5vZGUpKSB7CiAgICAgIG5vZGUuZm9yRWFjaCh1cGRhdGVIb2xpZGF5cyk7CiAgICAgIHJldHVybjsKICAgIH0KCiAgICBmb3IgKGNvbnN0IGtleSBvZiBPYmplY3Qua2V5cyhub2RlKSkgewogICAgICBpZiAoa2V5ID09PSAiaG9saWRheXMiICYmIEFycmF5LmlzQXJyYXkobm9kZVtrZXldKSkgewogICAgICAgIG5vZGVba2V5XSA9IFsuLi5ob2xpZGF5c107CiAgICAgIH0gZWxzZSB7CiAgICAgICAgdXBkYXRlSG9saWRheXMobm9kZVtrZXldKTsKICAgICAgfQogICAgfQogIH0KCiAgY29uc3QgaG9saWRheXMgPSBnZXROZXh0NkRhdGVzVVRDKCk7CgogIHVwZGF0ZU9mZmVyUmFuZ2VzKGRlZmF1bHRQYXlsb2FkKTsKICB1cGRhdGVIb2xpZGF5cyhkZWZhdWx0UGF5bG9hZCk7CgogIHJldHVybiBkZWZhdWx0UGF5bG9hZDsKfQ==
+      validate: LyoqCiAqIFZhbGlkYXRlcyB0aGUgaW5jb21pbmcgcmVxdWVzdCBwYXlsb2FkIGZvciBhbiBBUEkgY2FsbCBpbiB0aGUgdHJhbnNhY3Rpb24gZmxvdy4KICogCiAqIEBwYXJhbSB7T2JqZWN0fSB0YXJnZXRQYXlsb2FkIC0gVGhlIGluY29taW5nIHJlcXVlc3QgcGF5bG9hZCB0byB2YWxpZGF0ZS4KICogQHBhcmFtIHtPYmplY3R9IHNlc3Npb25EYXRhIC0gRGF0YSBjb2xsZWN0ZWQgZnJvbSBwcmV2aW91cyB0cmFuc2FjdGlvbiBzdGVwcy4KICogCiAqIEByZXR1cm5zIHtPYmplY3R9IHsgdmFsaWQ6IGJvb2xlYW4sIGNvZGU6IG51bWJlciwgZGVzY3JpcHRpb246IHN0cmluZyB9CiAqLwpmdW5jdGlvbiB2YWxpZGF0ZSh0YXJnZXRQYXlsb2FkLCBzZXNzaW9uRGF0YSkgewogICAgY29uc3QgcHJvdmlkZXJzID0KICAgICAgICB0YXJnZXRQYXlsb2FkPy5tZXNzYWdlPy5jYXRhbG9nPy5bImJwcC9wcm92aWRlcnMiXTsKCiAgICBpZiAoIUFycmF5LmlzQXJyYXkocHJvdmlkZXJzKSkgewogICAgICAgIHJldHVybiB7CiAgICAgICAgICAgIHZhbGlkOiBmYWxzZSwKICAgICAgICAgICAgY29kZTogNDAwLAogICAgICAgICAgICBkZXNjcmlwdGlvbjogInByb3ZpZGVycyBtdXN0IGJlIGFuIGFycmF5IiwKICAgICAgICB9OwogICAgfQoKCiAgICBmb3IgKGNvbnN0IHByb3ZpZGVyIG9mIHByb3ZpZGVycykgewogICAgICAgIGl0ZW1DYXRlZ29yaWVzTWFwID0gbmV3IFNldCgpCiAgICAgICAgaXRlbUJyYW5kQXJydGlidXRlVGFnID0gbmV3IFNldCgpCiAgICAgICAgZm9yICggY29uc3QgaXRlbSBvZiBwcm92aWRlci5pdGVtcyApewogICAgICAgICAgICBpZighaXRlbT8uY2F0ZWdvcnlfaWQpewogICAgICAgICAgICAgICAgcmV0dXJuIHsKICAgICAgICAgICAgICAgICAgICB2YWxpZDogZmFsc2UsCiAgICAgICAgICAgICAgICAgICAgY29kZTogNDAwLAogICAgICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBgcHJvdmlkZXIgJHtwcm92aWRlcj8uaWQgfHwgIiJ9IGl0ZW0gJHtpdGVtPy5pZCB8fCAiIn0gY2F0ZWdvcnlfaWQgaXMgcmVxdWlyZWRgLAogICAgICAgICAgICAgICAgfTsKICAgICAgICAgICAgfQogICAgICAgICAgICBpdGVtQ2F0ZWdvcmllc01hcC5hZGQoaXRlbS5jYXRlZ29yeV9pZCkKICAgICAgICAgICAgaWYoaXRlbT8udGFncyl7CiAgICAgICAgICAgICAgICBmb3IoIGNvbnN0IHRhZyBvZiBpdGVtLnRhZ3MpewogICAgICAgICAgICAgICAgICAgIGlmKHRhZz8uY29kZSA9PT0gImF0dHJpYnV0ZSIpewogICAgICAgICAgICAgICAgICAgICAgICBmb3IoIGNvbnN0IHZhbHVlIG9mIHRhZy5saXN0KXsKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmKHZhbHVlLmNvZGUgPT09ICJicmFuZCIpewogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGl0ZW1CcmFuZEFycnRpYnV0ZVRhZy5hZGQodmFsdWUudmFsdWUpCiAgICAgICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICAgICAgY29uc3QgdGFncyA9IHByb3ZpZGVyPy50YWdzOwoKICAgICAgICBpZiAoIUFycmF5LmlzQXJyYXkodGFncykgfHwgdGFncy5sZW5ndGggPT09IDApIHsKICAgICAgICAgICAgcmV0dXJuIHsKICAgICAgICAgICAgICAgIHZhbGlkOiBmYWxzZSwKICAgICAgICAgICAgICAgIGNvZGU6IDQwMCwKICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBgcHJvdmlkZXIgJHtwcm92aWRlcj8uaWQgfHwgIiJ9IHRhZ3MgbXVzdCBiZSBhIG5vbi1lbXB0eSBhcnJheWAsCiAgICAgICAgICAgIH07CiAgICAgICAgfQoKICAgICAgICBjb25zdCBicmFuZEltYWdlcyA9IHRhZ3MuZmluZCgKICAgICAgICAgICAgKGl0ZW0pID0+IGl0ZW0/LmNvZGUgPT09ICJicmFuZF9pbWFnZXMiCiAgICAgICAgKTsKICAgICAgICBmb3IgKHRhZyBvZiB0YWdzKXsKICAgICAgICAgICAgaWYgKHRhZy5jb2RlID09PSAic2VydmljZWFiaWxpdHkiKSB7CiAgICAgICAgICAgICAgICBmb3IgKCBjb25zdCB2YWx1ZSBvZiB0YWcubGlzdCl7CiAgICAgICAgICAgICAgICAgICAgaWYodmFsdWUuY29kZSA9PT0gImNhdGVnb3J5Iil7CiAgICAgICAgICAgICAgICAgICAgICAgLy9pdCBzaG91bGQgZXhpc3QgaW4gaXRlbUNhdGVvZ3J5TWFwCiAgICAgICAgICAgICAgICAgICAgICAgaWYgKCFpdGVtQ2F0ZWdvcmllc01hcC5oYXModmFsdWUudmFsdWUpICYmIHZhbHVlLnZhbHVlICE9PSAiKiIpewogICAgICAgICAgICAgICAgICAgICAgICByZXR1cm4gewogICAgICAgICAgICAgICAgICAgICAgICAgICAgdmFsaWQ6IGZhbHNlLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgY29kZTogNDAwLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IGBwcm92aWRlciAke3Byb3ZpZGVyPy5pZCB8fCAiIn0gc2VydmljZWFiaWxpdHkgY2F0ZWdvcnkgJHt2YWx1ZS52YWx1ZX0gaXMgbm90IG1hdGNoaW5nIHdpdGggaXRlbXMgY2F0ZWdvcnlgLAogICAgICAgICAgICAgICAgICAgICAgICB9OwogICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICAgICAgaWYgKCFicmFuZEltYWdlcykgewogICAgICAgICAgICByZXR1cm4gewogICAgICAgICAgICAgICAgdmFsaWQ6IGZhbHNlLAogICAgICAgICAgICAgICAgY29kZTogNDAwLAogICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IGBwcm92aWRlciAke3Byb3ZpZGVyPy5pZCB8fCAiIn0gYnJhbmRfaW1hZ2VzIGNvbmZpZ3VyYXRpb24gaXMgcmVxdWlyZWRgLAogICAgICAgICAgICB9OwogICAgICAgIH0KCiAgICAgICAgaWYgKAogICAgICAgICAgICAhQXJyYXkuaXNBcnJheShicmFuZEltYWdlcy5saXN0KSB8fAogICAgICAgICAgICBicmFuZEltYWdlcy5saXN0Lmxlbmd0aCA9PT0gMAogICAgICAgICkgewogICAgICAgICAgICByZXR1cm4gewogICAgICAgICAgICAgICAgdmFsaWQ6IGZhbHNlLAogICAgICAgICAgICAgICAgY29kZTogNDAwLAogICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IGBwcm92aWRlciAke3Byb3ZpZGVyPy5pZCB8fCAiIn0gYnJhbmRfaW1hZ2VzIGxpc3QgbXVzdCBub3QgYmUgZW1wdHlgLAogICAgICAgICAgICB9OwogICAgICAgIH0KCiAgICAgICAgZm9yIChsZXQgaSA9IDA7IGkgPCBicmFuZEltYWdlcy5saXN0Lmxlbmd0aDsgaSsrKSB7CiAgICAgICAgICAgIGNvbnN0IGl0ZW0gPSBicmFuZEltYWdlcy5saXN0W2ldOwoKICAgICAgICAgICAgaWYgKAogICAgICAgICAgICAgICAgIWl0ZW0gfHwKICAgICAgICAgICAgICAgIHR5cGVvZiBpdGVtLmNvZGUgIT09ICJzdHJpbmciIHx8CiAgICAgICAgICAgICAgICBpdGVtLmNvZGUudHJpbSgpID09PSAiIgogICAgICAgICAgICApIHsKICAgICAgICAgICAgICAgIHJldHVybiB7CiAgICAgICAgICAgICAgICAgICAgdmFsaWQ6IGZhbHNlLAogICAgICAgICAgICAgICAgICAgIGNvZGU6IDQwMCwKICAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogYHByb3ZpZGVyICR7cHJvdmlkZXI/LmlkIHx8ICIifSBpbnZhbGlkIG9yIG1pc3NpbmcgY29kZSBhdCBpbmRleCAke2l9YCwKICAgICAgICAgICAgICAgIH07CiAgICAgICAgICAgIH0KCiAgICAgICAgICAgIGlmICgKICAgICAgICAgICAgICAgIHR5cGVvZiBpdGVtLnZhbHVlICE9PSAic3RyaW5nIiB8fAogICAgICAgICAgICAgICAgaXRlbS52YWx1ZS50cmltKCkgPT09ICIiCiAgICAgICAgICAgICkgewogICAgICAgICAgICAgICAgcmV0dXJuIHsKICAgICAgICAgICAgICAgICAgICB2YWxpZDogZmFsc2UsCiAgICAgICAgICAgICAgICAgICAgY29kZTogNDAwLAogICAgICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBgcHJvdmlkZXIgJHtwcm92aWRlcj8uaWQgfHwgIiJ9IGludmFsaWQgb3IgbWlzc2luZyB2YWx1ZSBhdCBpbmRleCAke2l9YCwKICAgICAgICAgICAgICAgIH07CiAgICAgICAgICAgIH0KICAgICAgICAgICAgaWYgKCFpdGVtQnJhbmRBcnJ0aWJ1dGVUYWcuaGFzKGl0ZW0uY29kZSkpIHsKICAgICAgICAgICAgICAgIHJldHVybiB7CiAgICAgICAgICAgICAgICAgICAgdmFsaWQ6IGZhbHNlLAogICAgICAgICAgICAgICAgICAgIGNvZGU6IDQwMCwKICAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogYGJyYW5kIGltYWcgIiR7aXRlbS5jb2RlfSIgZG9lcyBub3QgbWF0Y2ggd2l0aCBpdGVtcyBicmFuZCBhdHRyaWJ1dGVgCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICB9CgogICAgcmV0dXJuIHsKICAgICAgICB2YWxpZDogdHJ1ZSwKICAgICAgICBjb2RlOiAyMDAsCiAgICAgICAgZGVzY3JpcHRpb246ICJWYWxpZCByZXF1ZXN0IiwKICAgIH07Cn0=
       requirements: LyoqCiAqIENoZWNrcyBpZiB0aGUgcmVxdWlyZW1lbnRzIGZvciBwcm9jZWVkaW5nIHdpdGggdGhlIEFQSSBjYWxsIGFyZSBtZXQuCiAqIAogKiBAcGFyYW0ge09iamVjdH0gc2Vzc2lvbkRhdGEgLSBEYXRhIGNvbGxlY3RlZCBmcm9tIHByZXZpb3VzIHRyYW5zYWN0aW9uIHN0ZXBzLgogKiAKICogQHJldHVybnMge09iamVjdH0geyB2YWxpZDogYm9vbGVhbiwgY29kZTogbnVtYmVyLCBkZXNjcmlwdGlvbjogc3RyaW5nIH0KICovCmZ1bmN0aW9uIG1lZXRzUmVxdWlyZW1lbnRzKHNlc3Npb25EYXRhKSB7CiAgcmV0dXJuIHsgdmFsaWQ6IHRydWUsIGNvZGU6IDIwMCwgZGVzY3JpcHRpb246ICJSZXF1aXJlbWVudHMgbWV0IiB9Owp9
       defaultPayload:
         context:
@@ -131,8 +177,6 @@ steps:
                   list:
                     - code: np_type
                       value: MSN
-                    - code: accept_bap_terms
-                      value: Y
             bpp/providers:
               - id: P1
                 time:
@@ -160,8 +204,8 @@ steps:
                       timestamp: 2025-01-08T07:30:30.000Z
                       schedule:
                         holidays:
-                          - 2025-01-26T00:00:00.000Z
-                          - 2025-08-15T00:00:00.000Z
+                          - 2026-05-26T00:00:00.000Z
+                          - 2026-08-15T00:00:00.000Z
                     gps: 12.9675,77.7496
                     address:
                       locality: Jayanagar
@@ -175,8 +219,8 @@ steps:
                       timestamp: 2025-01-08T07:30:30.000Z
                       schedule:
                         holidays:
-                          - 2025-01-26T00:00:00.000Z
-                          - 2025-08-15T00:00:00.000Z
+                          - 2026-06-26T00:00:00.000Z
+                          - 2026-08-15T00:00:00.000Z
                     gps: 12.9352,77.6245
                     address:
                       locality: BTM Layout
@@ -485,6 +529,14 @@ steps:
                       other_FSSAI_license_no: "12345678901234"
                       importer_FSSAI_license_no: ""
                     tags:
+                      - code: pack_config
+                        list:
+                          - code: unit
+                            value: "1"
+                          - code: set
+                            value: "10"
+                          - code: case
+                            value: "40"
                       - code: origin
                         list:
                           - code: country
@@ -1113,6 +1165,14 @@ steps:
                         value: "true"
                       - code: type
                         value: new
+                  - code: brand_images
+                    list:
+                      - code: Pepsi
+                        value: https://cdn.example.com/brands/pepsi.png
+                      - code: Ashirwad
+                        value: https://cdn.example.com/brands/Ashirwad.png
+                      - code: Fortune
+                        value: https://cdn.example.com/brands/fortune.png
                   - code: retailer_info_required
                     list:
                       - code: customer_id
@@ -1140,6 +1200,1062 @@ steps:
         payload_list: $.message.catalog["bpp/providers"][0].tags[?(@.code=="retailer_info_required")].list
         payload_retailer: $.payload_retailer
       inputs: {}
+    examples:
+      - name: example for on_search
+        payload:
+          context:
+            domain: ONDC:RETeB2B
+            action: on_search
+            timestamp: 2026-06-02T11:27:26.360Z
+            transaction_id: 9e8654ed-0dd3-4315-81f2-814780f13e79
+            message_id: 78db8257-ded3-40b9-9c7b-168100359379
+            bap_id: sample-bap-id
+            bap_uri: https://bap.example.com
+            ttl: PT30S
+            bpp_id: sample-bpp-id
+            bpp_uri: https://bpp.example.com
+            country: IND
+            city: std:080
+            core_version: 1.2.5
+          message:
+            catalog:
+              bpp/descriptor:
+                name: Distributor Marketplace
+                symbol: https://seller-np.com/images/logo.png
+                short_desc: B2B Wholesale Distribution Platform
+                long_desc: B2B Wholesale Distribution Platform for Retailers
+                images:
+                  - https://seller-np.com/images/logo.png
+                tags:
+                  - code: bpp_terms
+                    list:
+                      - code: np_type
+                        value: MSN
+              bpp/providers:
+                - id: P1
+                  time:
+                    label: enable
+                    timestamp: 2026-06-02T11:27:26.360Z
+                  descriptor:
+                    name: ABC Manufacturer
+                    code: distributor
+                    symbol: https://seller-np.com/images/abc-dist.png
+                    short_desc: FMCG Wholesale Distributor
+                    long_desc: Leading FMCG Wholesale Distributor in Bangalore
+                    images:
+                      - https://seller-np.com/images/abc-dist.png
+                  ttl: P1D
+                  fulfillments:
+                    - id: F1
+                      type: Delivery
+                      contact:
+                        phone: "9886098860"
+                        email: orders@abcdist.com
+                  locations:
+                    - id: L1
+                      time:
+                        label: enable
+                        timestamp: 2026-06-02T11:27:26.360Z
+                        schedule:
+                          holidays:
+                            - 2026-06-02
+                            - 2026-06-03
+                            - 2026-06-04
+                            - 2026-06-05
+                            - 2026-06-06
+                            - 2026-06-07
+                      gps: 12.9675,77.7496
+                      address:
+                        locality: Jayanagar
+                        street: Jayanagar 4th Block
+                        city: Bengaluru
+                        area_code: "560076"
+                        state: KA
+                    - id: L2
+                      time:
+                        label: enable
+                        timestamp: 2026-06-02T11:27:26.360Z
+                        schedule:
+                          holidays:
+                            - 2026-06-02
+                            - 2026-06-03
+                            - 2026-06-04
+                            - 2026-06-05
+                            - 2026-06-06
+                            - 2026-06-07
+                      gps: 12.9352,77.6245
+                      address:
+                        locality: BTM Layout
+                        street: BTM Layout 2nd Stage
+                        city: Bengaluru
+                        area_code: "560076"
+                        state: KA
+                  categories:
+                    - id: V1
+                      descriptor:
+                        name: Plain Atta Variant Group
+                      tags:
+                        - code: type
+                          list:
+                            - code: type
+                              value: variant_group
+                        - code: attr
+                          list:
+                            - code: name
+                              value: item.tags.unitized.count
+                            - code: seq
+                              value: "1"
+                        - code: attr
+                          list:
+                            - code: name
+                              value: item.quantity.unitized.measure
+                            - code: seq
+                              value: "2"
+                    - id: V2
+                      descriptor:
+                        name: Soft Drinks Variant Group
+                      tags:
+                        - code: type
+                          list:
+                            - code: type
+                              value: variant_group
+                        - code: attr
+                          list:
+                            - code: name
+                              value: item.quantity.unitized.measure
+                            - code: seq
+                              value: "1"
+                        - code: attr
+                          list:
+                            - code: name
+                              value: item.quantity.unitized.count
+                            - code: seq
+                              value: "2"
+                  offers:
+                    - id: discp10
+                      descriptor:
+                        code: discount
+                        images:
+                          - https://seller-np.com/images/offer1-banner.webp
+                      location_ids:
+                        - L1
+                      category_ids:
+                        - Atta, Flours and Sooji
+                      item_ids:
+                        - I1
+                        - I2
+                        - I3
+                        - I4
+                      time:
+                        label: valid
+                        range:
+                          start: 2026-06-02T00:00:00.000Z
+                          end: 2026-06-07T23:59:59.999Z
+                      tags:
+                        - code: qualifier
+                          list:
+                            - code: min_value
+                              value: "500.00"
+                        - code: benefit
+                          list:
+                            - code: value_type
+                              value: percent
+                            - code: value
+                              value: "-10.00"
+                            - code: value_cap
+                              value: "-2000.00"
+                        - code: meta
+                          list:
+                            - code: additive
+                              value: yes
+                            - code: auto
+                              value: no
+                    - id: flat150
+                      descriptor:
+                        code: discount
+                        images:
+                          - https://seller-np.com/images/offer2-banner.webp
+                      location_ids:
+                        - L1
+                      category_ids:
+                        - Soft Drinks and Juices
+                      item_ids:
+                        - I5
+                        - I6
+                        - I7
+                        - I8
+                      time:
+                        label: valid
+                        range:
+                          start: 2026-06-02T00:00:00.000Z
+                          end: 2026-06-07T23:59:59.999Z
+                      tags:
+                        - code: qualifier
+                          list:
+                            - code: min_value
+                              value: "1000.00"
+                        - code: benefit
+                          list:
+                            - code: value_type
+                              value: amount
+                            - code: value
+                              value: "-150.00"
+                        - code: meta
+                          list:
+                            - code: additive
+                              value: yes
+                            - code: auto
+                              value: yes
+                    - id: slab1
+                      descriptor:
+                        code: slab
+                        images:
+                          - https://seller-np.com/images/slab-offer-banner.webp
+                      location_ids:
+                        - L1
+                      category_ids: []
+                      item_ids:
+                        - I5
+                      time:
+                        label: valid
+                        range:
+                          start: 2026-06-02T00:00:00.000Z
+                          end: 2026-06-07T23:59:59.999Z
+                      tags:
+                        - code: qualifier
+                          list:
+                            - code: item_count
+                              value: "10"
+                            - code: item_count_upper
+                              value: "19"
+                        - code: benefit
+                          list:
+                            - code: value_type
+                              value: percent
+                            - code: value
+                              value: "-5.00"
+                            - code: value_cap
+                              value: "-5000.00"
+                        - code: meta
+                          list:
+                            - code: additive
+                              value: no
+                            - code: auto
+                              value: yes
+                    - id: slab2
+                      descriptor:
+                        code: slab
+                        images:
+                          - https://seller-np.com/images/slab-offer-banner.webp
+                      location_ids:
+                        - L2
+                      category_ids: []
+                      item_ids:
+                        - I2
+                      time:
+                        label: valid
+                        range:
+                          start: 2026-06-02T00:00:00.000Z
+                          end: 2026-06-07T23:59:59.999Z
+                      tags:
+                        - code: qualifier
+                          list:
+                            - code: item_weight
+                              value: "150"
+                            - code: item_weight_upper
+                              value: "200"
+                        - code: benefit
+                          list:
+                            - code: value_type
+                              value: percent
+                            - code: value
+                              value: "-15.00"
+                            - code: value_cap
+                              value: "-1000.00"
+                        - code: meta
+                          list:
+                            - code: additive
+                              value: no
+                            - code: auto
+                              value: yes
+                    - id: freebie1
+                      descriptor:
+                        code: freebie
+                        images:
+                          - https://seller-np.com/images/freebie-offer-banner.webp
+                      location_ids:
+                        - L1
+                      category_ids: []
+                      item_ids:
+                        - I1
+                      time:
+                        label: valid
+                        range:
+                          start: 2026-06-02T00:00:00.000Z
+                          end: 2026-06-07T23:59:59.999Z
+                      tags:
+                        - code: qualifier
+                          list:
+                            - code: item_count
+                              value: "50"
+                        - code: meta
+                          list:
+                            - code: additive
+                              value: no
+                            - code: auto
+                              value: yes
+                    - id: buy2get3
+                      descriptor:
+                        code: buyXgetY
+                        images:
+                          - https://snp.com/images/offer1-banner.webp
+                      location_ids:
+                        - L1
+                      category_ids: []
+                      item_ids:
+                        - I1
+                        - I2
+                      time:
+                        label: valid
+                        range:
+                          start: 2026-06-02T00:00:00.000Z
+                          end: 2026-06-07T23:59:59.999Z
+                      tags:
+                        - code: qualifier
+                          list:
+                            - code: item_count
+                              value: "2"
+                        - code: benefit
+                          list:
+                            - code: item_count
+                              value: "1"
+                            - code: item_id
+                              value: I1
+                            - code: item_value
+                              value: "0.00"
+                        - code: meta
+                          list:
+                            - code: additive
+                              value: no
+                            - code: auto
+                              value: yes
+                  items:
+                    - id: I1
+                      time:
+                        label: enable
+                        timestamp: 2026-06-02T11:27:26.360Z
+                      parent_item_id: V1
+                      descriptor:
+                        name: Ashirwad Plain Atta 1kg
+                        code: 1:XXXXXXXXXXXXX
+                        symbol: https://seller-np.com/images/ashirwad-atta-1kg.png
+                        short_desc: Ashirwad Plain Atta 1kg Pack
+                        long_desc: Premium quality wheat flour
+                        images:
+                          - https://seller-np.com/images/ashirwad-atta-1kg.png
+                      quantity:
+                        unitized:
+                          count: "10"
+                          measure:
+                            unit: kilogram
+                            value: "1"
+                        available:
+                          count: "99"
+                        maximum:
+                          count: "100"
+                        minimum:
+                          count: "20"
+                      price:
+                        currency: INR
+                        value: "52.00"
+                        maximum_value: "55.00"
+                      category_id: Atta, Flours and Sooji
+                      fulfillment_id: F1
+                      location_id: L1
+                      "@ondc/org/returnable": true
+                      "@ondc/org/cancellable": true
+                      "@ondc/org/return_window": P2D
+                      "@ondc/org/seller_pickup_return": true
+                      "@ondc/org/time_to_ship": PT4H
+                      "@ondc/org/available_on_cod": false
+                      "@ondc/org/contact_details_consumer_care": support,support@abcdist.com,18004254444
+                      "@ondc/org/statutory_reqs_packaged_commodities":
+                        manufacturer_or_packer_name: ITC Limited
+                        manufacturer_or_packer_address: ITC Quality Care Cell, P.O Box No.592, Bangalore-560005
+                        common_or_generic_name_of_commodity: Wheat Flour (Atta)
+                        month_year_of_manufacture_packing_import: 12/2024
+                      "@ondc/org/statutory_reqs_prepackaged_food":
+                        nutritional_info: Energy(KCal)-(per 100g) 348; Protein(g)-(per 100g) 11.8
+                        additives_info: None
+                        brand_owner_FSSAI_license_no: "12345678901234"
+                        other_FSSAI_license_no: "12345678901234"
+                        importer_FSSAI_license_no: ""
+                      tags:
+                        - code: pack_config
+                          list:
+                            - code: unit
+                              value: "1"
+                            - code: set
+                              value: "10"
+                            - code: case
+                              value: "40"
+                        - code: origin
+                          list:
+                            - code: country
+                              value: IND
+                        - code: attribute
+                          list:
+                            - code: brand
+                              value: Ashirwad
+                        - code: veg_nonveg
+                          list:
+                            - code: veg
+                              value: yes
+                        - code: image
+                          list:
+                            - code: type
+                              value: back_image
+                            - code: url
+                              value: https://seller-np.com/images/i1_back_image.png
+                    - id: I2
+                      time:
+                        label: enable
+                        timestamp: 2026-06-02T11:27:26.360Z
+                      parent_item_id: V1
+                      descriptor:
+                        name: Ashirwad Plain Atta 5kg
+                        code: 1:XXXXXXXXXXXXY
+                        symbol: https://seller-np.com/images/ashirwad-atta-5kg.png
+                        short_desc: Ashirwad Plain Atta 5kg Pack
+                        long_desc: Premium quality wheat flour - bulk pack
+                        images:
+                          - https://seller-np.com/images/ashirwad-atta-5kg.png
+                      quantity:
+                        unitized:
+                          count: "12"
+                          measure:
+                            unit: kilogram
+                            value: "5"
+                        available:
+                          count: "99"
+                        maximum:
+                          count: "50"
+                        minimum:
+                          count: "10"
+                      price:
+                        currency: INR
+                        value: "245.00"
+                        maximum_value: "260.00"
+                      category_id: Atta, Flours and Sooji
+                      fulfillment_id: F1
+                      location_id: L2
+                      "@ondc/org/returnable": true
+                      "@ondc/org/cancellable": true
+                      "@ondc/org/return_window": P2D
+                      "@ondc/org/seller_pickup_return": true
+                      "@ondc/org/time_to_ship": PT4H
+                      "@ondc/org/available_on_cod": false
+                      "@ondc/org/contact_details_consumer_care": support,support@abcdist.com,18004254444
+                      "@ondc/org/statutory_reqs_packaged_commodities":
+                        manufacturer_or_packer_name: ITC Limited
+                        manufacturer_or_packer_address: ITC Quality Care Cell, P.O Box No.592, Bangalore-560005
+                        common_or_generic_name_of_commodity: Wheat Flour (Atta)
+                        month_year_of_manufacture_packing_import: 12/2024
+                      "@ondc/org/statutory_reqs_prepackaged_food":
+                        nutritional_info: Energy(KCal)-(per 100g) 348; Protein(g)-(per 100g) 11.8
+                        additives_info: None
+                        brand_owner_FSSAI_license_no: "12345678901234"
+                        other_FSSAI_license_no: "12345678901234"
+                        importer_FSSAI_license_no: ""
+                      tags:
+                        - code: origin
+                          list:
+                            - code: country
+                              value: IND
+                        - code: attribute
+                          list:
+                            - code: brand
+                              value: Ashirwad
+                        - code: veg_nonveg
+                          list:
+                            - code: veg
+                              value: yes
+                        - code: image
+                          list:
+                            - code: type
+                              value: back_image
+                            - code: url
+                              value: https://seller-np.com/images/i2_back_image.png
+                    - id: I3
+                      time:
+                        label: enable
+                        timestamp: 2026-06-02T11:27:26.360Z
+                      parent_item_id: V1
+                      descriptor:
+                        name: Fortune Chakki Atta 1kg
+                        code: 1:XXXXXXXXXXXXZ
+                        symbol: https://seller-np.com/images/fortune-atta-1kg.png
+                        short_desc: Fortune Chakki Fresh Atta 1kg Pack
+                        long_desc: 100% whole wheat chakki atta
+                        images:
+                          - https://seller-np.com/images/fortune-atta-1kg.png
+                      quantity:
+                        unitized:
+                          count: "15"
+                          measure:
+                            unit: kilogram
+                            value: "1"
+                        available:
+                          count: "99"
+                        maximum:
+                          count: "80"
+                        minimum:
+                          count: "20"
+                      price:
+                        currency: INR
+                        value: "48.00"
+                        maximum_value: "52.00"
+                      category_id: Atta, Flours and Sooji
+                      fulfillment_id: F1
+                      location_id: L1
+                      "@ondc/org/returnable": true
+                      "@ondc/org/cancellable": true
+                      "@ondc/org/return_window": P2D
+                      "@ondc/org/seller_pickup_return": true
+                      "@ondc/org/time_to_ship": PT4H
+                      "@ondc/org/available_on_cod": false
+                      "@ondc/org/contact_details_consumer_care": Support,support@abcdist.com,18004254444
+                      "@ondc/org/statutory_reqs_packaged_commodities":
+                        manufacturer_or_packer_name: Adani Wilmar Limited
+                        manufacturer_or_packer_address: Fortune House, Ahmedabad-380009
+                        common_or_generic_name_of_commodity: Wheat Flour (Atta)
+                        month_year_of_manufacture_packing_import: 12/2024
+                      "@ondc/org/statutory_reqs_prepackaged_food":
+                        nutritional_info: Energy(KCal)-(per 100g) 341; Protein(g)-(per 100g) 12.1
+                        additives_info: None
+                        brand_owner_FSSAI_license_no: "10012011000125"
+                        other_FSSAI_license_no: "10012011000125"
+                        importer_FSSAI_license_no: ""
+                      tags:
+                        - code: origin
+                          list:
+                            - code: country
+                              value: IND
+                        - code: attribute
+                          list:
+                            - code: brand
+                              value: Fortune
+                        - code: veg_nonveg
+                          list:
+                            - code: veg
+                              value: yes
+                        - code: image
+                          list:
+                            - code: type
+                              value: back_image
+                            - code: url
+                              value: https://seller-np.com/images/i3_back_image.png
+                    - id: I4
+                      time:
+                        label: enable
+                        timestamp: 2026-06-02T11:27:26.360Z
+                      parent_item_id: V1
+                      descriptor:
+                        name: Fortune Chakki Atta 5kg
+                        code: 1:XXXXXXXXXXXXW
+                        symbol: https://seller-np.com/images/fortune-atta-5kg.png
+                        short_desc: Fortune Chakki Fresh Atta 5kg Pack
+                        long_desc: 100% whole wheat chakki atta - bulk pack
+                        images:
+                          - https://seller-np.com/images/fortune-atta-5kg.png
+                      quantity:
+                        unitized:
+                          count: "5"
+                          measure:
+                            unit: kilogram
+                            value: "5"
+                        available:
+                          count: "99"
+                        maximum:
+                          count: "99"
+                        minimum:
+                          count: "10"
+                      price:
+                        currency: INR
+                        value: "230.00"
+                        maximum_value: "250.00"
+                      category_id: Atta, Flours and Sooji
+                      fulfillment_id: F1
+                      location_id: L2
+                      "@ondc/org/returnable": true
+                      "@ondc/org/cancellable": true
+                      "@ondc/org/return_window": P2D
+                      "@ondc/org/seller_pickup_return": true
+                      "@ondc/org/time_to_ship": PT4H
+                      "@ondc/org/available_on_cod": false
+                      "@ondc/org/contact_details_consumer_care": Support,support@abcdist.com,18004254444
+                      "@ondc/org/statutory_reqs_packaged_commodities":
+                        manufacturer_or_packer_name: Adani Wilmar Limited
+                        manufacturer_or_packer_address: Fortune House, Ahmedabad-380009
+                        common_or_generic_name_of_commodity: Wheat Flour (Atta)
+                        month_year_of_manufacture_packing_import: 12/2024
+                      "@ondc/org/statutory_reqs_prepackaged_food":
+                        nutritional_info: Energy(KCal)-(per 100g) 341; Protein(g)-(per 100g) 12.1
+                        additives_info: None
+                        brand_owner_FSSAI_license_no: "10012011000125"
+                        other_FSSAI_license_no: "10012011000125"
+                        importer_FSSAI_license_no: ""
+                      tags:
+                        - code: origin
+                          list:
+                            - code: country
+                              value: IND
+                        - code: attribute
+                          list:
+                            - code: brand
+                              value: Fortune
+                        - code: veg_nonveg
+                          list:
+                            - code: veg
+                              value: yes
+                        - code: image
+                          list:
+                            - code: type
+                              value: back_image
+                            - code: url
+                              value: https://seller-np.com/images/i4_back_image.png
+                    - id: I5
+                      time:
+                        label: enable
+                        timestamp: 2026-06-02T11:27:26.360Z
+                      parent_item_id: V2
+                      descriptor:
+                        name: Coca-Cola 300ml (Case of 24)
+                        code: 1:COCACOLA300ML24
+                        symbol: https://seller-np.com/images/coke-300ml.png
+                        short_desc: Coca-Cola 300ml Glass Bottle - Case of 24
+                        long_desc: Coca-Cola 300ml Glass Bottle - Case of 24 bottles
+                        images:
+                          - https://seller-np.com/images/coke-300ml.png
+                      quantity:
+                        unitized:
+                          count: "24"
+                          measure:
+                            unit: millilitre
+                            value: "300"
+                        available:
+                          count: "99"
+                        maximum:
+                          count: "20"
+                        minimum:
+                          count: "5"
+                      price:
+                        currency: INR
+                        value: "480.00"
+                        maximum_value: "520.00"
+                      category_id: Soft Drinks and Juices
+                      fulfillment_id: F1
+                      location_id: L1
+                      "@ondc/org/returnable": true
+                      "@ondc/org/cancellable": true
+                      "@ondc/org/return_window": P1D
+                      "@ondc/org/seller_pickup_return": true
+                      "@ondc/org/time_to_ship": PT4H
+                      "@ondc/org/available_on_cod": false
+                      "@ondc/org/contact_details_consumer_care": Support,support@abcdist.com,18004254444
+                      "@ondc/org/statutory_reqs_packaged_commodities":
+                        manufacturer_or_packer_name: Hindustan Coca-Cola Beverages Pvt Ltd
+                        manufacturer_or_packer_address: Coca-Cola India Pvt Ltd, Gurgaon, Haryana
+                        common_or_generic_name_of_commodity: Carbonated Soft Drink
+                        month_year_of_manufacture_packing_import: 01/2025
+                      "@ondc/org/statutory_reqs_prepackaged_food":
+                        nutritional_info: Energy(KCal)-(per 100ml) 42; Sugars(g)-(per 100ml) 10.6
+                        additives_info: Carbonated Water, Sugar, Caramel Colour, Phosphoric Acid,
+                          Caffeine
+                        brand_owner_FSSAI_license_no: "10012011000011"
+                        other_FSSAI_license_no: "10012011000011"
+                        importer_FSSAI_license_no: ""
+                      tags:
+                        - code: origin
+                          list:
+                            - code: country
+                              value: IND
+                        - code: attribute
+                          list:
+                            - code: brand
+                              value: Coca-Cola
+                        - code: veg_nonveg
+                          list:
+                            - code: veg
+                              value: yes
+                    - id: I6
+                      time:
+                        label: enable
+                        timestamp: 2026-06-02T11:27:26.360Z
+                      parent_item_id: V2
+                      descriptor:
+                        name: Coca-Cola 2L (Pack of 6)
+                        code: 1:COCACOLA2L6
+                        symbol: https://seller-np.com/images/coke-2l.png
+                        short_desc: Coca-Cola 2 Liter PET - Pack of 6
+                        long_desc: Coca-Cola 2 Liter PET Bottle - Pack of 6 bottles
+                        images:
+                          - https://seller-np.com/images/coke-2l.png
+                      quantity:
+                        unitized:
+                          count: "6"
+                          measure:
+                            unit: litre
+                            value: "2"
+                        available:
+                          count: "99"
+                        maximum:
+                          count: "15"
+                        minimum:
+                          count: "3"
+                      price:
+                        currency: INR
+                        value: "720.00"
+                        maximum_value: "780.00"
+                      category_id: Energy and Soft Drinks
+                      fulfillment_id: F1
+                      location_id: L2
+                      "@ondc/org/returnable": true
+                      "@ondc/org/cancellable": true
+                      "@ondc/org/return_window": P1D
+                      "@ondc/org/seller_pickup_return": true
+                      "@ondc/org/time_to_ship": PT4H
+                      "@ondc/org/available_on_cod": false
+                      "@ondc/org/contact_details_consumer_care": support,support@abcdist.com,18004254444
+                      "@ondc/org/statutory_reqs_packaged_commodities":
+                        manufacturer_or_packer_name: Hindustan Coca-Cola Beverages Pvt Ltd
+                        manufacturer_or_packer_address: Coca-Cola India Pvt Ltd, Gurgaon, Haryana
+                        common_or_generic_name_of_commodity: Carbonated Soft Drink
+                        month_year_of_manufacture_packing_import: 01/2025
+                      "@ondc/org/statutory_reqs_prepackaged_food":
+                        nutritional_info: Energy(KCal)-(per 100ml) 42; Sugars(g)-(per 100ml) 10.6
+                        additives_info: Carbonated Water, Sugar, Caramel Colour, Phosphoric Acid,
+                          Caffeine
+                        brand_owner_FSSAI_license_no: "10012011000011"
+                        other_FSSAI_license_no: "10012011000011"
+                        importer_FSSAI_license_no: ""
+                      tags:
+                        - code: origin
+                          list:
+                            - code: country
+                              value: IND
+                        - code: attribute
+                          list:
+                            - code: brand
+                              value: Coca-Cola
+                        - code: veg_nonveg
+                          list:
+                            - code: veg
+                              value: yes
+                    - id: I7
+                      time:
+                        label: enable
+                        timestamp: 2026-06-02T11:27:26.360Z
+                      parent_item_id: V2
+                      descriptor:
+                        name: Pepsi 300ml (Case of 24)
+                        code: 1:PEPSI300ML24
+                        symbol: https://seller-np.com/images/pepsi-300ml.png
+                        short_desc: Pepsi 300ml Glass Bottle - Case of 24
+                        long_desc: Pepsi 300ml Glass Bottle - Case of 24 bottles
+                        images:
+                          - https://seller-np.com/images/pepsi-300ml.png
+                      quantity:
+                        unitized:
+                          count: "24"
+                          measure:
+                            unit: millilitre
+                            value: "300"
+                        available:
+                          count: "99"
+                        maximum:
+                          count: "25"
+                        minimum:
+                          count: "5"
+                      price:
+                        currency: INR
+                        value: "460.00"
+                        maximum_value: "500.00"
+                      category_id: Energy and Soft Drinks
+                      fulfillment_id: F1
+                      location_id: L1
+                      "@ondc/org/returnable": true
+                      "@ondc/org/cancellable": true
+                      "@ondc/org/return_window": P1D
+                      "@ondc/org/seller_pickup_return": true
+                      "@ondc/org/time_to_ship": PT4H
+                      "@ondc/org/available_on_cod": false
+                      "@ondc/org/contact_details_consumer_care": Support,support@abcdist.com,18004254444
+                      "@ondc/org/statutory_reqs_packaged_commodities":
+                        manufacturer_or_packer_name: Varun Beverages Ltd
+                        manufacturer_or_packer_address: Gurgaon, Haryana
+                        common_or_generic_name_of_commodity: Carbonated Soft Drink
+                        month_year_of_manufacture_packing_import: 01/2025
+                      "@ondc/org/statutory_reqs_prepackaged_food":
+                        nutritional_info: Energy(KCal)-(per 100ml) 44; Sugars(g)-(per 100ml) 11
+                        additives_info: Carbonated Water, Sugar, Phosphoric Acid, Caffeine
+                        brand_owner_FSSAI_license_no: "10012011000022"
+                        other_FSSAI_license_no: "10012011000022"
+                        importer_FSSAI_license_no: ""
+                      tags:
+                        - code: origin
+                          list:
+                            - code: country
+                              value: IND
+                        - code: attribute
+                          list:
+                            - code: brand
+                              value: Pepsi
+                        - code: veg_nonveg
+                          list:
+                            - code: veg
+                              value: yes
+                    - id: I8
+                      time:
+                        label: enable
+                        timestamp: 2026-06-02T11:27:26.360Z
+                      parent_item_id: V2
+                      descriptor:
+                        name: Pepsi 2L (Pack of 6)
+                        code: 1:PEPSI2L6
+                        symbol: https://seller-np.com/images/pepsi-2l.png
+                        short_desc: Pepsi 2 Liter PET - Pack of 6
+                        long_desc: Pepsi 2 Liter PET Bottle - Pack of 6 bottles
+                        images:
+                          - https://seller-np.com/images/pepsi-2l.png
+                      quantity:
+                        unitized:
+                          count: "6"
+                          measure:
+                            unit: litre
+                            value: "2"
+                        available:
+                          count: "99"
+                        maximum:
+                          count: "15"
+                        minimum:
+                          count: "3"
+                      price:
+                        currency: INR
+                        value: "690.00"
+                        maximum_value: "750.00"
+                      category_id: Energy and Soft Drinks
+                      fulfillment_id: F1
+                      location_id: L2
+                      "@ondc/org/returnable": true
+                      "@ondc/org/cancellable": true
+                      "@ondc/org/return_window": P1D
+                      "@ondc/org/seller_pickup_return": true
+                      "@ondc/org/time_to_ship": PT4H
+                      "@ondc/org/available_on_cod": false
+                      "@ondc/org/contact_details_consumer_care": support,support@abcdist.com,18004254444
+                      "@ondc/org/statutory_reqs_packaged_commodities":
+                        manufacturer_or_packer_name: Varun Beverages Ltd
+                        manufacturer_or_packer_address: Gurgaon, Haryana
+                        common_or_generic_name_of_commodity: Carbonated Soft Drink
+                        month_year_of_manufacture_packing_import: 01/2025
+                      "@ondc/org/statutory_reqs_prepackaged_food":
+                        nutritional_info: Energy(KCal)-(per 100ml) 44; Sugars(g)-(per 100ml) 11
+                        additives_info: Carbonated Water, Sugar, Phosphoric Acid, Caffeine
+                        brand_owner_FSSAI_license_no: "10012011000022"
+                        other_FSSAI_license_no: "10012011000022"
+                        importer_FSSAI_license_no: ""
+                      tags:
+                        - code: origin
+                          list:
+                            - code: country
+                              value: IND
+                        - code: attribute
+                          list:
+                            - code: brand
+                              value: Pepsi
+                        - code: veg_nonveg
+                          list:
+                            - code: veg
+                              value: yes
+                  tags:
+                    - code: order_value
+                      list:
+                        - code: min_value
+                          value: "500.00"
+                    - code: timing
+                      list:
+                        - code: type
+                          value: Order
+                        - code: location
+                          value: L1
+                        - code: day_from
+                          value: "1"
+                        - code: day_to
+                          value: "7"
+                        - code: time_from
+                          value: "0000"
+                        - code: time_to
+                          value: "2359"
+                    - code: timing
+                      list:
+                        - code: type
+                          value: Delivery
+                        - code: location
+                          value: L1
+                        - code: day_from
+                          value: "1"
+                        - code: day_to
+                          value: "6"
+                        - code: time_from
+                          value: "0900"
+                        - code: time_to
+                          value: "1800"
+                    - code: timing
+                      list:
+                        - code: type
+                          value: Order
+                        - code: location
+                          value: L2
+                        - code: day_from
+                          value: "1"
+                        - code: day_to
+                          value: "7"
+                        - code: time_from
+                          value: "0000"
+                        - code: time_to
+                          value: "2359"
+                    - code: timing
+                      list:
+                        - code: type
+                          value: Delivery
+                        - code: location
+                          value: L2
+                        - code: day_from
+                          value: "1"
+                        - code: day_to
+                          value: "6"
+                        - code: time_from
+                          value: "0900"
+                        - code: time_to
+                          value: "1800"
+                    - code: serviceability
+                      list:
+                        - code: location
+                          value: L1
+                        - code: category
+                          value: Atta, Flours and Sooji
+                        - code: type
+                          value: "10"
+                        - code: val
+                          value: "15"
+                        - code: unit
+                          value: km
+                    - code: serviceability
+                      list:
+                        - code: location
+                          value: L2
+                        - code: category
+                          value: Atta, Flours and Sooji
+                        - code: type
+                          value: "10"
+                        - code: val
+                          value: "20"
+                        - code: unit
+                          value: km
+                    - code: serviceability
+                      list:
+                        - code: location
+                          value: L1
+                        - code: category
+                          value: "*"
+                        - code: type
+                          value: "13"
+                        - code: unit
+                          value: geojson
+                        - code: val
+                          value: '{"type": "FeatureCollection", "features": [{"type": "Feature",
+                            "properties": {}, "geometry": {"coordinates":
+                            [[[[77.4366, 14.6230], [75.5973, 13.2507], [76.8359,
+                            11.9329], [78.7709, 11.3290]]], [[[75.6948,
+                            15.9928], [74.8319, 14.8515], [77.4006, 15.1229],
+                            [75.6948, 15.9928]]]], "type": "MultiPolygon"}}]}'
+                        - code: day_from
+                          value: "1"
+                        - code: day_to
+                          value: "7"
+                        - code: time_from
+                          value: "1000"
+                        - code: time_to
+                          value: "2200"
+                    - code: serviceability
+                      list:
+                        - code: location
+                          value: L2
+                        - code: category
+                          value: "*"
+                        - code: type
+                          value: "13"
+                        - code: unit
+                          value: geojson
+                        - code: val
+                          value: '{"type": "FeatureCollection", "features": [{"type": "Feature",
+                            "properties": {}, "geometry": {"coordinates":
+                            [[[77.1755, 28.6759], [77.1287, 28.6009], [77.4469,
+                            28.5453], [77.1755, 28.6759]]], "type":
+                            "Polygon"}}]}'
+                        - code: day_from
+                          value: "1"
+                        - code: day_to
+                          value: "7"
+                        - code: time_from
+                          value: "1000"
+                        - code: time_to
+                          value: "2200"
+                    - code: retailer_info_required
+                      list:
+                        - code: phone_number
+                          value: "true"
+                        - code: tax_number
+                          value: "false"
+                        - code: provider_tax_number
+                          value: "false"
+                        - code: shop_name
+                          value: "true"
+                        - code: email
+                          value: "false"
+                        - code: address
+                          value: "true"
+                        - code: type
+                          value: new
+                    - code: brand_images
+                      list:
+                        - code: Pepsi
+                          value: https://cdn.example.com/brands/pepsi.png
+                        - code: Ashirwad
+                          value: https://cdn.example.com/brands/Ashirwad.png
+                        - code: Fortune
+                          value: https://cdn.example.com/brands/fortune.png
+                    - code: retailer_info_required
+                      list:
+                        - code: customer_id
+                          value: "true"
+                        - code: type
+                          value: existing
+                    - code: retailer_info_required
+                      list:
+                        - code: phone_number
+                          value: "true"
+                        - code: tax_number
+                          value: "false"
+                        - code: provider_tax_number
+                          value: "true"
+                        - code: type
+                          value: existing
+        type: request
+        description: Catalog response from the seller platform containing providers,
+          items, and details matching the buyer’s search criteria for product
+          discovery.
   - api: search
     action_id: search-1
     owner: BAP
@@ -1148,8 +2264,8 @@ steps:
     description: Search request to discover providers on the ONDC network based on
       provider ID and fulfillment type.
     mock:
-      generate: LyoqCiAqIEdlbmVyYXRlcyAvc2VhcmNoIHBheWxvYWQgZm9yIE9OREMgUkVUZUIyQiBiYXNlZCBvbiB1c2VyIGlucHV0cy4KICogU3VwcG9ydHM6CiAqICAtIE5ldyBSZXRhaWxlcgogKiAgLSBFeGlzdGluZyBSZXRhaWxlciB3aXRoIEN1c3RvbWVyIElECiAqICAtIEV4aXN0aW5nIFJldGFpbGVyIHdpdGhvdXQgQ3VzdG9tZXIgSUQKICovCmFzeW5jIGZ1bmN0aW9uIGdlbmVyYXRlKGRlZmF1bHRQYXlsb2FkLCBzZXNzaW9uRGF0YSkgewogIHRyeSB7CgogICAgY29uc3QgaW5wdXQgPSBzZXNzaW9uRGF0YT8udXNlcl9pbnB1dHMgfHwge307CgogICAgY29uc3QgZnVsZmlsbG1lbnQgPSBkZWZhdWx0UGF5bG9hZD8ubWVzc2FnZT8uaW50ZW50Py5mdWxmaWxsbWVudDsKICAgIGlmICghZnVsZmlsbG1lbnQpIHJldHVybiBkZWZhdWx0UGF5bG9hZDsKCiAgICBjb25zdCBjaXR5ID0gc2Vzc2lvbkRhdGE/LmNpdHk/LlswXTsKCiAgICBpZiAoY2l0eSkgewogICAgICBkZWZhdWx0UGF5bG9hZC5jb250ZXh0LmNpdHkgPSBjaXR5OwogICAgICBjb25zb2xlLmxvZygiQ2l0eSBzZXQgdG86IiwgY2l0eSk7CiAgICB9CgogICAgaWYgKCFpbnB1dD8udHlwZSkgewogICAgICByZXR1cm4gZGVmYXVsdFBheWxvYWQ7CiAgICB9CgogICAgbGV0IGN1c3RvbWVyID0ge307CgogICAgaWYgKGlucHV0LnR5cGUgPT09ICJleGlzdGluZyIgJiYgaW5wdXQuY3VzdG9tZXJfaWQpIHsKICAgICAgY3VzdG9tZXIuaWQgPSBpbnB1dC5jdXN0b21lcl9pZDsKICAgIH0gZWxzZSB7CgogICAgICBpZiAoaW5wdXQudGF4X251bWJlciB8fCBpbnB1dC5wcm92aWRlcl90YXhfbnVtYmVyKSB7CiAgICAgICAgY3VzdG9tZXIucGVyc29uID0geyBjcmVkczogW10gfTsKCiAgICAgICAgaWYgKGlucHV0LnRheF9udW1iZXIpIHsKICAgICAgICAgIGN1c3RvbWVyLnBlcnNvbi5jcmVkcy5wdXNoKHsKICAgICAgICAgICAgaWQ6IGlucHV0LnRheF9udW1iZXIsCiAgICAgICAgICAgIHR5cGU6ICJ0YXhfbnVtYmVyIgogICAgICAgICAgfSk7CiAgICAgICAgfQoKICAgICAgICBpZiAoaW5wdXQucHJvdmlkZXJfdGF4X251bWJlcikgewogICAgICAgICAgY3VzdG9tZXIucGVyc29uLmNyZWRzLnB1c2goewogICAgICAgICAgICBpZDogaW5wdXQucHJvdmlkZXJfdGF4X251bWJlciwKICAgICAgICAgICAgdHlwZTogInByb3ZpZGVyX3RheF9udW1iZXIiCiAgICAgICAgICB9KTsKICAgICAgICB9CiAgICAgIH0KCiAgICAgIGlmIChpbnB1dC50eXBlID09PSAibmV3IiAmJiBpbnB1dC5zaG9wX25hbWUpIHsKICAgICAgICBjdXN0b21lci5vcmdhbml6YXRpb24gPSB7CiAgICAgICAgICBkZXNjcmlwdG9yOiB7IG5hbWU6IGlucHV0LnNob3BfbmFtZSB9LAogICAgICAgICAgYWRkcmVzczogaW5wdXQuYWRkcmVzcywKICAgICAgICAgIGNpdHk6IHsgY29kZTogaW5wdXQuY2l0eV9jb2RlIH0sCiAgICAgICAgICBzdGF0ZTogeyBjb2RlOiBpbnB1dC5zdGF0ZV9jb2RlIHx8ICJLQSIgfQogICAgICAgIH07CiAgICAgIH0KCiAgICAgIGlmIChpbnB1dC5waG9uZV9udW1iZXIgfHwgaW5wdXQuZW1haWwpIHsKICAgICAgICBjdXN0b21lci5jb250YWN0ID0ge307CiAgICAgICAgaWYgKGlucHV0LnBob25lX251bWJlcikgY3VzdG9tZXIuY29udGFjdC5waG9uZSA9IGlucHV0LnBob25lX251bWJlcjsKICAgICAgICBpZiAoaW5wdXQuZW1haWwpIGN1c3RvbWVyLmNvbnRhY3QuZW1haWwgPSBpbnB1dC5lbWFpbDsKICAgICAgfQogICAgfQoKICAgIGlmIChPYmplY3Qua2V5cyhjdXN0b21lcikubGVuZ3RoID4gMCkgewogICAgICBmdWxmaWxsbWVudC5jdXN0b21lciA9IGN1c3RvbWVyOwogICAgfSBlbHNlIHsKICAgICAgY29uc29sZS5sb2coIkN1c3RvbWVyIG9iamVjdCBlbXB0eSDigJQgbm90aGluZyBhcHBlbmRlZCIpOwogICAgfQoKICAgIHJldHVybiBkZWZhdWx0UGF5bG9hZDsKCiAgfSBjYXRjaCAoZXJyKSB7CiAgICBjb25zb2xlLmVycm9yKCJFUlJPUjoiLCBlcnIpOwogICAgcmV0dXJuIGRlZmF1bHRQYXlsb2FkOwogIH0KfQoKCg==
-      validate: LyoqCiAqIFZhbGlkYXRlcyB0aGUgaW5jb21pbmcgcmVxdWVzdCBwYXlsb2FkIGZvciBhbiBBUEkgY2FsbCBpbiB0aGUgdHJhbnNhY3Rpb24gZmxvdy4KICogCiAqIEBwYXJhbSB7T2JqZWN0fSB0YXJnZXRQYXlsb2FkIC0gVGhlIGluY29taW5nIHJlcXVlc3QgcGF5bG9hZCB0byB2YWxpZGF0ZS4KICogQHBhcmFtIHtPYmplY3R9IHNlc3Npb25EYXRhIC0gRGF0YSBjb2xsZWN0ZWQgZnJvbSBwcmV2aW91cyB0cmFuc2FjdGlvbiBzdGVwcy4KICogCiAqIEByZXR1cm5zIHtPYmplY3R9IHsgdmFsaWQ6IGJvb2xlYW4sIGNvZGU6IG51bWJlciwgZGVzY3JpcHRpb246IHN0cmluZyB9CiAqLwpmdW5jdGlvbiB2YWxpZGF0ZSh0YXJnZXRQYXlsb2FkLCBzZXNzaW9uRGF0YSkgewogIHJldHVybiB7IHZhbGlkOiB0cnVlLCBjb2RlOiAyMDAsIGRlc2NyaXB0aW9uOiAiVmFsaWQgcmVxdWVzdCIgfTsKfQ==
+      generate: YXN5bmMgZnVuY3Rpb24gZ2VuZXJhdGUoZGVmYXVsdFBheWxvYWQsIHNlc3Npb25EYXRhKSB7CiAgdHJ5IHsKICAgIGRlZmF1bHRQYXlsb2FkLmNvbnRleHQuYnBwX2lkID0gc2Vzc2lvbkRhdGEuYnBwSWRbMF0KICAgIGRlZmF1bHRQYXlsb2FkLmNvbnRleHQuYnBwX3VyaSA9IEFycmF5LmlzQXJyYXkoc2Vzc2lvbkRhdGEuYnBwVXJpKQogID8gc2Vzc2lvbkRhdGEuYnBwVXJpPy5bMF0gPz8gIiIKICA6IHNlc3Npb25EYXRhLmJwcFVyaSA/PyAiIjsKICAgIGNvbnN0IGlucHV0ID0gc2Vzc2lvbkRhdGE/LnVzZXJfaW5wdXRzIHx8IHt9OwoKICAgIGNvbnN0IGZ1bGZpbGxtZW50ID0gZGVmYXVsdFBheWxvYWQ/Lm1lc3NhZ2U/LmludGVudD8uZnVsZmlsbG1lbnQ7CiAgICBpZiAoIWZ1bGZpbGxtZW50KSByZXR1cm4gZGVmYXVsdFBheWxvYWQ7CgogICAgY29uc3QgY2l0eSA9IHNlc3Npb25EYXRhPy5jaXR5Py5bMF07CgogICAgaWYgKGNpdHkpIHsKICAgICAgZGVmYXVsdFBheWxvYWQuY29udGV4dC5jaXR5ID0gY2l0eTsKICAgICAgY29uc29sZS5sb2coIkNpdHkgc2V0IHRvOiIsIGNpdHkpOwogICAgfQoKICAgIGlmICghaW5wdXQ/LnR5cGUpIHsKICAgICAgcmV0dXJuIGRlZmF1bHRQYXlsb2FkOwogICAgfQoKICAgIGxldCBjdXN0b21lciA9IHt9OwoKICAgIGlmIChpbnB1dC50eXBlID09PSAiZXhpc3RpbmciICYmIGlucHV0LmN1c3RvbWVyX2lkKSB7CiAgICAgIGN1c3RvbWVyLmlkID0gaW5wdXQuY3VzdG9tZXJfaWQ7CiAgICB9IGVsc2UgewoKICAgICAgaWYgKGlucHV0LnRheF9udW1iZXIgfHwgaW5wdXQucHJvdmlkZXJfdGF4X251bWJlcikgewogICAgICAgIGN1c3RvbWVyLnBlcnNvbiA9IHsgY3JlZHM6IFtdIH07CgogICAgICAgIGlmIChpbnB1dC50YXhfbnVtYmVyKSB7CiAgICAgICAgICBjdXN0b21lci5wZXJzb24uY3JlZHMucHVzaCh7CiAgICAgICAgICAgIGlkOiBpbnB1dC50YXhfbnVtYmVyLAogICAgICAgICAgICB0eXBlOiAidGF4X251bWJlciIKICAgICAgICAgIH0pOwogICAgICAgIH0KCiAgICAgICAgaWYgKGlucHV0LnByb3ZpZGVyX3RheF9udW1iZXIpIHsKICAgICAgICAgIGN1c3RvbWVyLnBlcnNvbi5jcmVkcy5wdXNoKHsKICAgICAgICAgICAgaWQ6IGlucHV0LnByb3ZpZGVyX3RheF9udW1iZXIsCiAgICAgICAgICAgIHR5cGU6ICJwcm92aWRlcl90YXhfbnVtYmVyIgogICAgICAgICAgfSk7CiAgICAgICAgfQogICAgICB9CgogICAgICAKICAgICAgIAogICAgICAKCiAgICAgIGlmIChpbnB1dC5waG9uZV9udW1iZXIgfHwgaW5wdXQuZW1haWwpIHsKICAgICAgICBjdXN0b21lci5jb250YWN0ID0ge307CiAgICAgICAgaWYgKGlucHV0LnBob25lX251bWJlcikgY3VzdG9tZXIuY29udGFjdC5waG9uZSA9IGlucHV0LnBob25lX251bWJlcjsKICAgICAgICBpZiAoaW5wdXQuZW1haWwpIGN1c3RvbWVyLmNvbnRhY3QuZW1haWwgPSBpbnB1dC5lbWFpbDsKICAgICAgfQogICAgfQogICAgIGN1c3RvbWVyLm9yZ2FuaXphdGlvbiA9IHsKICAgICAgICAgIGRlc2NyaXB0b3I6IHsgbmFtZTogaW5wdXQ/LnNob3BfbmFtZSB8fCAic3RvcmUifSwKICAgICAgICAgIGFkZHJlc3M6IGlucHV0Py5hZGRyZXNzIHx8ICIxMjMgTWFpbiBTdCIsCiAgICAgICAgICBjaXR5OiB7IGNvZGU6IGlucHV0Py5jaXR5X2NvZGUgfHwgInN0ZDowODAifSwKICAgICAgICAgIHN0YXRlOiB7IGNvZGU6IGlucHV0Py5zdGF0ZV9jb2RlIHx8ICJLQSIgfQogICAgICAgIH07CiAgICBpZiAoT2JqZWN0LmtleXMoY3VzdG9tZXIpLmxlbmd0aCA+IDApIHsKICAgICAgZnVsZmlsbG1lbnQuY3VzdG9tZXIgPSBjdXN0b21lcjsKICAgIH0gZWxzZSB7CiAgICAgIGNvbnNvbGUubG9nKCJDdXN0b21lciBvYmplY3QgZW1wdHkg4oCUIG5vdGhpbmcgYXBwZW5kZWQiKTsKICAgIH0KICBjb25zb2xlLmxvZygiY29udGV4dDogIiwgSlNPTi5zdHJpbmdpZnkoZGVmYXVsdFBheWxvYWQ/LmNvbnRleHQpKTsKCiAgICByZXR1cm4gZGVmYXVsdFBheWxvYWQ7CgogIH0gY2F0Y2ggKGVycikgewogICAgY29uc29sZS5lcnJvcigiRVJST1I6IiwgZXJyKTsKICAgIHJldHVybiBkZWZhdWx0UGF5bG9hZDsKICB9Cn0K
+      validate: LyoqCiAqIFZhbGlkYXRlcyB0aGUgaW5jb21pbmcgcmVxdWVzdCBwYXlsb2FkIGZvciBhbiBBUEkgY2FsbCBpbiB0aGUgdHJhbnNhY3Rpb24gZmxvdy4KICogCiAqIEBwYXJhbSB7T2JqZWN0fSB0YXJnZXRQYXlsb2FkIC0gVGhlIGluY29taW5nIHJlcXVlc3QgcGF5bG9hZCB0byB2YWxpZGF0ZS4KICogQHBhcmFtIHtPYmplY3R9IHNlc3Npb25EYXRhIC0gRGF0YSBjb2xsZWN0ZWQgZnJvbSBwcmV2aW91cyB0cmFuc2FjdGlvbiBzdGVwcy4KICogCiAqIEByZXR1cm5zIHtPYmplY3R9IHsgdmFsaWQ6IGJvb2xlYW4sIGNvZGU6IG51bWJlciwgZGVzY3JpcHRpb246IHN0cmluZyB9CiAqLwpmdW5jdGlvbiB2YWxpZGF0ZSh0YXJnZXRQYXlsb2FkLCBzZXNzaW9uRGF0YSkgewogIGlmICghdGFyZ2V0UGF5bG9hZD8ubWVzc2FnZT8uaW50ZW50Py5mdWxmaWxsbWVudD8uY3VzdG9tZXIpewogICAgcmV0dXJuIHsgdmFsaWQ6IGZhbHNlLCBjb2RlOiAyMDAsIGRlc2NyaXB0aW9uOiAiUHJvdmlkZSBjdXN0b21lciBkZXRhaWxzIiB9OwogIH0KICByZXR1cm4geyB2YWxpZDogdHJ1ZSwgY29kZTogMjAwLCBkZXNjcmlwdGlvbjogIlZhbGlkIHJlcXVlc3QiIH07Cn0=
       requirements: LyoqCiAqIENoZWNrcyBpZiB0aGUgcmVxdWlyZW1lbnRzIGZvciBwcm9jZWVkaW5nIHdpdGggdGhlIEFQSSBjYWxsIGFyZSBtZXQuCiAqIAogKiBAcGFyYW0ge09iamVjdH0gc2Vzc2lvbkRhdGEgLSBEYXRhIGNvbGxlY3RlZCBmcm9tIHByZXZpb3VzIHRyYW5zYWN0aW9uIHN0ZXBzLgogKiAKICogQHJldHVybnMge09iamVjdH0geyB2YWxpZDogYm9vbGVhbiwgY29kZTogbnVtYmVyLCBkZXNjcmlwdGlvbjogc3RyaW5nIH0KICovCmZ1bmN0aW9uIG1lZXRzUmVxdWlyZW1lbnRzKHNlc3Npb25EYXRhKSB7CiAgcmV0dXJuIHsgdmFsaWQ6IHRydWUsIGNvZGU6IDIwMCwgZGVzY3JpcHRpb246ICJSZXF1aXJlbWVudHMgbWV0IiB9Owp9
       defaultPayload:
         context:
@@ -1160,6 +2276,8 @@ steps:
           message_id: M1
           bap_id: sample-bap-id
           bap_uri: https://bap.example.com
+          bpp_id: ""
+          bpp_uri: ""
           ttl: PT30S
           country: IND
           city: "*"
@@ -1192,10 +2310,12 @@ steps:
               enum:
                 - new
                 - existing
+              default: existing
               description: Retailer type
             customer_id:
               type: string
               description: Customer ID
+              default: CUST-1234-1234
             phone_number:
               type: string
               description: Retailer phone number
@@ -1212,45 +2332,42 @@ steps:
             shop_name:
               type: string
               description: Retailer shop name
+              default: kajriwal store
             address:
               type: string
               description: Retailer address
+              default: chandi chowk
             city_code:
               type: string
               description: City code
+              default: std:080
             state_code:
               type: string
               description: State code (default KA)
+              default: KA
           required:
             - type
           allOf:
             - if:
-                type: object
                 properties:
                   type:
                     const: existing
                 required:
                   - type
               then:
-                type: object
-                anyOf:
-                  - type: object
-                    required:
-                      - customer_id
-                  - type: object
-                    required:
-                      - phone_number
-                      - provider_tax_number
-                      - tax_number
+                required:
+                  - customer_id
+                  - shop_name
+                  - address
+                  - city_code
+                  - state_code
             - if:
-                type: object
                 properties:
                   type:
                     const: new
                 required:
                   - type
               then:
-                type: object
                 required:
                   - phone_number
                   - email
@@ -1260,6 +2377,42 @@ steps:
                   - address
                   - city_code
                   - state_code
+    examples:
+      - name: example for search
+        payload:
+          context:
+            domain: ONDC:RETeB2B
+            action: search
+            timestamp: 2026-06-02T11:27:30.913Z
+            transaction_id: 9e8654ed-0dd3-4315-81f2-814780f13e79
+            message_id: dab2d04e-bc93-4aa7-82e8-64b3af5887e6
+            bap_id: sample-bap-id
+            bap_uri: https://bap.example.com
+            ttl: PT30S
+            country: IND
+            city: std:080
+            core_version: 1.2.5
+            bpp_id: sample-bpp-id
+            bpp_uri: https://bpp.example.com
+          message:
+            intent:
+              provider:
+                id: P1
+              fulfillment:
+                type: Delivery
+                customer:
+                  id: CUST-1234-1234
+                  organization:
+                    descriptor:
+                      name: kajriwal store
+                    address: chandi chowk
+                    city:
+                      code: std:080
+                    state:
+                      code: KA
+        type: request
+        description: Search request to discover providers on the ONDC network based on
+          provider ID and fulfillment type.
   - api: on_search
     action_id: on_search-1
     owner: BPP
@@ -1269,7 +2422,7 @@ steps:
       offers, scheme progress details, and credit information matching the
       buyer’s search request.
     mock:
-      generate: LyoqCiAqIEdlbmVyYXRlcyB0aGUgbW9jayBwYXlsb2FkIGZvciBhbiBBUEkgY2FsbCBpbiB0aGUgdHJhbnNhY3Rpb24gZmxvdy4KICogVGhpcyBmdW5jdGlvbiBhbGxvd3MgY3VzdG9taXphdGlvbiBvZiB0aGUgZGVmYXVsdCBwYXlsb2FkIHVzaW5nIHNlc3Npb24gZGF0YQogKiBmcm9tIHByZXZpb3VzIHN0ZXBzIGFuZCB1c2VyIGlucHV0cy4KICogCiAqIEBwYXJhbSB7T2JqZWN0fSBkZWZhdWx0UGF5bG9hZCAtIFRoZSBiYXNlIHBheWxvYWQgb2JqZWN0IHdpdGggY29udGV4dCBhbHJlYWR5IHBvcHVsYXRlZC4KICogQHBhcmFtIHtPYmplY3R9IHNlc3Npb25EYXRhIC0gRGF0YSBjb2xsZWN0ZWQgZnJvbSBwcmV2aW91cyB0cmFuc2FjdGlvbiBzdGVwcy4KICogQHBhcmFtIHtPYmplY3R9IHNlc3Npb25EYXRhLnVzZXJfaW5wdXRzIC0gVXNlci1wcm92aWRlZCBpbnB1dCB2YWx1ZXMgZm9yIHRoaXMgc3RlcC4KICogQHBhcmFtIHsqfSBzZXNzaW9uRGF0YS5ba2V5XSAtIEFueSBzYXZlZCBkYXRhIGZyb20gcHJldmlvdXMgc3RlcHMgKGRlZmluZWQgaW4gc2F2ZURhdGEgY29uZmlnKS4KICogCiAqIEByZXR1cm5zIHtPYmplY3R9IFRoZSBnZW5lcmF0ZWQgcGF5bG9hZCBvYmplY3QgdG8gYmUgc2VudCBpbiB0aGUgQVBJIHJlcXVlc3QuCiAqLwogCgphc3luYyBmdW5jdGlvbiBnZW5lcmF0ZShkZWZhdWx0UGF5bG9hZCwgc2Vzc2lvbkRhdGEpIHsKICB0cnkgewoKCiAgICBjb25zdCBjaXR5ID0gc2Vzc2lvbkRhdGE/LmNpdHk/LlswXTsKCiAgICBpZiAoY2l0eSkgewogICAgICBkZWZhdWx0UGF5bG9hZC5jb250ZXh0LmNpdHkgPSBjaXR5OwogICAgICBjb25zb2xlLmxvZygiQ2l0eSBzZXQgdG86IiwgY2l0eSk7CiAgICB9CiAgICBjb25zdCBzYXZlZEN1c3RvbWVyID0gc2Vzc2lvbkRhdGEuY3VzdG9tZXJEYXRhOwogICAgZGVmYXVsdFBheWxvYWQuY29udGV4dC5tZXNzYWdlX2lkID0gc2Vzc2lvbkRhdGEubGF0ZXN0TWVzc2FnZV9pZFswXQoKICAgIGNvbnN0IHByb3ZpZGVycyA9CiAgICAgIGRlZmF1bHRQYXlsb2FkPy5tZXNzYWdlPy5jYXRhbG9nPy5bImJwcC9wcm92aWRlcnMiXTsKCiAgICBpZiAoIXByb3ZpZGVycyB8fCBwcm92aWRlcnMubGVuZ3RoID09PSAwKSB7CiAgICAgIAogICAgICByZXR1cm4gZGVmYXVsdFBheWxvYWQ7CiAgICB9CgogICAgY29uc3QgcHJvdmlkZXIgPSBwcm92aWRlcnNbMF07CgogICAgaWYgKCFwcm92aWRlci50YWdzKSB7CiAgICAgIHByb3ZpZGVyLnRhZ3MgPSBbXTsKICAgIH0KCiAgCiAgICBwcm92aWRlci50YWdzID0gcHJvdmlkZXIudGFncy5maWx0ZXIodGFnID0+IHRhZy5jb2RlICE9PSAiY3VzdG9tZXIiKTsKCiAgICBsZXQgY3VzdG9tZXJJZDsKCiAgICBpZiAoc2F2ZWRDdXN0b21lcj8uaWQpIHsKICAgICAgCiAgICAgIGN1c3RvbWVySWQgPSBzYXZlZEN1c3RvbWVyLmlkOwogICAgICAKICAgIH0gZWxzZSB7CiAgIAogICAgICBjb25zdCB0eG4gPSBkZWZhdWx0UGF5bG9hZD8uY29udGV4dD8udHJhbnNhY3Rpb25faWQgfHwgRGF0ZS5ub3coKTsKICAgICAgY3VzdG9tZXJJZCA9IGBDVVNULSR7dHhuLnN1YnN0cmluZygwLCA4KX1gOwogICAKICAgIH0KCgogICAgcHJvdmlkZXIudGFncy5wdXNoKHsKICAgICAgY29kZTogImN1c3RvbWVyIiwKICAgICAgbGlzdDogWwogICAgICAgIHsKICAgICAgICAgIGNvZGU6ICJpZCIsCiAgICAgICAgICB2YWx1ZTogY3VzdG9tZXJJZAogICAgICAgIH0KICAgICAgXQogICAgfSk7CgoKICBhcHBseUR5bmFtaWNUaW1lc3RhbXBzKGRlZmF1bHRQYXlsb2FkKTsKCiAgICByZXR1cm4gZGVmYXVsdFBheWxvYWQ7CgogIH0gY2F0Y2ggKGUpIHsKICAgIGNvbnNvbGUuZXJyb3IoIkVycm9yIDoiLCBlKTsKICAgIHJldHVybiB7CiAgICAgIGNvbnRleHQ6IGRlZmF1bHRQYXlsb2FkPy5jb250ZXh0IHx8IHt9LAogICAgICBlcnJvcjogZT8ubWVzc2FnZSB8fCAidW5rbm93biBlcnJvciIKICAgIH07CiAgfQp9CgoKCgoKCgoK
+      generate: LyoqCiAqIEdlbmVyYXRlcyB0aGUgbW9jayBwYXlsb2FkIGZvciBhbiBBUEkgY2FsbCBpbiB0aGUgdHJhbnNhY3Rpb24gZmxvdy4KICogVGhpcyBmdW5jdGlvbiBhbGxvd3MgY3VzdG9taXphdGlvbiBvZiB0aGUgZGVmYXVsdCBwYXlsb2FkIHVzaW5nIHNlc3Npb24gZGF0YQogKiBmcm9tIHByZXZpb3VzIHN0ZXBzIGFuZCB1c2VyIGlucHV0cy4KICogCiAqIEBwYXJhbSB7T2JqZWN0fSBkZWZhdWx0UGF5bG9hZCAtIFRoZSBiYXNlIHBheWxvYWQgb2JqZWN0IHdpdGggY29udGV4dCBhbHJlYWR5IHBvcHVsYXRlZC4KICogQHBhcmFtIHtPYmplY3R9IHNlc3Npb25EYXRhIC0gRGF0YSBjb2xsZWN0ZWQgZnJvbSBwcmV2aW91cyB0cmFuc2FjdGlvbiBzdGVwcy4KICogQHBhcmFtIHtPYmplY3R9IHNlc3Npb25EYXRhLnVzZXJfaW5wdXRzIC0gVXNlci1wcm92aWRlZCBpbnB1dCB2YWx1ZXMgZm9yIHRoaXMgc3RlcC4KICogQHBhcmFtIHsqfSBzZXNzaW9uRGF0YS5ba2V5XSAtIEFueSBzYXZlZCBkYXRhIGZyb20gcHJldmlvdXMgc3RlcHMgKGRlZmluZWQgaW4gc2F2ZURhdGEgY29uZmlnKS4KICogCiAqIEByZXR1cm5zIHtPYmplY3R9IFRoZSBnZW5lcmF0ZWQgcGF5bG9hZCBvYmplY3QgdG8gYmUgc2VudCBpbiB0aGUgQVBJIHJlcXVlc3QuCiAqLwovKioKKiBHZW5lcmF0ZXMgdGhlIG1vY2sgcGF5bG9hZCBmb3IgYW4gQVBJIGNhbGwgaW4gdGhlIHRyYW5zYWN0aW9uIGZsb3cuCiovCmFzeW5jIGZ1bmN0aW9uIGdlbmVyYXRlKGRlZmF1bHRQYXlsb2FkLCBzZXNzaW9uRGF0YSkgewogIHRyeSB7CiAgICBjb25zdCBjaXR5ID0gc2Vzc2lvbkRhdGE/LmNpdHk/LlswXTsKCiAgICBpZiAoY2l0eSkgewogICAgICBkZWZhdWx0UGF5bG9hZC5jb250ZXh0LmNpdHkgPSBjaXR5OwogICAgICBjb25zb2xlLmxvZygiQ2l0eSBzZXQgdG86IiwgY2l0eSk7CiAgICB9CgogICAgY29uc3Qgc2F2ZWRDdXN0b21lciA9IHNlc3Npb25EYXRhLmN1c3RvbWVyRGF0YTsKICAgIGRlZmF1bHRQYXlsb2FkLmNvbnRleHQubWVzc2FnZV9pZCA9IHNlc3Npb25EYXRhLmxhdGVzdE1lc3NhZ2VfaWRbMF07CgogICAgY29uc3QgcHJvdmlkZXJzID0gZGVmYXVsdFBheWxvYWQ/Lm1lc3NhZ2U/LmNhdGFsb2c/LlsiYnBwL3Byb3ZpZGVycyJdOwogICAgaWYgKCFwcm92aWRlcnMgfHwgcHJvdmlkZXJzLmxlbmd0aCA9PT0gMCkgewogICAgICBhcHBseUR5bmFtaWNUaW1lc3RhbXBzKGRlZmF1bHRQYXlsb2FkKTsKICAgICAgcmV0dXJuIGRlZmF1bHRQYXlsb2FkOwogICAgfQoKICAgIGNvbnN0IHByb3ZpZGVyID0gcHJvdmlkZXJzWzBdOwoKICAgIGlmICghcHJvdmlkZXIudGFncykgewogICAgICBwcm92aWRlci50YWdzID0gW107CiAgICB9CgogICAgcHJvdmlkZXIudGFncyA9IHByb3ZpZGVyLnRhZ3MuZmlsdGVyKCh0YWcpID0+IHRhZy5jb2RlICE9PSAiY3VzdG9tZXIiKTsKCiAgICBsZXQgY3VzdG9tZXJJZDsKICAgIGlmIChzYXZlZEN1c3RvbWVyPy5pZCkgewogICAgICBjdXN0b21lcklkID0gc2F2ZWRDdXN0b21lci5pZDsKICAgIH0gZWxzZSB7CiAgICAgIGNvbnN0IHR4biA9IGRlZmF1bHRQYXlsb2FkPy5jb250ZXh0Py50cmFuc2FjdGlvbl9pZCB8fCBEYXRlLm5vdygpLnRvU3RyaW5nKCk7CiAgICAgIGN1c3RvbWVySWQgPSBgQ1VTVC0ke3R4bi5zdWJzdHJpbmcoMCwgOCl9YDsKICAgIH0KCiAgICBwcm92aWRlci50YWdzLnB1c2goewogICAgICBjb2RlOiAiY3VzdG9tZXIiLAogICAgICBsaXN0OiBbCiAgICAgICAgewogICAgICAgICAgY29kZTogImlkIiwKICAgICAgICAgIHZhbHVlOiBjdXN0b21lcklkLAogICAgICAgIH0sCiAgICAgIF0sCiAgICB9KTsKCiAgICBmdW5jdGlvbiBnZXRUb2RheVN0YXJ0VVRDKCkgewogICAgICBjb25zdCBkID0gbmV3IERhdGUoKTsKICAgICAgcmV0dXJuIG5ldyBEYXRlKAogICAgICAgIERhdGUuVVRDKGQuZ2V0VVRDRnVsbFllYXIoKSwgZC5nZXRVVENNb250aCgpLCBkLmdldFVUQ0RhdGUoKSwgMCwgMCwgMCwgMCkKICAgICAgKS50b0lTT1N0cmluZygpOwogICAgfQoKICAgIGZ1bmN0aW9uIGdldFRvZGF5UGx1czVFbmRVVEMoKSB7CiAgICAgIGNvbnN0IGQgPSBuZXcgRGF0ZSgpOwogICAgICByZXR1cm4gbmV3IERhdGUoCiAgICAgICAgRGF0ZS5VVEMoZC5nZXRVVENGdWxsWWVhcigpLCBkLmdldFVUQ01vbnRoKCksIGQuZ2V0VVRDRGF0ZSgpICsgNSwgMjMsIDU5LCA1OSwgOTk5KQogICAgICApLnRvSVNPU3RyaW5nKCk7CiAgICB9CgogICAgZnVuY3Rpb24gZ2V0TmV4dDZEYXRlc1VUQygpIHsKICAgICAgY29uc3QgZGF0ZXMgPSBbXTsKICAgICAgY29uc3QgYmFzZSA9IG5ldyBEYXRlKCk7CgogICAgICBmb3IgKGxldCBpID0gMDsgaSA8PSA1OyBpKyspIHsKICAgICAgICBjb25zdCBkID0gbmV3IERhdGUoYmFzZSk7CiAgICAgICAgZC5zZXRVVENEYXRlKGQuZ2V0VVRDRGF0ZSgpICsgaSk7CiAgICAgICAgZGF0ZXMucHVzaChkLnRvSVNPU3RyaW5nKCkuc2xpY2UoMCwgMTApKTsKICAgICAgfQoKICAgICAgcmV0dXJuIGRhdGVzOwogICAgfQoKICAgIGZ1bmN0aW9uIHVwZGF0ZU9mZmVyc0FuZEhvbGlkYXlzKG5vZGUpIHsKICAgICAgaWYgKCFub2RlIHx8IHR5cGVvZiBub2RlICE9PSAib2JqZWN0IikgcmV0dXJuOwoKICAgICAgaWYgKEFycmF5LmlzQXJyYXkobm9kZSkpIHsKICAgICAgICBub2RlLmZvckVhY2godXBkYXRlT2ZmZXJzQW5kSG9saWRheXMpOwogICAgICAgIHJldHVybjsKICAgICAgfQoKICAgICAgZm9yIChjb25zdCBrZXkgb2YgT2JqZWN0LmtleXMobm9kZSkpIHsKICAgICAgICBpZiAoa2V5ID09PSAib2ZmZXJzIiAmJiBBcnJheS5pc0FycmF5KG5vZGVba2V5XSkpIHsKICAgICAgICAgIGNvbnN0IG9mZmVyU3RhcnQgPSBnZXRUb2RheVN0YXJ0VVRDKCk7CiAgICAgICAgICBjb25zdCBvZmZlckVuZCA9IGdldFRvZGF5UGx1czVFbmRVVEMoKTsKCiAgICAgICAgICBub2RlW2tleV0uZm9yRWFjaCgob2ZmZXIpID0+IHsKICAgICAgICAgICAgaWYgKG9mZmVyPy50aW1lPy5yYW5nZSkgewogICAgICAgICAgICAgIG9mZmVyLnRpbWUucmFuZ2Uuc3RhcnQgPSBvZmZlclN0YXJ0OwogICAgICAgICAgICAgIG9mZmVyLnRpbWUucmFuZ2UuZW5kID0gb2ZmZXJFbmQ7CiAgICAgICAgICAgIH0KICAgICAgICAgIH0pOwogICAgICAgIH0gZWxzZSBpZiAoa2V5ID09PSAiaG9saWRheXMiICYmIEFycmF5LmlzQXJyYXkobm9kZVtrZXldKSkgewogICAgICAgICAgbm9kZVtrZXldID0gZ2V0TmV4dDZEYXRlc1VUQygpOwogICAgICAgIH0gZWxzZSB7CiAgICAgICAgICB1cGRhdGVPZmZlcnNBbmRIb2xpZGF5cyhub2RlW2tleV0pOwogICAgICAgIH0KICAgICAgfQogICAgfQoKICAgIHVwZGF0ZU9mZmVyc0FuZEhvbGlkYXlzKGRlZmF1bHRQYXlsb2FkKTsKICAgIGFwcGx5RHluYW1pY1RpbWVzdGFtcHMoZGVmYXVsdFBheWxvYWQpOwoKICAgIHJldHVybiBkZWZhdWx0UGF5bG9hZDsKICB9IGNhdGNoIChlKSB7CiAgICBjb25zb2xlLmVycm9yKCJFcnJvciA6IiwgZSk7CiAgICByZXR1cm4gewogICAgICBjb250ZXh0OiBkZWZhdWx0UGF5bG9hZD8uY29udGV4dCB8fCB7fSwKICAgICAgZXJyb3I6IGU/Lm1lc3NhZ2UgfHwgInVua25vd24gZXJyb3IiLAogICAgfTsKICB9Cn0KCgoKCgoKCg==
       validate: LyoqCiAqIFZhbGlkYXRlcyB0aGUgaW5jb21pbmcgcmVxdWVzdCBwYXlsb2FkIGZvciBhbiBBUEkgY2FsbCBpbiB0aGUgdHJhbnNhY3Rpb24gZmxvdy4KICogCiAqIEBwYXJhbSB7T2JqZWN0fSB0YXJnZXRQYXlsb2FkIC0gVGhlIGluY29taW5nIHJlcXVlc3QgcGF5bG9hZCB0byB2YWxpZGF0ZS4KICogQHBhcmFtIHtPYmplY3R9IHNlc3Npb25EYXRhIC0gRGF0YSBjb2xsZWN0ZWQgZnJvbSBwcmV2aW91cyB0cmFuc2FjdGlvbiBzdGVwcy4KICogCiAqIEByZXR1cm5zIHtPYmplY3R9IHsgdmFsaWQ6IGJvb2xlYW4sIGNvZGU6IG51bWJlciwgZGVzY3JpcHRpb246IHN0cmluZyB9CiAqLwpmdW5jdGlvbiB2YWxpZGF0ZSh0YXJnZXRQYXlsb2FkLCBzZXNzaW9uRGF0YSkgewogIHJldHVybiB7IHZhbGlkOiB0cnVlLCBjb2RlOiAyMDAsIGRlc2NyaXB0aW9uOiAiVmFsaWQgcmVxdWVzdCIgfTsKfQ==
       requirements: LyoqCiAqIENoZWNrcyBpZiB0aGUgcmVxdWlyZW1lbnRzIGZvciBwcm9jZWVkaW5nIHdpdGggdGhlIEFQSSBjYWxsIGFyZSBtZXQuCiAqIAogKiBAcGFyYW0ge09iamVjdH0gc2Vzc2lvbkRhdGEgLSBEYXRhIGNvbGxlY3RlZCBmcm9tIHByZXZpb3VzIHRyYW5zYWN0aW9uIHN0ZXBzLgogKiAKICogQHJldHVybnMge09iamVjdH0geyB2YWxpZDogYm9vbGVhbiwgY29kZTogbnVtYmVyLCBkZXNjcmlwdGlvbjogc3RyaW5nIH0KICovCmZ1bmN0aW9uIG1lZXRzUmVxdWlyZW1lbnRzKHNlc3Npb25EYXRhKSB7CiAgcmV0dXJuIHsgdmFsaWQ6IHRydWUsIGNvZGU6IDIwMCwgZGVzY3JpcHRpb246ICJSZXF1aXJlbWVudHMgbWV0IiB9Owp9
       defaultPayload:
@@ -1376,1200 +2529,111 @@ steps:
         bppId: $.context.bpp_id
         bppUri: $.context.bpp_uri
       inputs: {}
-transaction_history:
-  - action_id: search-0
-    payload:
-      context:
-        domain: ONDC:RETeB2B
-        action: search
-        timestamp: 2026-03-10T10:56:12.448Z
-        transaction_id: 9e8654ed-0dd3-4315-81f2-814780f13e79
-        message_id: af672341-46f1-4d40-9042-c3d32814d080
-        bap_id: sample-bap-id
-        bap_uri: https://bap.example.com
-        ttl: PT30S
-        country: IND
-        city: std:080
-        core_version: 1.2.5
-      message:
-        intent:
-          category:
-            id: Energy and Soft Drinks
-          fulfillment:
-            type: Delivery
-          payment:
-            "@ondc/org/buyer_app_finder_fee_type": percent
-            "@ondc/org/buyer_app_finder_fee_amount": "3.54"
-          tags:
-            - code: bap_terms
-              list:
-                - code: static_terms
-                  value: ""
-                - code: static_terms_new
-                  value: https://github.com/ONDC-Official/NP-Static-Terms/buyerNP_BNP/1.0/tc.pdf
-                - code: effective_date
-                  value: 2026-03-20T10:56:12.475Z
-            - code: bap_features
-              list:
-                - code: "0092"
-                  value: yes
-    action: search
-    saved_info: {}
-  - action_id: on_search
-    payload:
-      context:
-        domain: ONDC:RETeB2B
-        action: on_search
-        timestamp: 2026-03-10T10:56:12.509Z
-        transaction_id: 9e8654ed-0dd3-4315-81f2-814780f13e79
-        message_id: af672341-46f1-4d40-9042-c3d32814d080
-        bap_id: sample-bap-id
-        bap_uri: https://bap.example.com
-        ttl: PT30S
-        bpp_id: sample-bpp-id
-        bpp_uri: https://bpp.example.com
-        country: IND
-        city: std:080
-        core_version: 1.2.5
-      message:
-        catalog:
-          bpp/descriptor:
-            name: Distributor Marketplace
-            symbol: https://seller-np.com/images/logo.png
-            short_desc: B2B Wholesale Distribution Platform
-            long_desc: B2B Wholesale Distribution Platform for Retailers
-            images:
-              - https://seller-np.com/images/logo.png
-            tags:
-              - code: bpp_terms
-                list:
-                  - code: np_type
-                    value: MSN
-                  - code: accept_bap_terms
-                    value: Y
-          bpp/providers:
-            - id: P1
-              time:
-                label: enable
-                timestamp: 2026-03-10T10:56:12.509Z
-              descriptor:
-                name: ABC Manufacturer
-                code: distributor
-                symbol: https://seller-np.com/images/abc-dist.png
-                short_desc: FMCG Wholesale Distributor
-                long_desc: Leading FMCG Wholesale Distributor in Bangalore
-                images:
-                  - https://seller-np.com/images/abc-dist.png
-              ttl: P1D
-              fulfillments:
-                - id: F1
-                  type: Delivery
-                  contact:
-                    phone: "9886098860"
-                    email: orders@abcdist.com
-              locations:
-                - id: L1
-                  time:
-                    label: enable
-                    timestamp: 2026-03-10T10:56:12.509Z
-                    schedule:
-                      holidays:
-                        - 2025-01-26T00:00:00.000Z
-                        - 2025-08-15T00:00:00.000Z
-                  gps: 12.9675,77.7496
-                  address:
-                    locality: Jayanagar
-                    street: Jayanagar 4th Block
-                    city: Bengaluru
-                    area_code: "560076"
-                    state: KA
-                - id: L2
-                  time:
-                    label: enable
-                    timestamp: 2026-03-10T10:56:12.509Z
-                    schedule:
-                      holidays:
-                        - 2025-01-26T00:00:00.000Z
-                        - 2025-08-15T00:00:00.000Z
-                  gps: 12.9352,77.6245
-                  address:
-                    locality: BTM Layout
-                    street: BTM Layout 2nd Stage
-                    city: Bengaluru
-                    area_code: "560076"
-                    state: KA
-              categories:
-                - id: V1
-                  descriptor:
-                    name: Plain Atta Variant Group
+    examples:
+      - name: example for on_search
+        payload:
+          context:
+            domain: ONDC:RETeB2B
+            action: on_search
+            timestamp: 2026-06-02T11:27:30.926Z
+            transaction_id: 9e8654ed-0dd3-4315-81f2-814780f13e79
+            message_id: dab2d04e-bc93-4aa7-82e8-64b3af5887e6
+            bap_id: sample-bap-id
+            bap_uri: https://bap.example.com
+            ttl: PT30S
+            bpp_id: sample-bpp-id
+            bpp_uri: https://bpp.example.com
+            country: IND
+            city: std:080
+            core_version: 1.2.5
+          message:
+            catalog:
+              bpp/providers:
+                - id: P1
+                  offers:
+                    - id: discp10
+                      tags:
+                        - code: scheme_progress
+                          list:
+                            - code: target_quantity
+                              value: "100"
+                            - code: remaining_quantity
+                              value: "35"
+                            - code: valid_till
+                              value: 2026-08-31T11:27:30.926Z
+                            - code: tier
+                              value: silver
+                    - id: flat150
+                      tags:
+                        - code: scheme_progress
+                          list:
+                            - code: target_quantity
+                              value: "200"
+                            - code: remaining_quantity
+                              value: "50"
+                            - code: valid_till
+                              value: 2026-08-31T11:27:30.926Z
+                            - code: tier
+                              value: silver
+                    - id: slab1
+                      tags:
+                        - code: scheme_progress
+                          list:
+                            - code: target_purchase_value
+                              value: "50000"
+                            - code: remaining_purchase_value
+                              value: "25700"
+                            - code: valid_till
+                              value: 2026-08-31T11:27:30.926Z
+                            - code: tier
+                              value: silver
+                    - id: freebie1
+                      tags:
+                        - code: scheme_progress
+                          list:
+                            - code: target_quantity
+                              value: "200"
+                            - code: remaining_quantity
+                              value: "50"
+                            - code: valid_till
+                              value: 2026-08-31T11:27:30.926Z
+                            - code: tier
+                              value: silver
+                    - id: buy2get3
+                      tags:
+                        - code: scheme_progress
+                          list:
+                            - code: target_quantity
+                              value: "500"
+                            - code: remaining_quantity
+                              value: "50"
+                            - code: valid_till
+                              value: 2026-08-31T11:27:30.926Z
+                            - code: tier
+                              value: silver
                   tags:
-                    - code: type
+                    - code: credit
                       list:
-                        - code: type
-                          value: variant_group
-                    - code: attr
+                        - code: credit_limit
+                          value: "25000.00"
+                        - code: valid_till
+                          value: 2026-08-31T11:27:30.926Z
+                    - code: poc
                       list:
                         - code: name
-                          value: item.tags.unitized.count
-                        - code: seq
-                          value: "1"
-                    - code: attr
+                          value: Rajesh Kumar
+                        - code: phone
+                          value: "9876543210"
+                        - code: email
+                          value: rajesh.kumar@abcdist.com
+                    - code: customer
                       list:
-                        - code: name
-                          value: item.quantity.unitized.measure
-                        - code: seq
-                          value: "2"
-                - id: V2
-                  descriptor:
-                    name: Soft Drinks Variant Group
-                  tags:
-                    - code: type
-                      list:
-                        - code: type
-                          value: variant_group
-                    - code: attr
-                      list:
-                        - code: name
-                          value: item.quantity.unitized.measure
-                        - code: seq
-                          value: "1"
-                    - code: attr
-                      list:
-                        - code: name
-                          value: item.quantity.unitized.count
-                        - code: seq
-                          value: "2"
-              offers:
-                - id: discp10
-                  descriptor:
-                    code: discount
-                    images:
-                      - https://seller-np.com/images/offer1-banner.webp
-                  location_ids:
-                    - L1
-                  category_ids:
-                    - Atta, Flours and Sooji
-                  item_ids:
-                    - I1
-                    - I2
-                    - I3
-                    - I4
-                  time:
-                    label: valid
-                    range:
-                      start: 2025-01-01T00:00:00.000Z
-                      end: 2025-01-31T23:59:59.000Z
-                  tags:
-                    - code: qualifier
-                      list:
-                        - code: min_value
-                          value: "500.00"
-                    - code: benefit
-                      list:
-                        - code: value_type
-                          value: percent
-                        - code: value
-                          value: "-10.00"
-                        - code: value_cap
-                          value: "-2000.00"
-                    - code: meta
-                      list:
-                        - code: additive
-                          value: yes
-                        - code: auto
-                          value: no
-                - id: flat150
-                  descriptor:
-                    code: discount
-                    images:
-                      - https://seller-np.com/images/offer2-banner.webp
-                  location_ids:
-                    - L1
-                  category_ids:
-                    - Soft Drinks and Juices
-                  item_ids:
-                    - I5
-                    - I6
-                    - I7
-                    - I8
-                  time:
-                    label: valid
-                    range:
-                      start: 2025-01-01T00:00:00.000Z
-                      end: 2025-01-31T23:59:59.000Z
-                  tags:
-                    - code: qualifier
-                      list:
-                        - code: min_value
-                          value: "1000.00"
-                    - code: benefit
-                      list:
-                        - code: value_type
-                          value: amount
-                        - code: value
-                          value: "-150.00"
-                    - code: meta
-                      list:
-                        - code: additive
-                          value: yes
-                        - code: auto
-                          value: yes
-                - id: slab1
-                  descriptor:
-                    code: slab
-                    images:
-                      - https://seller-np.com/images/slab-offer-banner.webp
-                  location_ids:
-                    - L1
-                  category_ids: []
-                  item_ids:
-                    - I5
-                  time:
-                    label: valid
-                    range:
-                      start: 2025-01-01T00:00:00.000Z
-                      end: 2025-03-31T23:59:59.000Z
-                  tags:
-                    - code: qualifier
-                      list:
-                        - code: item_count
-                          value: "10"
-                        - code: item_count_upper
-                          value: "19"
-                    - code: benefit
-                      list:
-                        - code: value_type
-                          value: percent
-                        - code: value
-                          value: "-5.00"
-                        - code: value_cap
-                          value: "-5000.00"
-                    - code: meta
-                      list:
-                        - code: additive
-                          value: no
-                        - code: auto
-                          value: yes
-                - id: slab2
-                  descriptor:
-                    code: slab
-                    images:
-                      - https://seller-np.com/images/slab-offer-banner.webp
-                  location_ids:
-                    - L2
-                  category_ids: []
-                  item_ids:
-                    - I2
-                  time:
-                    label: valid
-                    range:
-                      start: 2025-01-01T00:00:00.000Z
-                      end: 2025-03-31T23:59:59.000Z
-                  tags:
-                    - code: qualifier
-                      list:
-                        - code: item_weight
-                          value: "150"
-                        - code: item_weight_upper
-                          value: "200"
-                    - code: benefit
-                      list:
-                        - code: value_type
-                          value: percent
-                        - code: value
-                          value: "-15.00"
-                        - code: value_cap
-                          value: "-1000.00"
-                    - code: meta
-                      list:
-                        - code: additive
-                          value: no
-                        - code: auto
-                          value: yes
-                - id: freebie1
-                  descriptor:
-                    code: freebie
-                    images:
-                      - https://seller-np.com/images/freebie-offer-banner.webp
-                  location_ids:
-                    - L1
-                  category_ids: []
-                  item_ids:
-                    - I1
-                  time:
-                    label: valid
-                    range:
-                      start: 2025-01-01T00:00:00.000Z
-                      end: 2025-01-31T23:59:59.000Z
-                  tags:
-                    - code: qualifier
-                      list:
-                        - code: item_count
-                          value: "50"
-                    - code: meta
-                      list:
-                        - code: additive
-                          value: no
-                        - code: auto
-                          value: yes
-                - id: buy2get3
-                  descriptor:
-                    code: buyXgetY
-                    images:
-                      - https://snp.com/images/offer1-banner.webp
-                  location_ids:
-                    - L1
-                  category_ids: []
-                  item_ids:
-                    - I1
-                    - I2
-                  time:
-                    label: valid
-                    range:
-                      start: 2025-01-01T16:00:00.000Z
-                      end: 2025-01-01T23:00:00.000Z
-                  tags:
-                    - code: qualifier
-                      list:
-                        - code: item_count
-                          value: "2"
-                    - code: benefit
-                      list:
-                        - code: item_count
-                          value: "1"
-                        - code: item_id
-                          value: I1
-                        - code: item_value
-                          value: "0.00"
-                    - code: meta
-                      list:
-                        - code: additive
-                          value: no
-                        - code: auto
-                          value: yes
-              items:
-                - id: I1
-                  time:
-                    label: enable
-                    timestamp: 2026-03-10T10:56:12.509Z
-                  parent_item_id: V1
-                  descriptor:
-                    name: Ashirwad Plain Atta 1kg
-                    code: 1:XXXXXXXXXXXXX
-                    symbol: https://seller-np.com/images/ashirwad-atta-1kg.png
-                    short_desc: Ashirwad Plain Atta 1kg Pack
-                    long_desc: Premium quality wheat flour
-                    images:
-                      - https://seller-np.com/images/ashirwad-atta-1kg.png
-                  quantity:
-                    unitized:
-                      count: "10"
-                      measure:
-                        unit: kilogram
-                        value: "1"
-                    available:
-                      count: "99"
-                    maximum:
-                      count: "100"
-                    minimum:
-                      count: "20"
-                  price:
-                    currency: INR
-                    value: "52.00"
-                    maximum_value: "55.00"
-                  category_id: Atta, Flours and Sooji
-                  fulfillment_id: F1
-                  location_id: L1
-                  "@ondc/org/returnable": true
-                  "@ondc/org/cancellable": true
-                  "@ondc/org/return_window": P2D
-                  "@ondc/org/seller_pickup_return": true
-                  "@ondc/org/time_to_ship": PT4H
-                  "@ondc/org/available_on_cod": false
-                  "@ondc/org/contact_details_consumer_care": support,support@abcdist.com,18004254444
-                  "@ondc/org/statutory_reqs_packaged_commodities":
-                    manufacturer_or_packer_name: ITC Limited
-                    manufacturer_or_packer_address: ITC Quality Care Cell, P.O Box No.592, Bangalore-560005
-                    common_or_generic_name_of_commodity: Wheat Flour (Atta)
-                    month_year_of_manufacture_packing_import: 12/2024
-                  "@ondc/org/statutory_reqs_prepackaged_food":
-                    nutritional_info: Energy(KCal)-(per 100g) 348; Protein(g)-(per 100g) 11.8
-                    additives_info: None
-                    brand_owner_FSSAI_license_no: "12345678901234"
-                    other_FSSAI_license_no: "12345678901234"
-                    importer_FSSAI_license_no: ""
-                  tags:
-                    - code: origin
-                      list:
-                        - code: country
-                          value: IND
-                    - code: attribute
-                      list:
-                        - code: brand
-                          value: Ashirwad
-                    - code: veg_nonveg
-                      list:
-                        - code: veg
-                          value: yes
-                    - code: image
-                      list:
-                        - code: type
-                          value: back_image
-                        - code: url
-                          value: https://seller-np.com/images/i1_back_image.png
-                - id: I2
-                  time:
-                    label: enable
-                    timestamp: 2026-03-10T10:56:12.509Z
-                  parent_item_id: V1
-                  descriptor:
-                    name: Ashirwad Plain Atta 5kg
-                    code: 1:XXXXXXXXXXXXY
-                    symbol: https://seller-np.com/images/ashirwad-atta-5kg.png
-                    short_desc: Ashirwad Plain Atta 5kg Pack
-                    long_desc: Premium quality wheat flour - bulk pack
-                    images:
-                      - https://seller-np.com/images/ashirwad-atta-5kg.png
-                  quantity:
-                    unitized:
-                      count: "12"
-                      measure:
-                        unit: kilogram
-                        value: "5"
-                    available:
-                      count: "99"
-                    maximum:
-                      count: "50"
-                    minimum:
-                      count: "10"
-                  price:
-                    currency: INR
-                    value: "245.00"
-                    maximum_value: "260.00"
-                  category_id: Atta, Flours and Sooji
-                  fulfillment_id: F1
-                  location_id: L2
-                  "@ondc/org/returnable": true
-                  "@ondc/org/cancellable": true
-                  "@ondc/org/return_window": P2D
-                  "@ondc/org/seller_pickup_return": true
-                  "@ondc/org/time_to_ship": PT4H
-                  "@ondc/org/available_on_cod": false
-                  "@ondc/org/contact_details_consumer_care": support,support@abcdist.com,18004254444
-                  "@ondc/org/statutory_reqs_packaged_commodities":
-                    manufacturer_or_packer_name: ITC Limited
-                    manufacturer_or_packer_address: ITC Quality Care Cell, P.O Box No.592, Bangalore-560005
-                    common_or_generic_name_of_commodity: Wheat Flour (Atta)
-                    month_year_of_manufacture_packing_import: 12/2024
-                  "@ondc/org/statutory_reqs_prepackaged_food":
-                    nutritional_info: Energy(KCal)-(per 100g) 348; Protein(g)-(per 100g) 11.8
-                    additives_info: None
-                    brand_owner_FSSAI_license_no: "12345678901234"
-                    other_FSSAI_license_no: "12345678901234"
-                    importer_FSSAI_license_no: ""
-                  tags:
-                    - code: origin
-                      list:
-                        - code: country
-                          value: IND
-                    - code: attribute
-                      list:
-                        - code: brand
-                          value: Ashirwad
-                    - code: veg_nonveg
-                      list:
-                        - code: veg
-                          value: yes
-                    - code: image
-                      list:
-                        - code: type
-                          value: back_image
-                        - code: url
-                          value: https://seller-np.com/images/i2_back_image.png
-                - id: I3
-                  time:
-                    label: enable
-                    timestamp: 2026-03-10T10:56:12.509Z
-                  parent_item_id: V1
-                  descriptor:
-                    name: Fortune Chakki Atta 1kg
-                    code: 1:XXXXXXXXXXXXZ
-                    symbol: https://seller-np.com/images/fortune-atta-1kg.png
-                    short_desc: Fortune Chakki Fresh Atta 1kg Pack
-                    long_desc: 100% whole wheat chakki atta
-                    images:
-                      - https://seller-np.com/images/fortune-atta-1kg.png
-                  quantity:
-                    unitized:
-                      count: "15"
-                      measure:
-                        unit: kilogram
-                        value: "1"
-                    available:
-                      count: "99"
-                    maximum:
-                      count: "80"
-                    minimum:
-                      count: "20"
-                  price:
-                    currency: INR
-                    value: "48.00"
-                    maximum_value: "52.00"
-                  category_id: Atta, Flours and Sooji
-                  fulfillment_id: F1
-                  location_id: L1
-                  "@ondc/org/returnable": true
-                  "@ondc/org/cancellable": true
-                  "@ondc/org/return_window": P2D
-                  "@ondc/org/seller_pickup_return": true
-                  "@ondc/org/time_to_ship": PT4H
-                  "@ondc/org/available_on_cod": false
-                  "@ondc/org/contact_details_consumer_care": Support,support@abcdist.com,18004254444
-                  "@ondc/org/statutory_reqs_packaged_commodities":
-                    manufacturer_or_packer_name: Adani Wilmar Limited
-                    manufacturer_or_packer_address: Fortune House, Ahmedabad-380009
-                    common_or_generic_name_of_commodity: Wheat Flour (Atta)
-                    month_year_of_manufacture_packing_import: 12/2024
-                  "@ondc/org/statutory_reqs_prepackaged_food":
-                    nutritional_info: Energy(KCal)-(per 100g) 341; Protein(g)-(per 100g) 12.1
-                    additives_info: None
-                    brand_owner_FSSAI_license_no: "10012011000125"
-                    other_FSSAI_license_no: "10012011000125"
-                    importer_FSSAI_license_no: ""
-                  tags:
-                    - code: origin
-                      list:
-                        - code: country
-                          value: IND
-                    - code: attribute
-                      list:
-                        - code: brand
-                          value: Fortune
-                    - code: veg_nonveg
-                      list:
-                        - code: veg
-                          value: yes
-                    - code: image
-                      list:
-                        - code: type
-                          value: back_image
-                        - code: url
-                          value: https://seller-np.com/images/i3_back_image.png
-                - id: I4
-                  time:
-                    label: enable
-                    timestamp: 2026-03-10T10:56:12.509Z
-                  parent_item_id: V1
-                  descriptor:
-                    name: Fortune Chakki Atta 5kg
-                    code: 1:XXXXXXXXXXXXW
-                    symbol: https://seller-np.com/images/fortune-atta-5kg.png
-                    short_desc: Fortune Chakki Fresh Atta 5kg Pack
-                    long_desc: 100% whole wheat chakki atta - bulk pack
-                    images:
-                      - https://seller-np.com/images/fortune-atta-5kg.png
-                  quantity:
-                    unitized:
-                      count: "5"
-                      measure:
-                        unit: kilogram
-                        value: "5"
-                    available:
-                      count: "99"
-                    maximum:
-                      count: "99"
-                    minimum:
-                      count: "10"
-                  price:
-                    currency: INR
-                    value: "230.00"
-                    maximum_value: "250.00"
-                  category_id: Atta, Flours and Sooji
-                  fulfillment_id: F1
-                  location_id: L2
-                  "@ondc/org/returnable": true
-                  "@ondc/org/cancellable": true
-                  "@ondc/org/return_window": P2D
-                  "@ondc/org/seller_pickup_return": true
-                  "@ondc/org/time_to_ship": PT4H
-                  "@ondc/org/available_on_cod": false
-                  "@ondc/org/contact_details_consumer_care": Support,support@abcdist.com,18004254444
-                  "@ondc/org/statutory_reqs_packaged_commodities":
-                    manufacturer_or_packer_name: Adani Wilmar Limited
-                    manufacturer_or_packer_address: Fortune House, Ahmedabad-380009
-                    common_or_generic_name_of_commodity: Wheat Flour (Atta)
-                    month_year_of_manufacture_packing_import: 12/2024
-                  "@ondc/org/statutory_reqs_prepackaged_food":
-                    nutritional_info: Energy(KCal)-(per 100g) 341; Protein(g)-(per 100g) 12.1
-                    additives_info: None
-                    brand_owner_FSSAI_license_no: "10012011000125"
-                    other_FSSAI_license_no: "10012011000125"
-                    importer_FSSAI_license_no: ""
-                  tags:
-                    - code: origin
-                      list:
-                        - code: country
-                          value: IND
-                    - code: attribute
-                      list:
-                        - code: brand
-                          value: Fortune
-                    - code: veg_nonveg
-                      list:
-                        - code: veg
-                          value: yes
-                    - code: image
-                      list:
-                        - code: type
-                          value: back_image
-                        - code: url
-                          value: https://seller-np.com/images/i4_back_image.png
-                - id: I5
-                  time:
-                    label: enable
-                    timestamp: 2026-03-10T10:56:12.509Z
-                  parent_item_id: V2
-                  descriptor:
-                    name: Coca-Cola 300ml (Case of 24)
-                    code: 1:COCACOLA300ML24
-                    symbol: https://seller-np.com/images/coke-300ml.png
-                    short_desc: Coca-Cola 300ml Glass Bottle - Case of 24
-                    long_desc: Coca-Cola 300ml Glass Bottle - Case of 24 bottles
-                    images:
-                      - https://seller-np.com/images/coke-300ml.png
-                  quantity:
-                    unitized:
-                      count: "24"
-                      measure:
-                        unit: millilitre
-                        value: "300"
-                    available:
-                      count: "99"
-                    maximum:
-                      count: "20"
-                    minimum:
-                      count: "5"
-                  price:
-                    currency: INR
-                    value: "480.00"
-                    maximum_value: "520.00"
-                  category_id: Soft Drinks and Juices
-                  fulfillment_id: F1
-                  location_id: L1
-                  "@ondc/org/returnable": true
-                  "@ondc/org/cancellable": true
-                  "@ondc/org/return_window": P1D
-                  "@ondc/org/seller_pickup_return": true
-                  "@ondc/org/time_to_ship": PT4H
-                  "@ondc/org/available_on_cod": false
-                  "@ondc/org/contact_details_consumer_care": Support,support@abcdist.com,18004254444
-                  "@ondc/org/statutory_reqs_packaged_commodities":
-                    manufacturer_or_packer_name: Hindustan Coca-Cola Beverages Pvt Ltd
-                    manufacturer_or_packer_address: Coca-Cola India Pvt Ltd, Gurgaon, Haryana
-                    common_or_generic_name_of_commodity: Carbonated Soft Drink
-                    month_year_of_manufacture_packing_import: 01/2025
-                  "@ondc/org/statutory_reqs_prepackaged_food":
-                    nutritional_info: Energy(KCal)-(per 100ml) 42; Sugars(g)-(per 100ml) 10.6
-                    additives_info: Carbonated Water, Sugar, Caramel Colour, Phosphoric Acid,
-                      Caffeine
-                    brand_owner_FSSAI_license_no: "10012011000011"
-                    other_FSSAI_license_no: "10012011000011"
-                    importer_FSSAI_license_no: ""
-                  tags:
-                    - code: origin
-                      list:
-                        - code: country
-                          value: IND
-                    - code: attribute
-                      list:
-                        - code: brand
-                          value: Coca-Cola
-                    - code: veg_nonveg
-                      list:
-                        - code: veg
-                          value: yes
-                - id: I6
-                  time:
-                    label: enable
-                    timestamp: 2026-03-10T10:56:12.509Z
-                  parent_item_id: V2
-                  descriptor:
-                    name: Coca-Cola 2L (Pack of 6)
-                    code: 1:COCACOLA2L6
-                    symbol: https://seller-np.com/images/coke-2l.png
-                    short_desc: Coca-Cola 2 Liter PET - Pack of 6
-                    long_desc: Coca-Cola 2 Liter PET Bottle - Pack of 6 bottles
-                    images:
-                      - https://seller-np.com/images/coke-2l.png
-                  quantity:
-                    unitized:
-                      count: "6"
-                      measure:
-                        unit: litre
-                        value: "2"
-                    available:
-                      count: "99"
-                    maximum:
-                      count: "15"
-                    minimum:
-                      count: "3"
-                  price:
-                    currency: INR
-                    value: "720.00"
-                    maximum_value: "780.00"
-                  category_id: Energy and Soft Drinks
-                  fulfillment_id: F1
-                  location_id: L2
-                  "@ondc/org/returnable": true
-                  "@ondc/org/cancellable": true
-                  "@ondc/org/return_window": P1D
-                  "@ondc/org/seller_pickup_return": true
-                  "@ondc/org/time_to_ship": PT4H
-                  "@ondc/org/available_on_cod": false
-                  "@ondc/org/contact_details_consumer_care": support,support@abcdist.com,18004254444
-                  "@ondc/org/statutory_reqs_packaged_commodities":
-                    manufacturer_or_packer_name: Hindustan Coca-Cola Beverages Pvt Ltd
-                    manufacturer_or_packer_address: Coca-Cola India Pvt Ltd, Gurgaon, Haryana
-                    common_or_generic_name_of_commodity: Carbonated Soft Drink
-                    month_year_of_manufacture_packing_import: 01/2025
-                  "@ondc/org/statutory_reqs_prepackaged_food":
-                    nutritional_info: Energy(KCal)-(per 100ml) 42; Sugars(g)-(per 100ml) 10.6
-                    additives_info: Carbonated Water, Sugar, Caramel Colour, Phosphoric Acid,
-                      Caffeine
-                    brand_owner_FSSAI_license_no: "10012011000011"
-                    other_FSSAI_license_no: "10012011000011"
-                    importer_FSSAI_license_no: ""
-                  tags:
-                    - code: origin
-                      list:
-                        - code: country
-                          value: IND
-                    - code: attribute
-                      list:
-                        - code: brand
-                          value: Coca-Cola
-                    - code: veg_nonveg
-                      list:
-                        - code: veg
-                          value: yes
-                - id: I7
-                  time:
-                    label: enable
-                    timestamp: 2026-03-10T10:56:12.509Z
-                  parent_item_id: V2
-                  descriptor:
-                    name: Pepsi 300ml (Case of 24)
-                    code: 1:PEPSI300ML24
-                    symbol: https://seller-np.com/images/pepsi-300ml.png
-                    short_desc: Pepsi 300ml Glass Bottle - Case of 24
-                    long_desc: Pepsi 300ml Glass Bottle - Case of 24 bottles
-                    images:
-                      - https://seller-np.com/images/pepsi-300ml.png
-                  quantity:
-                    unitized:
-                      count: "24"
-                      measure:
-                        unit: millilitre
-                        value: "300"
-                    available:
-                      count: "99"
-                    maximum:
-                      count: "25"
-                    minimum:
-                      count: "5"
-                  price:
-                    currency: INR
-                    value: "460.00"
-                    maximum_value: "500.00"
-                  category_id: Energy and Soft Drinks
-                  fulfillment_id: F1
-                  location_id: L1
-                  "@ondc/org/returnable": true
-                  "@ondc/org/cancellable": true
-                  "@ondc/org/return_window": P1D
-                  "@ondc/org/seller_pickup_return": true
-                  "@ondc/org/time_to_ship": PT4H
-                  "@ondc/org/available_on_cod": false
-                  "@ondc/org/contact_details_consumer_care": Support,support@abcdist.com,18004254444
-                  "@ondc/org/statutory_reqs_packaged_commodities":
-                    manufacturer_or_packer_name: Varun Beverages Ltd
-                    manufacturer_or_packer_address: Gurgaon, Haryana
-                    common_or_generic_name_of_commodity: Carbonated Soft Drink
-                    month_year_of_manufacture_packing_import: 01/2025
-                  "@ondc/org/statutory_reqs_prepackaged_food":
-                    nutritional_info: Energy(KCal)-(per 100ml) 44; Sugars(g)-(per 100ml) 11
-                    additives_info: Carbonated Water, Sugar, Phosphoric Acid, Caffeine
-                    brand_owner_FSSAI_license_no: "10012011000022"
-                    other_FSSAI_license_no: "10012011000022"
-                    importer_FSSAI_license_no: ""
-                  tags:
-                    - code: origin
-                      list:
-                        - code: country
-                          value: IND
-                    - code: attribute
-                      list:
-                        - code: brand
-                          value: Pepsi
-                    - code: veg_nonveg
-                      list:
-                        - code: veg
-                          value: yes
-                - id: I8
-                  time:
-                    label: enable
-                    timestamp: 2026-03-10T10:56:12.509Z
-                  parent_item_id: V2
-                  descriptor:
-                    name: Pepsi 2L (Pack of 6)
-                    code: 1:PEPSI2L6
-                    symbol: https://seller-np.com/images/pepsi-2l.png
-                    short_desc: Pepsi 2 Liter PET - Pack of 6
-                    long_desc: Pepsi 2 Liter PET Bottle - Pack of 6 bottles
-                    images:
-                      - https://seller-np.com/images/pepsi-2l.png
-                  quantity:
-                    unitized:
-                      count: "6"
-                      measure:
-                        unit: litre
-                        value: "2"
-                    available:
-                      count: "99"
-                    maximum:
-                      count: "15"
-                    minimum:
-                      count: "3"
-                  price:
-                    currency: INR
-                    value: "690.00"
-                    maximum_value: "750.00"
-                  category_id: Energy and Soft Drinks
-                  fulfillment_id: F1
-                  location_id: L2
-                  "@ondc/org/returnable": true
-                  "@ondc/org/cancellable": true
-                  "@ondc/org/return_window": P1D
-                  "@ondc/org/seller_pickup_return": true
-                  "@ondc/org/time_to_ship": PT4H
-                  "@ondc/org/available_on_cod": false
-                  "@ondc/org/contact_details_consumer_care": support,support@abcdist.com,18004254444
-                  "@ondc/org/statutory_reqs_packaged_commodities":
-                    manufacturer_or_packer_name: Varun Beverages Ltd
-                    manufacturer_or_packer_address: Gurgaon, Haryana
-                    common_or_generic_name_of_commodity: Carbonated Soft Drink
-                    month_year_of_manufacture_packing_import: 01/2025
-                  "@ondc/org/statutory_reqs_prepackaged_food":
-                    nutritional_info: Energy(KCal)-(per 100ml) 44; Sugars(g)-(per 100ml) 11
-                    additives_info: Carbonated Water, Sugar, Phosphoric Acid, Caffeine
-                    brand_owner_FSSAI_license_no: "10012011000022"
-                    other_FSSAI_license_no: "10012011000022"
-                    importer_FSSAI_license_no: ""
-                  tags:
-                    - code: origin
-                      list:
-                        - code: country
-                          value: IND
-                    - code: attribute
-                      list:
-                        - code: brand
-                          value: Pepsi
-                    - code: veg_nonveg
-                      list:
-                        - code: veg
-                          value: yes
-              tags:
-                - code: order_value
-                  list:
-                    - code: min_value
-                      value: "500.00"
-                - code: timing
-                  list:
-                    - code: type
-                      value: Order
-                    - code: location
-                      value: L1
-                    - code: day_from
-                      value: "1"
-                    - code: day_to
-                      value: "7"
-                    - code: time_from
-                      value: "0000"
-                    - code: time_to
-                      value: "2359"
-                - code: timing
-                  list:
-                    - code: type
-                      value: Delivery
-                    - code: location
-                      value: L1
-                    - code: day_from
-                      value: "1"
-                    - code: day_to
-                      value: "6"
-                    - code: time_from
-                      value: "0900"
-                    - code: time_to
-                      value: "1800"
-                - code: timing
-                  list:
-                    - code: type
-                      value: Order
-                    - code: location
-                      value: L2
-                    - code: day_from
-                      value: "1"
-                    - code: day_to
-                      value: "7"
-                    - code: time_from
-                      value: "0000"
-                    - code: time_to
-                      value: "2359"
-                - code: timing
-                  list:
-                    - code: type
-                      value: Delivery
-                    - code: location
-                      value: L2
-                    - code: day_from
-                      value: "1"
-                    - code: day_to
-                      value: "6"
-                    - code: time_from
-                      value: "0900"
-                    - code: time_to
-                      value: "1800"
-                - code: serviceability
-                  list:
-                    - code: location
-                      value: L1
-                    - code: category
-                      value: Atta, Flours and Sooji
-                    - code: type
-                      value: "10"
-                    - code: val
-                      value: "15"
-                    - code: unit
-                      value: km
-                - code: serviceability
-                  list:
-                    - code: location
-                      value: L2
-                    - code: category
-                      value: Atta, Flours and Sooji
-                    - code: type
-                      value: "10"
-                    - code: val
-                      value: "20"
-                    - code: unit
-                      value: km
-                - code: serviceability
-                  list:
-                    - code: location
-                      value: L1
-                    - code: category
-                      value: "*"
-                    - code: type
-                      value: "13"
-                    - code: unit
-                      value: geojson
-                    - code: val
-                      value: '{"type": "FeatureCollection", "features": [{"type": "Feature",
-                        "properties": {}, "geometry": {"coordinates":
-                        [[[[77.4366, 14.6230], [75.5973, 13.2507], [76.8359,
-                        11.9329], [78.7709, 11.3290]]], [[[75.6948, 15.9928],
-                        [74.8319, 14.8515], [77.4006, 15.1229], [75.6948,
-                        15.9928]]]], "type": "MultiPolygon"}}]}'
-                    - code: day_from
-                      value: "1"
-                    - code: day_to
-                      value: "7"
-                    - code: time_from
-                      value: "1000"
-                    - code: time_to
-                      value: "2200"
-                - code: serviceability
-                  list:
-                    - code: location
-                      value: L2
-                    - code: category
-                      value: "*"
-                    - code: type
-                      value: "13"
-                    - code: unit
-                      value: geojson
-                    - code: val
-                      value: '{"type": "FeatureCollection", "features": [{"type": "Feature",
-                        "properties": {}, "geometry": {"coordinates":
-                        [[[77.1755, 28.6759], [77.1287, 28.6009], [77.4469,
-                        28.5453], [77.1755, 28.6759]]], "type": "Polygon"}}]}'
-                    - code: day_from
-                      value: "1"
-                    - code: day_to
-                      value: "7"
-                    - code: time_from
-                      value: "1000"
-                    - code: time_to
-                      value: "2200"
-                - code: retailer_info_required
-                  list:
-                    - code: phone_number
-                      value: "true"
-                    - code: tax_number
-                      value: "false"
-                    - code: provider_tax_number
-                      value: "false"
-                    - code: shop_name
-                      value: "true"
-                    - code: email
-                      value: "false"
-                    - code: address
-                      value: "true"
-                    - code: type
-                      value: new
-                - code: retailer_info_required
-                  list:
-                    - code: customer_id
-                      value: "true"
-                    - code: type
-                      value: existing
-                - code: retailer_info_required
-                  list:
-                    - code: phone_number
-                      value: "true"
-                    - code: tax_number
-                      value: "false"
-                    - code: provider_tax_number
-                      value: "true"
-                    - code: type
-                      value: existing
-    action: on_search
-    saved_info: {}
-  - action_id: search-1
-    payload:
-      context:
-        domain: ONDC:RETeB2B
-        action: search
-        timestamp: 2026-03-10T10:56:32.951Z
-        transaction_id: 9e8654ed-0dd3-4315-81f2-814780f13e79
-        message_id: d241e8f8-e4de-41ff-a30c-fe3ac23c1322
-        bap_id: sample-bap-id
-        bap_uri: https://bap.example.com
-        ttl: PT30S
-        country: IND
-        city: std:080
-        core_version: 1.2.5
-      message:
-        intent:
-          provider:
-            id: P1
-          fulfillment:
-            type: Delivery
-            customer:
-              id: CUST-2024-001234
-    action: search
-    saved_info: {}
-  - action_id: on_search-1
-    payload:
-      context:
-        domain: ONDC:RETeB2B
-        action: on_search
-        timestamp: 2026-03-10T10:56:32.980Z
-        transaction_id: 9e8654ed-0dd3-4315-81f2-814780f13e79
-        message_id: d241e8f8-e4de-41ff-a30c-fe3ac23c1322
-        bap_id: sample-bap-id
-        bap_uri: https://bap.example.com
-        ttl: PT30S
-        bpp_id: sample-bpp-id
-        bpp_uri: https://bpp.example.com
-        country: IND
-        city: std:080
-        core_version: 1.2.5
-      message:
-        catalog:
-          bpp/providers:
-            - id: P1
-              offers:
-                - id: discp10
-                  tags:
-                    - code: scheme_progress
-                      list:
-                        - code: target_quantity
-                          value: "100"
-                        - code: remaining_quantity
-                          value: "35"
-                        - code: valid_till
-                          value: 2026-06-08T10:56:32.980Z
-                        - code: tier
-                          value: silver
-                - id: flat150
-                  tags:
-                    - code: scheme_progress
-                      list:
-                        - code: target_quantity
-                          value: "200"
-                        - code: remaining_quantity
-                          value: "50"
-                        - code: valid_till
-                          value: 2026-06-08T10:56:32.980Z
-                        - code: tier
-                          value: silver
-                - id: slab1
-                  tags:
-                    - code: scheme_progress
-                      list:
-                        - code: target_purchase_value
-                          value: "50000"
-                        - code: remaining_purchase_value
-                          value: "25700"
-                        - code: valid_till
-                          value: 2026-06-08T10:56:32.980Z
-                        - code: tier
-                          value: silver
-                - id: freebie1
-                  tags:
-                    - code: scheme_progress
-                      list:
-                        - code: target_quantity
-                          value: "200"
-                        - code: remaining_quantity
-                          value: "50"
-                        - code: valid_till
-                          value: 2026-06-08T10:56:32.980Z
-                        - code: tier
-                          value: silver
-                - id: buy2get3
-                  tags:
-                    - code: scheme_progress
-                      list:
-                        - code: target_quantity
-                          value: "500"
-                        - code: remaining_quantity
-                          value: "50"
-                        - code: valid_till
-                          value: 2026-06-08T10:56:32.980Z
-                        - code: tier
-                          value: silver
-              tags:
-                - code: credit
-                  list:
-                    - code: credit_limit
-                      value: "25000.00"
-                    - code: valid_till
-                      value: 2026-06-08T10:56:32.980Z
-                - code: poc
-                  list:
-                    - code: name
-                      value: Rajesh Kumar
-                    - code: phone
-                      value: "9876543210"
-                    - code: email
-                      value: rajesh.kumar@abcdist.com
-                - code: customer
-                  list:
-                    - code: id
-                      value: CUST-9e8654ed
-    action: on_search
-    saved_info: {}
+                        - code: id
+                          value: CUST-9e8654ed
+        type: request
+        description: Catalog response from the seller platform containing provider
+          offers, scheme progress details, and credit information matching the
+          buyer’s search request.
+transaction_history: []
 validationLib: ""
 helperLib: LyoKCUN1c3RvbSBoZWxwZXIgZnVuY3Rpb25zIGF2YWlsYWJsZSBpbiBhbGwgbW9jayBnZW5lcmF0aW9uIGZ1bmN0aW9ucy4KCXRoZXNlIGFyZSBhcHBlbmRlZCBiZWxvdyB0aGUgZ2VuZXJhdGUgZnVuY3Rpb24gZm9yIGVhY2ggc3RlcC4KKi8KCi8vIEdlbmVyYXRlcyBhIFVVSUQgdjQKZnVuY3Rpb24gdXVpZHY0KCkgewoJcmV0dXJuICd4eHh4eHh4eC14eHh4LTR4eHgteXh4eC14eHh4eHh4eHh4eHgnLnJlcGxhY2UoL1t4eV0vZywgZnVuY3Rpb24gKGMpIHsKCSAgY29uc3QgciA9IE1hdGgucmFuZG9tKCkgKiAxNiB8IDA7CgkgIGNvbnN0IHYgPSBjID09PSAneCcgPyByIDogKHIgJiAweDMgfCAweDgpOwoJICByZXR1cm4gdi50b1N0cmluZygxNik7Cgl9KTsKfQoKLy8gR2VuZXJhdGUgYSA2IGRpZ2l0IHN0cmluZyBJRApmdW5jdGlvbiBnZW5lcmF0ZTZEaWdpdElkKCkgewoJcmV0dXJuIE1hdGguZmxvb3IoMTAwMDAwICsgTWF0aC5yYW5kb20oKSAqIDkwMDAwMCkudG9TdHJpbmcoKTsKfQoKLy8gUmV0dXJucyB0aGUgY3VycmVudCBJU08gdGltZXN0YW1wCmZ1bmN0aW9uIGN1cnJlbnRUaW1lc3RhbXAoKSB7CglyZXR1cm4gbmV3IERhdGUoKS50b0lTT1N0cmluZygpOwp9CgovLyBDb252ZXJ0cyBJU08gODYwMSBkdXJhdGlvbiBzdHJpbmcgdG8gdG90YWwgc2Vjb25kcwpjb25zdCBpc29EdXJUb1NlYyA9IChkdXJhdGlvbikgPT4gewogIGNvbnN0IGR1clJFID0gL1AoKGQrKVkpPygoZCspTSk/KChkKylXKT8oKGQrKUQpP1Q/KChkKylIKT8oKGQrKU0pPygoZCspUyk/LzsKICBjb25zdCBzID0gZHVyUkUuZXhlYyhkdXJhdGlvbik7CiAgaWYgKCFzKSByZXR1cm4gMDsKICAKICByZXR1cm4gKE51bWJlcihzPy5bMl0pIHx8IDApICogMzE1MzYwMDAgKwoJKE51bWJlcihzPy5bNF0pIHx8IDApICogMjYyODI4OCArCgkoTnVtYmVyKHM/Lls2XSkgfHwgMCkgKiA2MDQ4MDAgKwoJKE51bWJlcihzPy5bOF0pIHx8IDApICogODY0MDAgKwoJKE51bWJlcihzPy5bMTBdKSB8fCAwKSAqIDM2MDAgKwoJKE51bWJlcihzPy5bMTJdKSB8fCAwKSAqIDYwICsKCShOdW1iZXIocz8uWzE0XSkgfHwgMCk7Cn07CgoKZnVuY3Rpb24gYXBwbHlEeW5hbWljVGltZXN0YW1wcyhwYXlsb2FkKSB7CiAgY29uc3Qgbm93ID0gbmV3IERhdGUoKTsKICBjb25zdCBub3dJU08gPSBub3cudG9JU09TdHJpbmcoKTsKCiAgLy8gZGVmYXVsdCB2YWxpZGl0eSA9ICs5MCBkYXlzCiAgY29uc3QgZnV0dXJlID0gbmV3IERhdGUobm93KTsKICBmdXR1cmUuc2V0RGF0ZShub3cuZ2V0RGF0ZSgpICsgOTApOwogIGNvbnN0IGZ1dHVyZUlTTyA9IGZ1dHVyZS50b0lTT1N0cmluZygpOwoKICBmdW5jdGlvbiB1cGRhdGUob2JqKSB7CiAgICBpZiAoIW9iaiB8fCB0eXBlb2Ygb2JqICE9PSAib2JqZWN0IikgcmV0dXJuOwoKICAgIGZvciAoY29uc3Qga2V5IGluIG9iaikgewoKICAgICAgaWYgKGtleSA9PT0gInRpbWVzdGFtcCIgfHwga2V5ID09PSAiY3JlYXRlZF9hdCIgfHwga2V5ID09PSAidXBkYXRlZF9hdCIpIHsKICAgICAgICBvYmpba2V5XSA9IG5vd0lTTzsKICAgICAgfQoKICAgICAgLy8gRml4IE9OREMgdGFnIHRpbWVzdGFtcHMgbGlrZSB2YWxpZF90aWxsCiAgICAgIGlmIChrZXkgPT09ICJjb2RlIiAmJiBvYmpba2V5XSA9PT0gInZhbGlkX3RpbGwiICYmIG9iai52YWx1ZSkgewogICAgICAgIG9iai52YWx1ZSA9IGZ1dHVyZUlTTzsKICAgICAgfQoKICAgICAgaWYgKHR5cGVvZiBvYmpba2V5XSA9PT0gIm9iamVjdCIpIHsKICAgICAgICB1cGRhdGUob2JqW2tleV0pOwogICAgICB9CiAgICB9CiAgfQoKICB1cGRhdGUocGF5bG9hZCk7CgogIHJldHVybiBwYXlsb2FkOwp9
